@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/modules/home/presenter/view/home_view.dart';
-import 'package:myapp/modules/login/data/datasources/remote/login_datasouce_remote.dart_impl.dart';
 import 'core/theme/theme.dart';
 import 'modules/login/login.dart';
 import 'modules/modules.dart';
+//
+import 'package:myapp/modules/home/presenter/view/home_view.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -40,8 +40,10 @@ class AppWidget extends StatelessWidget {
             themeMode: ThemeMode.system,
             debugShowCheckedModeBanner: false,
 
-            routes: {'/': (context) => const LoginView(),
-            'home': (context) => const HomeView()},
+            routes: {
+              '/': (context) => const HomeView(), //LoginView(),
+              'home': (context) => const HomeView(),
+            },
           ),
         ),
       ),

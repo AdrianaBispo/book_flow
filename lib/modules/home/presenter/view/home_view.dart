@@ -22,19 +22,19 @@ class _HomeViewState extends State<HomeView>
     _fetchCurrentUser();
   }
 
-  final SupabaseClient supabase = Supabase.instance.client; // agora funciona
+  //final SupabaseClient supabase = Supabase.instance.client; // agora funciona
 
   User? _currentUser;
 
   Future<void> _fetchCurrentUser() async {
-    final user = supabase.auth.currentUser;
-    setState(() {
-      _currentUser = user;
-    });
+    // final user = supabase.auth.currentUser;
+    // setState(() {
+    //   _currentUser = user;
+    // });
   }
 
   Future<void> _signOut() async {
-    await supabase.auth.signOut();
+    //await supabase.auth.signOut();
     // Você deve adicionar aqui a navegação para a tela de login
     // Por exemplo: Navigator.of(co ntext).pushReplacementNamed('/login');
   }

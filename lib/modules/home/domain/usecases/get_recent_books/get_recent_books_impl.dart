@@ -1,10 +1,10 @@
 import 'package:myapp/modules/modules.dart';
 import '../../domain.dart';
 
-class GetRecommendedBooksImpl implements GetRecommendedBooks {
+class GetRecentBooksImpl implements GetRecentBooks {
   final HomeRepository _repository;
   
-  GetRecommendedBooksImpl(this._repository);
+  GetRecentBooksImpl(this._repository);
 
   @override
   Future<Either<ErrorHome, List<EbookEntity>>> call(String userId) async{

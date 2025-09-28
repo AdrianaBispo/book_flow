@@ -1,13 +1,5 @@
-import 'package:dartz/dartz.dart';
-import 'package:myapp/modules/login/data/datasources/remote/login_datasouce_remote.dart';
-import 'package:myapp/modules/login/data/dtos/dtos.dart';
-
-import 'package:myapp/modules/login/domain/entities/user_login_entity.dart';
-
-import 'package:myapp/modules/login/domain/error/error_login.dart';
-import 'package:supabase/supabase.dart';
-
-import '../../domain/repositories/login_repository.dart';
+import 'package:myapp/modules/modules.dart';
+import 'package:myapp/modules/login/login.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
   final LoginDatasouceRemote dataSource;
@@ -33,7 +25,7 @@ class LoginRepositoryImpl implements LoginRepository {
         case 'email not confirmed':
           return Left(
             EmailNotConfirmedError(
-              message: 'Confirme seu e-mail antes de continuar.'
+              message: 'Confirme seu e-mail antes de continuar.',
             ),
           );
         default:

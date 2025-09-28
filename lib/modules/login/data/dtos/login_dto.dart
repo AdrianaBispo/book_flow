@@ -1,4 +1,4 @@
-import 'package:myapp/modules/login/domain/entities/user_login_entity.dart';
+import '../../domain/domain.dart';
 
 class LoginDto extends UserLoginEntity {
   String? email;

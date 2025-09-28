@@ -2,7 +2,7 @@
 
 import 'package:myapp/modules/login/data/dtos/login_dto.dart';
 import 'package:supabase/supabase.dart';
-import 'login_datasouce_remote.dart';
+import 'login_datasource_remote.dart';
 
 class LoginDatasouceRemoteImpl extends LoginDatasouceRemote {
   final SupabaseClient supabaseClient;

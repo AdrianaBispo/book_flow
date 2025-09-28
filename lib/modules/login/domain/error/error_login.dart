@@ -3,12 +3,6 @@ abstract class ErrorLogin implements Exception {
   ErrorLogin(this.message);
 }
 
-/*class LoginError implements ErrroLogin {
-  final String message;
-  LoginError({required this.message}): super();
-
-}*/
-
 class InvalidCredentialsError implements ErrorLogin {
   @override
   String? message;
