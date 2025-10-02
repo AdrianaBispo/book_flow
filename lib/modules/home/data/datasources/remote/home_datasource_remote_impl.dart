@@ -1,4 +1,3 @@
-
 import '../../../home.dart';
 import 'package:myapp/modules/modules.dart';
 
@@ -16,7 +15,14 @@ class HomeDatasourceRemoteImpl extends HomeDatasourceRemote {
         return [];
       }
 
-      return response.map((item) => EbookDto.fromMap(item)).toList();
+      List<EbookDto> listDtos = response
+          .map((item) => EbookDto.fromMap(item))
+          .toList();
+
+      // ...
+      List<EbookEntity> result = listDtos.toList() as List<EbookEntity>;
+
+      return result;
     } catch (e) {
       rethrow;
     }

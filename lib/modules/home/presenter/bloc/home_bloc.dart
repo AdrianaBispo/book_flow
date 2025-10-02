@@ -14,7 +14,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     emit(HomeLoadingState());
 
-    final recommendedBooksResult = await homeRepository.getRecommendedBooks(
+    final recommendedBooksResult = await homeRepository.getRecentBooks(
       userId: event.userId,
     );
 

@@ -3,8 +3,6 @@ import 'core/theme/theme.dart';
 import 'modules/login/login.dart';
 import 'modules/home/home.dart';
 import 'modules/modules.dart';
-//
-import 'package:myapp/modules/home/presenter/view/home_view.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -55,8 +53,8 @@ class AppWidget extends StatelessWidget {
             debugShowCheckedModeBanner: false,
 
             routes: {
-              '/': (context) => const HomeView(), //LoginView(),
-              'home': (context) => const HomeView(),
+              '/': (context) => const LoginView(), //LoginView(),
+              '/home': (context) => const HomeView(),
             },
           ),
         ),
