@@ -12,13 +12,13 @@ class HomeRepositoryImpl implements HomeRepository {
   }) async {
     try {
    
-      final List<EbookEntity> ebooks = await dataSource.getRecentBooks(
+      final List<EbookEntity>? ebooks = await dataSource.getRecentBooks(
         userId: userId,
       );
-      final List<EbookEntity> bookEntities = ebooks
-          .map((book) => ebooks as EbookEntity)
-          .toList();
-      return Right(bookEntities);
+      if (ebooks == null || ebooks.isEmpty) {
+        return Right(<EbookEntity>[]);
+      }
+      return Right(ebooks);
     } on PostgrestException catch (e) {
       return Left(
         ErrorFetchingRecentBooks('Erro no banco de dados: ${e.message}'),

@@ -7,7 +7,7 @@ class HomeDatasourceRemoteImpl extends HomeDatasourceRemote {
   HomeDatasourceRemoteImpl({required this.supabaseClient});
 
   @override
-  Future<List<EbookEntity>> getRecentBooks({required String userId}) async {
+  Future<List<EbookDto>> getRecentBooks({required String userId}) async {
     try {
       final response = await supabaseClient.from('sgb_ebook').select();
 
@@ -15,12 +15,11 @@ class HomeDatasourceRemoteImpl extends HomeDatasourceRemote {
         return [];
       }
 
-      List<EbookDto> listDtos = response
+      List<EbookDto> result = response
           .map((item) => EbookDto.fromMap(item))
           .toList();
 
-      // ...
-      List<EbookEntity> result = listDtos.toList() as List<EbookEntity>;
+      //List<EbookEntity> result = listDtos.toList() as List<EbookEntity>;
 
       return result;
     } catch (e) {
@@ -29,7 +28,7 @@ class HomeDatasourceRemoteImpl extends HomeDatasourceRemote {
   }
 
   @override
-  Future<List<EbookEntity>> getRecommendedBooks({required String userId}) {
+  Future<List<EbookDto>> getRecommendedBooks({required String userId}) {
     // TODO: implement getRecommendedBooks
     throw UnimplementedError();
   }

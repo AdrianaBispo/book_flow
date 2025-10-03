@@ -1,32 +1,32 @@
 import 'package:myapp/modules/home/domain/domain.dart';
 
 class EbookDto extends EbookEntity {
-  final int id;
-  final String title;
-  final String author;
-  final String? coverImageUrl;
-  final String? description;
+  final int idEbook;
+  final String titleEbook;
+  final String authorEbook;
+  final String? coverImageUrlEbook;
+  final String? descriptionEbook;
 
   EbookDto({
-    required this.id,
-    required this.title,
-    required this.author,
-    required this.coverImageUrl,
-    required this.description,
+    required this.idEbook,
+    required this.titleEbook,
+    required this.authorEbook,
+    required this.coverImageUrlEbook,
+    required this.descriptionEbook,
   }) : super(
-         id: id,
-         title: title,
-         author: author,
-         coverImageUrl: coverImageUrl,
-         description: description,
+         id: idEbook,
+         title: titleEbook,
+         author: authorEbook,
+         coverImageUrl: coverImageUrlEbook,
+         description: descriptionEbook,
        );
 
   EbookDto.fromMap(Map<String, dynamic> map)
-    : id = map['id'],
-      title = map['title'],
-      author = map['author'],
-      coverImageUrl = map['cover_image_url'],
-      description = map['description'],
+    : idEbook = map['id'],
+      titleEbook = map['title'],
+      authorEbook = map['author'],
+      coverImageUrlEbook = map['cover_image_url'],
+      descriptionEbook = map['description'],
       super(
         id: map['id'],
         title: map['title'],
