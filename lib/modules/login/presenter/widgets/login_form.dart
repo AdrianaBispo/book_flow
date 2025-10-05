@@ -121,7 +121,6 @@ class LoginForm extends StatelessWidget {
 
             const SizedBox(height: 32),
 
-            // Links de ajuda
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

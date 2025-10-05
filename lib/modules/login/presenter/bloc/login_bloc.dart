@@ -35,11 +35,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async {
     if (!state.isFormValid) return;
     emit(state.copyWith(status: LoginStatus.loading));
-
-    // Simula chamada da API
-    //await Future.delayed(const Duration(seconds: 2));
-
-    // Aqui você faria a chamada real para seu serviço de autenticação
+    
     final result = await loginRepository.loginWithEmailAndPassword(
       LoginDto(email: state.email, password: state.password),
     );
