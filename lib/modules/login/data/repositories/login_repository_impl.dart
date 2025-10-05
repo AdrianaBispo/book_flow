@@ -1,3 +1,4 @@
+import 'package:myapp/core/core.dart';
 import 'package:myapp/modules/modules.dart';
 import 'package:myapp/modules/login/login.dart';
 
@@ -7,7 +8,7 @@ class LoginRepositoryImpl implements LoginRepository {
   LoginRepositoryImpl({required this.dataSource});
 
   @override
-  Future<Either<ErrorLogin, UserLoginEntity>> loginWithEmailAndPassword(
+  Future<Either<AppException, UserLoginEntity>> loginWithEmailAndPassword(
     UserLoginEntity login,
   ) async {
     try {
@@ -20,28 +21,28 @@ class LoginRepositoryImpl implements LoginRepository {
       switch (e.message.toLowerCase()) {
         case 'invalid login credentials':
           return Left(
-            InvalidCredentialsError(message: 'E-mail ou senha incorretos.'),
+            InvalidCredentialsException(message: 'E-mail ou senha incorretos.'),
           );
         case 'email not confirmed':
           return Left(
-            EmailNotConfirmedError(
+            EmailNotConfirmedException(
               message: 'Confirme seu e-mail antes de continuar.',
             ),
           );
         default:
           return Left(
-            InvalidCredentialsError(
+            InvalidCredentialsException(
               message: 'Erro de autenticação: ${e.message}',
             ),
           );
       }
     } on PostgrestException catch (e) {
       return Left(
-        DatabaseError(message: 'Erro no banco de dados: ${e.message}'),
+        DatabaseException(message: 'Erro no banco de dados: ${e.message}'),
       );
     } on Exception catch (e) {
       return Left(
-        UnknownLoginError(message: 'Erro inesperado: ${e.toString()}'),
+        UnknownLoginException(message: 'Erro inesperado: ${e.toString()}'),
       );
     }
   }

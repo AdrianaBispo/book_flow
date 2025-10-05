@@ -1,5 +1,6 @@
-import 'package:dartz/dartz.dart';
+import 'package:myapp/modules/modules.dart';
 import '../../domain.dart';
+import 'package:myapp/core/core.dart';
 
 class LoginWithEmailAndPasswordImpl implements LoginWithEmailAndPassword {
   final LoginRepository _repository;
@@ -7,7 +8,7 @@ class LoginWithEmailAndPasswordImpl implements LoginWithEmailAndPassword {
   LoginWithEmailAndPasswordImpl(this._repository);
 
   @override
-  Future<Either<ErrorLogin, UserLoginEntity>> call(UserLoginEntity login) async{
+  Future<Either<AppException, UserLoginEntity>> call(UserLoginEntity login) async{
     return await _repository.loginWithEmailAndPassword(login);
   }
 }

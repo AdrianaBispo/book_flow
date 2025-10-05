@@ -1,8 +1,9 @@
-import 'package:dartz/dartz.dart';
+import 'package:myapp/modules/modules.dart';
+import 'package:myapp/core/core.dart';
 import '../domain.dart';
 
 abstract class LoginRepository {
-  Future<Either<ErrorLogin, UserLoginEntity>> loginWithEmailAndPassword(
+  Future<Either<AppException, UserLoginEntity>> loginWithEmailAndPassword(
     UserLoginEntity login
   );
 }

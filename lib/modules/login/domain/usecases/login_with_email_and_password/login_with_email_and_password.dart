@@ -1,7 +1,7 @@
-import 'package:myapp/modules/login/domain/entities/user_login_entity.dart';
+import 'package:myapp/modules/modules.dart';
+import '../../domain.dart';
+import 'package:myapp/core/core.dart';
 
-import '../../error/error_login.dart';
-import 'package:dartz/dartz.dart';
 abstract class LoginWithEmailAndPassword {
-  Future<Either<ErrorLogin,UserLoginEntity>> call(UserLoginEntity login);
+  Future<Either<AppException,UserLoginEntity>> call(UserLoginEntity login);
 }
