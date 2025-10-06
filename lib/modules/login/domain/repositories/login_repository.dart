@@ -1,5 +1,5 @@
 import 'package:myapp/modules/modules.dart';
-import 'package:myapp/core/core.dart';
+import 'package:myapp/utils/utils.dart';
 import '../domain.dart';
 
 abstract class LoginRepository {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/core.dart';
-import '../presenter.dart';
+import 'package:myapp/core/core.dart';
 import '../../../modules.dart';
 
 class LoginView extends StatelessWidget {

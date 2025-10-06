@@ -1,6 +1,6 @@
 import 'package:myapp/modules/modules.dart';
 import '../../domain.dart';
-import 'package:myapp/core/core.dart';
+import 'package:myapp/utils/utils.dart';
 
 class LoginWithEmailAndPasswordImpl implements LoginWithEmailAndPassword {
   final LoginRepository _repository;

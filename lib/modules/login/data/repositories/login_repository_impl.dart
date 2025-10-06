@@ -1,4 +1,4 @@
-import 'package:myapp/core/core.dart';
+import 'package:myapp/utils/utils.dart';
 import 'package:myapp/modules/modules.dart';
 import 'package:myapp/modules/login/login.dart';
 
