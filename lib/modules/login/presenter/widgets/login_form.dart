@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../presenter.dart';
 import '../../../modules.dart';
 
 class LoginForm extends StatelessWidget {
@@ -14,7 +13,7 @@ class LoginForm extends StatelessWidget {
           children: [
             // Campo de email
             TextFormField(
-              key: const Key('loginForm_emailInput_textField'),
+              key: const Key('emailInput_textField'),
               onChanged: (email) =>
                   context.read<LoginBloc>().add(LoginEmailChanged(email)),
               keyboardType: TextInputType.emailAddress,
@@ -33,7 +32,7 @@ class LoginForm extends StatelessWidget {
 
             // Campo de senha
             TextFormField(
-              key: const Key('loginForm_passwordInput_textField'),
+              key: const Key('passwordInput_textField'),
               onChanged: (password) =>
                   context.read<LoginBloc>().add(LoginPasswordChanged(password)),
               obscureText: !state.isPasswordVisible,
@@ -46,7 +45,7 @@ class LoginForm extends StatelessWidget {
                     ? 'Senha deve ter pelo menos 6 caracteres'
                     : null,
                 suffixIcon: IconButton(
-                  key: const Key('loginForm_passwordVisibility_iconButton'),
+                  key: const Key('passwordVisibility_iconButton'),
                   icon: Icon(
                     state.isPasswordVisible
                         ? Icons.visibility_off
@@ -63,7 +62,7 @@ class LoginForm extends StatelessWidget {
 
             // Botão de login
             ElevatedButton(
-              key: const Key('loginForm_continue_raisedButton'),
+              key: const Key('continue_raisedButton'),
               onPressed:
                   state.isFormValid && state.status != LoginStatus.loading
                   ? () => context.read<LoginBloc>().add(LoginSubmitted())

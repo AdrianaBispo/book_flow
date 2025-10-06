@@ -1,5 +1,4 @@
 import '../../../modules.dart';
-import '../../login.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final LoginRepository loginRepository;
