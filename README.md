@@ -77,5 +77,9 @@ Para clonar e rodar essa aplicação, você precisa do [Git](https://git-scm.com
 
   <p>Feito por Adriana Bispo. Entre em contato</p>
   <a href="mailto:adriana.bispo283@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-  <a hrfe="https://www.linkedin.com/in/adrianabispo283" target="_blank">![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
+  <a href="https://www.linkedin.com/in/adrianabispo283" target="_blank">
+	<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+  </a>
+
+
 
