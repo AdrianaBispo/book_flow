@@ -29,17 +29,18 @@ O BookFlow é um aplicativo móvel desenvolvido em Flutter que oferece uma exper
 
 <h3>Gerenciamento de Livros</h3>
 
-- [x] 📖 Listagem de Livros: Visualize todos os livros cadastrados no sistema
-- [x] ⭐ Favoritos: Marque seus livros preferidos para acesso rápido
-- [x] 🕒 Leituras Recentes: Acompanhe os últimos livros que você visualizou
-- [x] 🎯 Recomendações Personalizadas: Receba sugestões de livros baseadas no seu histórico de leitura
+- [x] 📖 Listagem de Livros: Visualize todos os livros cadastrados no sistema;
+- [x] ⭐ Favoritos: Marque seus livros preferidos para acesso rápido;
+- [x] 🕒 Leituras Recentes: Acompanhe os últimos livros que você visualizou;
+- [x] 🎯 Recomendações Personalizadas: Receba sugestões de livros baseadas no seu histórico de leitura;
 
 <h3>Autenticação e Conta</h3>
-- [x] 🔐 Login Seguro: Acesse sua conta de forma protegida
-- [x] ✍️ Cadastro de Usuário: Crie uma nova conta facilmente
-- [x] 🔑 Recuperação de Senha: Recupere o acesso à sua conta caso esqueça a senha
-- [x] 👤 Edição de Perfil: Personalize suas informações pessoais
-- [x] 🔒 Alteração de Senha: Mantenha sua conta segura atualizando sua senha
+
+- [x] 🔐 Login Seguro: Acesse sua conta de forma protegida;
+- [x] ✍️ Cadastro de Usuário: Crie uma nova conta facilmente;
+- [x] 🔑 Recuperação de Senha: Recupere o acesso à sua conta caso esqueça a senha;
+- [x] 👤 Edição de Perfil: Personalize suas informações pessoais;
+- [x] 🔒 Alteração de Senha: Mantenha sua conta segura atualizando sua senha;
 
 <!-- ScreenShots -->
 
