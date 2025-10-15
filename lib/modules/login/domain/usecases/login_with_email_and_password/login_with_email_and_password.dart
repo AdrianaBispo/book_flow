@@ -2,5 +2,5 @@ import 'package:myapp/modules/modules.dart';
 import 'package:myapp/utils/utils.dart';
 
 abstract class LoginWithEmailAndPassword {
-  Future<Either<AppException,UserLoginEntity>> call(UserLoginEntity login);
+  Future<Either<AppException, void>> call(UserLoginEntity login);
 }
