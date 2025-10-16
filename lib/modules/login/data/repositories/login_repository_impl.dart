@@ -1,6 +1,5 @@
 import 'package:myapp/utils/utils.dart';
 import 'package:myapp/modules/modules.dart';
-import 'package:myapp/modules/login/login.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
   final LoginDatasouceRemote dataSource;
@@ -8,15 +7,14 @@ class LoginRepositoryImpl implements LoginRepository {
   LoginRepositoryImpl({required this.dataSource});
 
   @override
-  Future<Either<AppException, UserLoginEntity>> loginWithEmailAndPassword(
+  Future<Either<AppException, void>> loginWithEmailAndPassword(
     UserLoginEntity login,
   ) async {
     try {
-      final AuthResponse user = await dataSource.login(
+      await dataSource.login(
         loginDto: login as dynamic,
       );
-      final UserLoginEntity useData = LoginDto.fromMap(user.user!.toJson());
-      return Right(useData);
+      return Right(null);
     } on AuthException catch (e) {
       switch (e.message.toLowerCase()) {
         case 'invalid login credentials':
