@@ -32,9 +32,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginSubmitted event,
     Emitter<LoginState> emit,
   ) async {
-    if (!state.isFormValid) return;
+    if (!state.isFormValid) {
+      emit(
+        state.copyWith(
+          status: LoginStatus.failure,
+          errorMessage: 'Erro ao fazer login. Tente novamente.',
+        ),
+      );
+      return;
+    }
     emit(state.copyWith(status: LoginStatus.loading));
-    
+
     final result = await loginRepository.loginWithEmailAndPassword(
       LoginDto(email: state.email, password: state.password),
     );
@@ -58,20 +66,4 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       );
     }
   }
-
-  /*
-      if (state.email == 'admin@biblioteca.com' && state.password == '123456') {
-        emit(state.copyWith(status: LoginStatus.success));
-      } else {
-        emit(state.copyWith(
-          status: LoginStatus.failure,
-          errorMessage: 'Email ou senha inválidos',
-        ));
-      }
-    } catch (error) {
-      emit(state.copyWith(
-        status: LoginStatus.failure,
-        errorMessage: 'Erro ao fazer login. Tente novamente.',
-      ));
-    }*/
 }
