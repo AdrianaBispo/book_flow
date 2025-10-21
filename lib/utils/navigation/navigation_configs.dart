@@ -23,20 +23,20 @@ abstract class NavigationConfigs {
         builder: (_, state) => LoginView(),
         name: 'LOGIN',
       ),
-      //ShellRoute(
-      //   builder: (context, state, child) {
-      //     return AppScaffold(child: child);
-      //   },
-      //   navigatorKey: shellNavigationKey,
-      //   routes: [
-      //     /*GoRoute(
-      //       path: RoutePath.home,
-      //       builder: (_, state) => const HomeView(),
-      //       parentNavigatorKey: shellNavigationKey,
-      //       name: 'HOME',
-      //     ),*/
-      //   ],
-      // ),
+      ShellRoute(
+        builder: (context, state, child) {
+          return AppScaffold(child: child);
+        },
+        navigatorKey: shellNavigationKey,
+        routes: [
+          GoRoute(
+            path: RoutePath.home,
+            builder: (_, state) => const HomeView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'HOME',
+          ),
+        ],
+      ),
     ],
   );
   static String get currentRoute {
