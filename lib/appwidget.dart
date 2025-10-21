@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'core/core.dart';
 import 'package:myapp/utils/utils.dart';
+import 'core/core.dart';
 import 'modules/modules.dart';
 
 class AppWidget extends StatelessWidget {
@@ -19,11 +19,24 @@ class AppWidget extends StatelessWidget {
             dataSource: context.read<LoginDatasouceRemoteImpl>(),
           ),
         ),
+               Provider<HomeDatasourceRemoteImpl>(
+          create: (_) => HomeDatasourceRemoteImpl(
+            supabaseClient: Supabase.instance.client,
+          ),
+        ),
+        Provider<HomeRepository>(
+          create: (context) => HomeRepositoryImpl(
+            dataSource: context.read<HomeDatasourceRemoteImpl>(),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider<LoginBloc>(
             create: (context) => LoginBloc(context.read<LoginRepository>()),
+          ),
+            BlocProvider<HomeBloc>(
+            create: (context) => HomeBloc(context.read<HomeRepository>()),
           ),
         ],
         child: ScreenUtilInit(
