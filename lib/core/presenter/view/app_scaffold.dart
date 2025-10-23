@@ -29,8 +29,27 @@ class _AppScaffoldState extends State<AppScaffold> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: true,
-      onPopInvokedWithResult: (didPop, data) => _willPop,
-      child: Center(),
+      onPopInvokedWithResult: (didPop, data) => _willPop(),
+      child: Scaffold(
+        body: widget.child,
+        bottomNavigationBar: routesWithBottomBar.contains(route)
+            ? _buildBottomNavigationBar()
+            : null,
+      ),
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      currentIndex: 0,
+      items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: '', backgroundColor: Colors.deepPurple),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.library_books_outlined), label: 'Biblioteca'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: 'Favoritos'),
+          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Perfil'),
+        
+      ],
     );
   }
 
