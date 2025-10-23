@@ -13,7 +13,7 @@ abstract class AppTheme {
       secondary: AppColors.secondaryYellow,
       surface: AppColors.lightCard,
     ),
-    
+
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: AppColors.lightText,
@@ -82,11 +82,22 @@ abstract class AppTheme {
       labelStyle: AppStyles.bodyMedium.copyWith(color: AppColors.darkBorder),
       hintStyle: AppStyles.bodyMedium.copyWith(color: AppColors.hintColor),
       errorStyle: AppStyles.bodyMedium.copyWith(color: AppColors.error),
-    
+
       // Estilos dos ícones
       prefixIconColor: AppColors.hintColor,
       suffixIconColor: AppColors.hintColor,
     ),
+    
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: AppColors.lightBackground,
+        selectedItemColor: AppColors.primaryPurple,
+        unselectedItemColor: AppColors.grey60,
+        selectedLabelStyle: AppStyles.bodySmall.copyWith(fontWeight: FontWeight.w600),
+        unselectedLabelStyle: AppStyles.bodySmall,
+        selectedIconTheme: const IconThemeData(size: 24, color: AppColors.primaryPurple),
+        unselectedIconTheme: IconThemeData(size: 20, color: AppColors.grey60),
+      ),
+    
   );
 
   static final ThemeData darkTheme = ThemeData(
