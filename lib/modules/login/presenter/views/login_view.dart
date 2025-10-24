@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
               backgroundColor: AppColors.success,
             ),
           );
-          //Navigator.pushReplacementNamed(context, '/home');
+          context.go('/home');
         } else if (state.status == LoginStatus.failure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
