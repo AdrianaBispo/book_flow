@@ -88,14 +88,14 @@ class FavoriteBookCard extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Icon(
-                Icons.favorite_border,
+                Icons.favorite,
                 color: AppColors.lightBackground,
                 size: 16,
               ),
             ),
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Remover "${title}" dos favoritos?')),
+                SnackBar(content: Text('Remover "$title" dos favoritos?')),
               );
             },
           ),
