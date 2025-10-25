@@ -29,4 +29,9 @@ abstract class AppColors {
   static final Color? grey80 = Colors.grey[800];
   static final Color? grey60 = Colors.grey[600];
   static final Color? grey40 = Colors.grey[400];
-}
+
+
+  static final Color purple60 = Color.fromRGBO(91, 33, 182, 1);
+  static final Color purple70 = Color.fromRGBO(91, 33, 182, .6);
+  static final Color purple20 = Color.fromRGBO(91, 33, 182, 0.2);
+  }
