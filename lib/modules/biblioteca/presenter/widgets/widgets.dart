@@ -1,0 +1,1 @@
+export 'biblioteca_book_card.dart';
