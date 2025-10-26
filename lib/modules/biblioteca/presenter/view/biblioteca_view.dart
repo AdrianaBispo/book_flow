@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/biblioteca_book_card.dart';
+import '../widgets/widgets.dart';
 
 final List<Map<String, String>> mockFavoriteBooks = [
   {
