@@ -17,7 +17,7 @@ abstract class AppTheme {
     dividerColor: AppColors.lightBorder,
 
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.purple60,
+      backgroundColor: AppColors.primaryPurple,
       elevation: 1,
       iconTheme: const IconThemeData(color: AppColors.lightCard),
       centerTitle: true,
