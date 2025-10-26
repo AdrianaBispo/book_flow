@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../modules.dart';
 
 class LoginForm extends StatelessWidget {
@@ -21,7 +22,9 @@ class LoginForm extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'Email',
                 hintText: 'Digite seu email',
-                prefixIcon: const Icon(Icons.email_outlined),
+                prefixIcon: Icon(
+                  PhosphorIcons.envelopeSimple(PhosphorIconsStyle.regular),
+                ),
                 errorText: state.email.isNotEmpty && !state.isEmailValid
                     ? 'Email inválido'
                     : null,
@@ -40,7 +43,9 @@ class LoginForm extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'Senha',
                 hintText: 'Digite sua senha',
-                prefixIcon: const Icon(Icons.lock_outlined),
+                prefixIcon: Icon(
+                  PhosphorIcons.lock(PhosphorIconsStyle.regular),
+                ),
                 errorText: state.password.isNotEmpty && !state.isPasswordValid
                     ? 'Senha deve ter pelo menos 6 caracteres'
                     : null,
@@ -48,8 +53,8 @@ class LoginForm extends StatelessWidget {
                   key: const Key('passwordVisibility_iconButton'),
                   icon: Icon(
                     state.isPasswordVisible
-                        ? Icons.visibility_off
-                        : Icons.visibility,
+                        ? PhosphorIcons.eyeSlash(PhosphorIconsStyle.regular)
+                        :  PhosphorIcons.eye(PhosphorIconsStyle.regular),
                   ),
                   onPressed: () => context.read<LoginBloc>().add(
                     LoginTogglePasswordVisibility(),
