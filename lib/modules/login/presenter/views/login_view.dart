@@ -65,8 +65,7 @@ class LoginView extends StatelessWidget {
                     const SizedBox(height: 24),
                     Text(
                       'BookFlow',
-                      style: Theme.of(context).textTheme.headlineLarge!
-                          .copyWith(fontFamily: 'PT Serif'),
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     const SizedBox(height: 8),
                     Text(
