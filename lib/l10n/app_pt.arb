@@ -1,6 +1,6 @@
 {
   "@@locale": "pt",
-  "emailLabel": "Email",
+  "emailLabel": "E-mail",
   "emailHint": "Digite seu email",
   "invalidEmail": "Email inválido",
   "passwordLabel": "Senha",
