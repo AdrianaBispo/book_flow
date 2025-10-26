@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/core/core.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../modules.dart';
 
@@ -54,7 +55,7 @@ class LoginForm extends StatelessWidget {
                   icon: Icon(
                     state.isPasswordVisible
                         ? PhosphorIcons.eyeSlash(PhosphorIconsStyle.regular)
-                        :  PhosphorIcons.eye(PhosphorIconsStyle.regular),
+                        : PhosphorIcons.eye(PhosphorIconsStyle.regular),
                   ),
                   onPressed: () => context.read<LoginBloc>().add(
                     LoginTogglePasswordVisibility(),
@@ -79,7 +80,9 @@ class LoginForm extends StatelessWidget {
                       width: 20,
                       child: CircularProgressIndicator(
                         strokeWidth: 2,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          AppColors.lightBackground,
+                        ),
                       ),
                     )
                   : const Text('Entrar'),
@@ -90,12 +93,15 @@ class LoginForm extends StatelessWidget {
             // Divisor
             Row(
               children: [
-                Expanded(child: Divider(color: Colors.grey[300])),
+                Expanded(child: Divider(color: Theme.of(context).dividerColor)),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text('ou', style: TextStyle(color: Colors.grey[600])),
+                  child: Text(
+                    'ou',
+                    style: Theme.of(context).inputDecorationTheme.hintStyle,
+                  ),
                 ),
-                Expanded(child: Divider(color: Colors.grey[300])),
+                Expanded(child: Divider(color: Theme.of(context).dividerColor)),
               ],
             ),
 
@@ -111,15 +117,15 @@ class LoginForm extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                side: BorderSide(color: Colors.blue[800]!),
+                side: BorderSide(color: AppColors.info), //.blue[800]!),
               ),
               child: Text(
                 'Criar conta',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blue[800],
-                ),
+                style: Theme.of(context).inputDecorationTheme.labelStyle!
+                    .copyWith(
+                      color: AppColors.info,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
             ),
 
@@ -134,17 +140,20 @@ class LoginForm extends StatelessWidget {
                   },
                   child: Text(
                     'Ajuda',
-                    style: TextStyle(color: Colors.grey[600]),
+                    style: Theme.of(context).inputDecorationTheme.hintStyle,
                   ),
                 ),
-                Text(' • ', style: TextStyle(color: Colors.grey[400])),
+                Text(
+                  ' • ',
+                  style: Theme.of(context).inputDecorationTheme.hintStyle,
+                ),
                 TextButton(
                   onPressed: () {
                     // Implementar página de termos
                   },
                   child: Text(
                     'Termos de Uso',
-                    style: TextStyle(color: Colors.grey[600]),
+                    style: Theme.of(context).inputDecorationTheme.hintStyle,
                   ),
                 ),
               ],
