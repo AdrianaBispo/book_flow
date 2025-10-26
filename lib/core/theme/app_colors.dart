@@ -7,7 +7,7 @@ abstract class AppColors {
   static const Color info = Colors.blue;
 
   // Cores do tema
-  static const Color primaryPurple = Color(0xFF5B21B6);
+  static const Color primaryPurple = Color(0xFF8662CA);
   static const Color secondaryYellow = Color(0xFFFACC15);
 
   // Cores do texto
@@ -15,7 +15,8 @@ abstract class AppColors {
   static const Color darkText = Color(0xFF1F2937);
 
   // Cores do fundo e superfícies
-  static const Color lightBackground = Color(0xFFF3F4F6);
+  static const Color lightBackground = Color(0xFFF3F3F3);//  Color(0xFFF3F4F6);
+  
   static const Color darkBackground = Color(0xFF111827);
   static const Color lightCard = Color(0xFFFFFFFF);
   static const Color darkCard = Color(0xFF374151);
