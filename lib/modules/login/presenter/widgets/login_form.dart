@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/core.dart';
+import 'package:myapp/l10n/app_localizations.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../modules.dart';
 
@@ -21,13 +22,13 @@ class LoginForm extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               style: Theme.of(context).textTheme.bodyMedium,
               decoration: InputDecoration(
-                labelText: 'Email',
-                hintText: 'Digite seu email',
+                labelText: AppLocalizations.of(context)!.emailLabel,
+                hintText: AppLocalizations.of(context)!.emailHint,
                 prefixIcon: Icon(
                   PhosphorIcons.envelopeSimple(PhosphorIconsStyle.regular),
                 ),
                 errorText: state.email.isNotEmpty && !state.isEmailValid
-                    ? 'Email inválido'
+                    ? AppLocalizations.of(context)!.invalidEmail
                     : null,
               ),
             ),
@@ -42,13 +43,13 @@ class LoginForm extends StatelessWidget {
               obscureText: !state.isPasswordVisible,
               style: Theme.of(context).textTheme.bodyMedium,
               decoration: InputDecoration(
-                labelText: 'Senha',
-                hintText: 'Digite sua senha',
+                labelText: AppLocalizations.of(context)!.passwordLabel,
+                hintText: AppLocalizations.of(context)!.passwordHint,
                 prefixIcon: Icon(
                   PhosphorIcons.lock(PhosphorIconsStyle.regular),
                 ),
                 errorText: state.password.isNotEmpty && !state.isPasswordValid
-                    ? 'Senha deve ter pelo menos 6 caracteres'
+                    ? AppLocalizations.of(context)!.invalidPassword
                     : null,
                 suffixIcon: IconButton(
                   key: const Key('passwordVisibility_iconButton'),
@@ -85,7 +86,7 @@ class LoginForm extends StatelessWidget {
                         ),
                       ),
                     )
-                  : const Text('Entrar'),
+                  : Text(AppLocalizations.of(context)!.loginButton),
             ),
 
             const SizedBox(height: 24),
@@ -97,7 +98,7 @@ class LoginForm extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    'ou',
+                    AppLocalizations.of(context)!.orSeparator,
                     style: Theme.of(context).inputDecorationTheme.hintStyle,
                   ),
                 ),
@@ -120,7 +121,7 @@ class LoginForm extends StatelessWidget {
                 side: BorderSide(color: AppColors.info), //.blue[800]!),
               ),
               child: Text(
-                'Criar conta',
+                AppLocalizations.of(context)!.createAccount,
                 style: Theme.of(context).inputDecorationTheme.labelStyle!
                     .copyWith(
                       color: AppColors.info,
@@ -139,7 +140,7 @@ class LoginForm extends StatelessWidget {
                     // Implementar página de ajuda
                   },
                   child: Text(
-                    'Ajuda',
+                    AppLocalizations.of(context)!.help,
                     style: Theme.of(context).inputDecorationTheme.hintStyle,
                   ),
                 ),
@@ -152,7 +153,7 @@ class LoginForm extends StatelessWidget {
                     // Implementar página de termos
                   },
                   child: Text(
-                    'Termos de Uso',
+                    AppLocalizations.of(context)!.termsOfUse,
                     style: Theme.of(context).inputDecorationTheme.hintStyle,
                   ),
                 ),
