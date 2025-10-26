@@ -7,3 +7,4 @@ export 'package:go_router/go_router.dart';
 
 export 'login/login.dart';
 export 'biblioteca/biblioteca.dart';
+export 'favoritos/favoritos.dart';
