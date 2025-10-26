@@ -6,4 +6,4 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:go_router/go_router.dart';
 
 export 'login/login.dart';
-export 'home/home.dart';
+export 'biblioteca/biblioteca.dart';
