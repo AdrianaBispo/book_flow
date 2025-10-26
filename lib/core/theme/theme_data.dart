@@ -45,7 +45,7 @@ abstract class AppTheme {
       titleLarge: AppStyles.titleLarge.copyWith(color: AppColors.grey80),
       titleMedium: AppStyles.titleMedium.copyWith(color: AppColors.grey60),
       titleSmall: AppStyles.titleSmall.copyWith(color: AppColors.darkText),
-      headlineLarge: AppStyles.headlineLarge,
+      headlineLarge: AppStyles.headlineLarge.copyWith(fontFamily: 'PT Serif'),
       displayLarge: AppStyles.displayLarge,
     ),
 
@@ -94,7 +94,7 @@ abstract class AppTheme {
       // Estilos de texto
       labelStyle: AppStyles.bodyMedium.copyWith(color: AppColors.darkBorder),
       hintStyle: AppStyles.bodyMedium.copyWith(color: AppColors.hintColor),
-      errorStyle: AppStyles.bodyMedium.copyWith(color: AppColors.error),
+      errorStyle: AppStyles.bodySmall.copyWith(color: AppColors.error),
 
       // Estilos dos ícones
       prefixIconColor: AppColors.hintColor,
