@@ -46,19 +46,9 @@ class AppWidget extends StatelessWidget {
           splitScreenMode: true,
           builder: (_, child) => MaterialApp.router(
             title: 'Book Flow',
-            localizationsDelegates: [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-
             locale: const Locale('pt', 'BR'),
-            supportedLocales: [
-             Locale('en'), // English
-               Locale('pt', 'BR'), // Portuguese - Brazil
-            ],
-            //localizationsDelegates: AppLocalizations.localizationsDelegates,
-            //supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,      
+            supportedLocales: AppLocalizations.supportedLocales,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: ThemeMode.system,
