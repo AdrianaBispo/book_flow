@@ -9,7 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get emailLabel => 'Email';
+  String get emailLabel => 'E-mail';
 
   @override
   String get emailHint => 'Digite seu email';
@@ -30,7 +30,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get loginButton => 'Entrar';
 
   @override
-  String get or => 'ou';
+  String get orSeparator => 'ou';
 
   @override
   String get createAccount => 'Criar conta';

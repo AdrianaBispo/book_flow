@@ -7,4 +7,37 @@ import 'app_localizations.dart';
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get emailLabel => 'Email';
+
+  @override
+  String get emailHint => 'Enter your email';
+
+  @override
+  String get invalidEmail => 'Invalid email';
+
+  @override
+  String get passwordLabel => 'Password';
+
+  @override
+  String get passwordHint => 'Enter your password';
+
+  @override
+  String get invalidPassword => 'Password must be at least 6 characters';
+
+  @override
+  String get loginButton => 'Login';
+
+  @override
+  String get orSeparator => 'or';
+
+  @override
+  String get createAccount => 'Create account';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get termsOfUse => 'Terms of Use';
 }

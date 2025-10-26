@@ -7,7 +7,7 @@
   "passwordHint": "Enter your password",
   "invalidPassword": "Password must be at least 6 characters",
   "loginButton": "Login",
-  "or": "or",
+  "orSeparator": "or",
   "createAccount": "Create account",
   "help": "Help",
   "termsOfUse": "Terms of Use"
