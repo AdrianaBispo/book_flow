@@ -11,17 +11,6 @@ class LoginView extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.status == LoginStatus.success) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Login realizado com sucesso!',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.lightBackground,
-                ),
-              ),
-              backgroundColor: AppColors.success,
-            ),
-          );
           context.go('/home');
         } else if (state.status == LoginStatus.failure) {
           ScaffoldMessenger.of(context).showSnackBar(
