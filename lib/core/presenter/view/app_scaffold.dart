@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/utils/utils.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class AppScaffold extends StatefulWidget {
   final Widget child;
@@ -58,15 +59,27 @@ class _AppScaffoldState extends State<AppScaffold> with WidgetsBindingObserver {
       },
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.library_books_outlined),
+          icon: Icon(PhosphorIcons.house(PhosphorIconsStyle.regular)),
           label: '',
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
+        BottomNavigationBarItem(
+          icon: Icon(PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular)),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(PhosphorIcons.book(PhosphorIconsStyle.regular)),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(PhosphorIcons.heart(PhosphorIconsStyle.regular)),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(PhosphorIcons.user(PhosphorIconsStyle.regular)),
+          label: '',
+        ),
       ],
     );
   }
