@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/core.dart';
+import 'package:myapp/modules/favoritos/presenter/view/favoritos_view.dart';
+import '../../modules/perfil/presenter/view/perfil_view.dart';
+import '../../modules/search/presenter/view/search_view.dart';
 import 'route_path.dart';
 import 'package:myapp/modules/modules.dart';
 
@@ -31,9 +34,33 @@ abstract class NavigationConfigs {
         routes: [
           GoRoute(
             path: RoutePath.home,
-            builder: (_, state) => const HomeView(),
+            builder: (_, state) => const FavoritosView(),
             parentNavigatorKey: shellNavigationKey,
             name: 'HOME',
+          ),
+          GoRoute(
+            path: RoutePath.search,
+            builder: (_, state) => const SearchView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'SEARCH',
+          ),
+          GoRoute(
+            path: RoutePath.biblioteca,
+            builder: (_, state) => const BibliotecaView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'BIBLIOTECA',
+          ),
+          GoRoute(
+            path: RoutePath.favoritos,
+            builder: (_, state) => const FavoritosView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'FAVORITOS',
+          ),
+          GoRoute(
+            path: RoutePath.perfil,
+            builder: (_, state) => const PerfilView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'PERFIL',
           ),
         ],
       ),
