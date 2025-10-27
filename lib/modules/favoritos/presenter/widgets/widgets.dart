@@ -1,0 +1,1 @@
+export 'favorit_card.dart';

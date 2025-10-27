@@ -14,7 +14,13 @@ class _AppScaffoldState extends State<AppScaffold> with WidgetsBindingObserver {
   String route = '';
   final ValueNotifier<bool> _canGoBack = ValueNotifier<bool>(false);
 
-  List<String> routesWithBottomBar = [RoutePath.home];
+  List<String> routesWithBottomBar = [
+    RoutePath.home,
+    RoutePath.search,
+    RoutePath.biblioteca,
+    RoutePath.favoritos,
+    RoutePath.perfil,
+  ];
 
   @override
   void initState() {
@@ -29,8 +35,39 @@ class _AppScaffoldState extends State<AppScaffold> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: true,
-      onPopInvokedWithResult: (didPop, data) => _willPop,
-      child: Center(),
+      onPopInvokedWithResult: (didPop, data) => _willPop(),
+      child: Scaffold(
+        body: widget.child,
+        bottomNavigationBar: routesWithBottomBar.contains(route)
+            ? _buildBottomNavigationBar()
+            : null,
+      ),
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    int currentIndex = routesWithBottomBar.indexOf(route);
+    if (currentIndex == -1) currentIndex = 0;
+    return BottomNavigationBar(
+      currentIndex: currentIndex,
+      onTap: (index) {
+        final selectedRoute = routesWithBottomBar[index];
+        if (selectedRoute != route) {
+          NavigationConfigs.go(routePath: selectedRoute);
+        }
+      },
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.library_books_outlined),
+          label: '',
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
+      ],
     );
   }
 

@@ -7,4 +7,17 @@ abstract class RoutePath {
 
   //HOME
   static const home = '/home';
+
+  //SEARCH
+  static const search = '/search';
+
+  //BIBLIOTECA
+  static const biblioteca = '/biblioteca';
+
+  //FAVORITOS
+  static const favoritos = '/favoritos';
+
+  //PERFIL
+  static const perfil = '/perfil';
+
 }

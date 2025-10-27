@@ -4,16 +4,29 @@ import 'theme.dart';
 abstract class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Inter',
+    fontFamily: 'Roboto',
     brightness: Brightness.light,
-    primaryColor: AppColors.primaryPurple,
+    primaryColor: AppColors.lightBackground,
     scaffoldBackgroundColor: AppColors.lightBackground,
     colorScheme: const ColorScheme.light(
       primary: AppColors.primaryPurple,
       secondary: AppColors.secondaryYellow,
       surface: AppColors.lightCard,
     ),
-    
+
+    dividerColor: AppColors.lightBorder,
+
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.primaryPurple,
+      elevation: 1,
+      iconTheme: const IconThemeData(color: AppColors.lightCard),
+      centerTitle: true,
+      titleTextStyle: AppStyles.headlineLarge.copyWith(
+        color: AppColors.lightText,
+        fontFamily: 'PT Serif',
+      ),
+    ),
+
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: AppColors.lightText,
@@ -28,18 +41,18 @@ abstract class AppTheme {
       labelLarge: AppStyles.labelLarge,
       bodyLarge: AppStyles.headlineLarge.copyWith(color: AppColors.grey80),
       bodyMedium: AppStyles.bodyMedium,
-      bodySmall: AppStyles.bodySmall,
+      bodySmall: AppStyles.bodySmall.copyWith(color: Colors.grey[600]),
       titleLarge: AppStyles.titleLarge.copyWith(color: AppColors.grey80),
       titleMedium: AppStyles.titleMedium.copyWith(color: AppColors.grey60),
-      titleSmall: AppStyles.titleSmall,
-      headlineLarge: AppStyles.headlineLarge,
+      titleSmall: AppStyles.titleSmall.copyWith(color: AppColors.darkText),
+      headlineLarge: AppStyles.headlineLarge.copyWith(fontFamily: 'PT Serif'),
       displayLarge: AppStyles.displayLarge,
     ),
 
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.lightBackground,
-      
+
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(color: AppColors.lightBorder, width: 1.0),
@@ -81,17 +94,32 @@ abstract class AppTheme {
       // Estilos de texto
       labelStyle: AppStyles.bodyMedium.copyWith(color: AppColors.darkBorder),
       hintStyle: AppStyles.bodyMedium.copyWith(color: AppColors.hintColor),
-      errorStyle: AppStyles.bodyMedium.copyWith(color: AppColors.error),
-    
+      errorStyle: AppStyles.bodySmall.copyWith(color: AppColors.error),
+
       // Estilos dos ícones
       prefixIconColor: AppColors.hintColor,
       suffixIconColor: AppColors.hintColor,
+    ),
+
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.lightBackground,
+      selectedItemColor: AppColors.primaryPurple,
+      unselectedItemColor: AppColors.grey60,
+      selectedLabelStyle: AppStyles.bodySmall.copyWith(
+        fontWeight: FontWeight.w600,
+      ),
+      unselectedLabelStyle: AppStyles.bodySmall,
+      selectedIconTheme: const IconThemeData(
+        size: 24,
+        color: AppColors.primaryPurple,
+      ),
+      unselectedIconTheme: IconThemeData(size: 20, color: AppColors.grey60),
     ),
   );
 
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Inter',
+    fontFamily: 'Roboto',
     brightness: Brightness.dark,
     primaryColor: AppColors.primaryPurple,
     scaffoldBackgroundColor: AppColors.darkBackground,

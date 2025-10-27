@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/core/core.dart';
+import 'package:myapp/l10n/app_localizations.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../modules.dart';
 
 class LoginForm extends StatelessWidget {
@@ -19,11 +22,13 @@ class LoginForm extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               style: Theme.of(context).textTheme.bodyMedium,
               decoration: InputDecoration(
-                labelText: 'Email',
-                hintText: 'Digite seu email',
-                prefixIcon: const Icon(Icons.email_outlined),
+                labelText: AppLocalizations.of(context)!.emailLabel,
+                hintText: AppLocalizations.of(context)!.emailHint,
+                prefixIcon: Icon(
+                  PhosphorIcons.envelopeSimple(PhosphorIconsStyle.regular),
+                ),
                 errorText: state.email.isNotEmpty && !state.isEmailValid
-                    ? 'Email inválido'
+                    ? AppLocalizations.of(context)!.invalidEmail
                     : null,
               ),
             ),
@@ -38,18 +43,20 @@ class LoginForm extends StatelessWidget {
               obscureText: !state.isPasswordVisible,
               style: Theme.of(context).textTheme.bodyMedium,
               decoration: InputDecoration(
-                labelText: 'Senha',
-                hintText: 'Digite sua senha',
-                prefixIcon: const Icon(Icons.lock_outlined),
+                labelText: AppLocalizations.of(context)!.passwordLabel,
+                hintText: AppLocalizations.of(context)!.passwordHint,
+                prefixIcon: Icon(
+                  PhosphorIcons.lock(PhosphorIconsStyle.regular),
+                ),
                 errorText: state.password.isNotEmpty && !state.isPasswordValid
-                    ? 'Senha deve ter pelo menos 6 caracteres'
+                    ? AppLocalizations.of(context)!.invalidPassword
                     : null,
                 suffixIcon: IconButton(
                   key: const Key('passwordVisibility_iconButton'),
                   icon: Icon(
                     state.isPasswordVisible
-                        ? Icons.visibility_off
-                        : Icons.visibility,
+                        ? PhosphorIcons.eyeSlash(PhosphorIconsStyle.regular)
+                        : PhosphorIcons.eye(PhosphorIconsStyle.regular),
                   ),
                   onPressed: () => context.read<LoginBloc>().add(
                     LoginTogglePasswordVisibility(),
@@ -74,10 +81,12 @@ class LoginForm extends StatelessWidget {
                       width: 20,
                       child: CircularProgressIndicator(
                         strokeWidth: 2,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          AppColors.lightBackground,
+                        ),
                       ),
                     )
-                  : const Text('Entrar'),
+                  : Text(AppLocalizations.of(context)!.loginButton),
             ),
 
             const SizedBox(height: 24),
@@ -85,12 +94,15 @@ class LoginForm extends StatelessWidget {
             // Divisor
             Row(
               children: [
-                Expanded(child: Divider(color: Colors.grey[300])),
+                Expanded(child: Divider(color: Theme.of(context).dividerColor)),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text('ou', style: TextStyle(color: Colors.grey[600])),
+                  child: Text(
+                    AppLocalizations.of(context)!.orSeparator,
+                    style: Theme.of(context).inputDecorationTheme.hintStyle,
+                  ),
                 ),
-                Expanded(child: Divider(color: Colors.grey[300])),
+                Expanded(child: Divider(color: Theme.of(context).dividerColor)),
               ],
             ),
 
@@ -106,15 +118,15 @@ class LoginForm extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                side: BorderSide(color: Colors.blue[800]!),
+                side: BorderSide(color: AppColors.info), //.blue[800]!),
               ),
               child: Text(
-                'Criar conta',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blue[800],
-                ),
+                AppLocalizations.of(context)!.createAccount,
+                style: Theme.of(context).inputDecorationTheme.labelStyle!
+                    .copyWith(
+                      color: AppColors.info,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
             ),
 
@@ -128,18 +140,21 @@ class LoginForm extends StatelessWidget {
                     // Implementar página de ajuda
                   },
                   child: Text(
-                    'Ajuda',
-                    style: TextStyle(color: Colors.grey[600]),
+                    AppLocalizations.of(context)!.help,
+                    style: Theme.of(context).inputDecorationTheme.hintStyle,
                   ),
                 ),
-                Text(' • ', style: TextStyle(color: Colors.grey[400])),
+                Text(
+                  ' • ',
+                  style: Theme.of(context).inputDecorationTheme.hintStyle,
+                ),
                 TextButton(
                   onPressed: () {
                     // Implementar página de termos
                   },
                   child: Text(
-                    'Termos de Uso',
-                    style: TextStyle(color: Colors.grey[600]),
+                    AppLocalizations.of(context)!.termsOfUse,
+                    style: Theme.of(context).inputDecorationTheme.hintStyle,
                   ),
                 ),
               ],

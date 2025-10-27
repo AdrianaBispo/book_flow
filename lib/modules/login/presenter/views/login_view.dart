@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/core.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../modules.dart';
 
 class LoginView extends StatelessWidget {
@@ -10,18 +11,7 @@ class LoginView extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.status == LoginStatus.success) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Login realizado com sucesso!',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.lightBackground,
-                ),
-              ),
-              backgroundColor: AppColors.success,
-            ),
-          );
-          //Navigator.pushReplacementNamed(context, '/home');
+          context.go('/home');
         } else if (state.status == LoginStatus.failure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -55,8 +45,8 @@ class LoginView extends StatelessWidget {
                         color: AppColors.primaryPurple,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: const Icon(
-                        Icons.local_library,
+                      child: Icon(
+                        PhosphorIcons.bookOpenText(PhosphorIconsStyle.regular),
                         size: 50,
                         color: Colors.white,
                       ),

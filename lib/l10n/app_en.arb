@@ -1,0 +1,14 @@
+{
+  "@@locale": "en",
+  "emailLabel": "Email",
+  "emailHint": "Enter your email",
+  "invalidEmail": "Invalid email",
+  "passwordLabel": "Password",
+  "passwordHint": "Enter your password",
+  "invalidPassword": "Password must be at least 6 characters",
+  "loginButton": "Login",
+  "orSeparator": "or",
+  "createAccount": "Create account",
+  "help": "Help",
+  "termsOfUse": "Terms of Use"
+}
