@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/theme/app_colors.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class FavoriteBookCard extends StatelessWidget {
   final String title;
@@ -88,7 +89,7 @@ class FavoriteBookCard extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Icon(
-                Icons.favorite,
+                PhosphorIcons.heart(PhosphorIconsStyle.fill),
                 color: AppColors.lightBackground,
                 size: 16,
               ),
