@@ -15,3 +15,7 @@ class UnknownSearchException extends AppException {
 class DatabaseSearchException extends AppException {
   DatabaseSearchException({required super.message, super.stackTrace});
 }
+
+class PostgrestSearchException extends AppException {
+  PostgrestSearchException({required super.message, super.stackTrace});
+}
