@@ -7,3 +7,11 @@ class ServerCredentialsException extends AppException {
 class NetworkException extends AppException {
   NetworkException({required super.message, super.stackTrace});
 }
+
+class UnknownSearchException extends AppException {
+  UnknownSearchException({required super.message, super.stackTrace});
+}
+
+class DatabaseException extends AppException {
+  DatabaseException({required super.message, super.stackTrace});
+}
