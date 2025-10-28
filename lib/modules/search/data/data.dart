@@ -1,3 +1,3 @@
 export 'dtos/dtos.dart';
-// export 'repositories/repostitories.dart';
+export 'repositories/repositories.dart';
 export 'datasources/datasources.dart';
