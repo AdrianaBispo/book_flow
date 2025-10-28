@@ -15,10 +15,14 @@ class SearchDataSourceRemoteImpl implements SearchDatasourceRemote {
             .from('vw_ebook')
 =======
         final response = await supabaseClient
+<<<<<<< HEAD
             .from('books')
 >>>>>>> bfbc6da (refactor: alterado nome da class)
+=======
+            .from('Ebooks')
+>>>>>>> 06797b4 (refactor: alterada a query)
             .select('*')
-            .order('title', ascending: true);
+            .order('ebo_title', ascending: true);
 
         final List data = response;
         return data.map((item) => ResultSearchDto.fromJson(item)).toList();
@@ -30,11 +34,15 @@ class SearchDataSourceRemoteImpl implements SearchDatasourceRemote {
           .from('vw_ebook')
 =======
       final response = await supabaseClient
+<<<<<<< HEAD
           .from('books')
 >>>>>>> bfbc6da (refactor: alterado nome da class)
+=======
+          .from('Ebooks')
+>>>>>>> 06797b4 (refactor: alterada a query)
           .select('*')
-          .or('title.ilike.%$searchText%,author.ilike.%$searchText%')
-          .order('title', ascending: true);
+          .or('ebo_title.ilike.%$searchText%,ebo_author.ilike.%$searchText%')
+          .order('ebo_title', ascending: true);
 
       final List data = response;
       return data.map((item) => ResultSearchDto.fromJson(item)).toList();
