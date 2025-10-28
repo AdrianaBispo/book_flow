@@ -8,5 +8,6 @@ export 'package:flutter_localizations/flutter_localizations.dart';
 
 
 export 'login/login.dart';
-export 'biblioteca/biblioteca.dart';
+export 'search/search.dart';
+//export 'biblioteca/biblioteca.dart';
 export 'favoritos/favoritos.dart';
