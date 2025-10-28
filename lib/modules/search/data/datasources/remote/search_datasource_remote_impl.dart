@@ -1,7 +1,5 @@
 import 'package:myapp/modules/modules.dart';
 
-import 'search_datasource_remote.dart';
-
 class SearchDataSourceImpl implements SearchDatasourceRemote {
   final SupabaseClient supabase;
 
