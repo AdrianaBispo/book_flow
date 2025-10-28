@@ -1,0 +1,1 @@
+export 'result_search_dto.dart';
