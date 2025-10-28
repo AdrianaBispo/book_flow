@@ -50,7 +50,7 @@ void main() {
 
     test('deve retornar AppException quando ocorrer erro na busca', () async {
       // arrange
-      final exception = NetworkException(message: 'Erro na busca');
+      final exception = NetworkSearchException(message: 'Erro na busca');
       when(
         () => searchRepository.search(any()),
       ).thenAnswer((_) async => Left(exception));
