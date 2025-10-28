@@ -47,7 +47,7 @@ abstract class NavigationConfigs {
           ),
           GoRoute(
             path: RoutePath.biblioteca,
-            builder: (_, state) => const BibliotecaView(),
+            builder: (_, state) => const SearchView(),
             parentNavigatorKey: shellNavigationKey,
             name: 'BIBLIOTECA',
           ),
