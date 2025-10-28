@@ -39,23 +39,20 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     );
   }
 
-  void _onSearchCleared(
-    SearchCleared event,
-    Emitter<SearchState> emit,
-  ) {
+  void _onSearchCleared(SearchCleared event, Emitter<SearchState> emit) {
     emit(const SearchInitial());
   }
 
   String _getErrorMessage(AppException exception) {
     if (exception is DatabaseSearchException) {
       return 'Não conseguimos acessar os dados no momento.\n'
-             'Verifique sua conexão e tente novamente.';
+          'Verifique sua conexão e tente novamente.';
     } else if (exception is UnknownSearchException) {
       return 'Algo inesperado aconteceu.\n'
-             'Por favor, tente novamente em alguns instantes.';
+          'Por favor, tente novamente em alguns instantes.';
     }
-    
+
     return 'Erro ao realizar a busca.\n'
-           'Tente novamente mais tarde.';
+        'Tente novamente mais tarde.';
   }
 }
