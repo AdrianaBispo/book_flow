@@ -1,8 +1,14 @@
 abstract class ResultSearchEntity {
-    final int id;
-    final String title;
-    final String author;
-    final String? coverUrl;
-    final String? downloadUrl;
-    ResultSearchEntity({required this.id, required this.author, required this.title, this.coverUrl, this.downloadUrl});
+  final int id;
+  final String title;
+  final String author;
+  final String? coverUrl;
+  final String? downloadUrl;
+  ResultSearchEntity({
+    required this.id,
+    required this.author,
+    required this.title,
+    this.coverUrl,
+    this.downloadUrl,
+  });
 }
