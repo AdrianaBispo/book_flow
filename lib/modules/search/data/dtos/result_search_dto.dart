@@ -5,8 +5,8 @@ class ResultSearchDto extends ResultSearchEntity {
     required super.id,
     required super.author,
     required super.title,
-    super.cover_url,
-    super.download_url,
+    super.coverUrl,
+    super.downloadUrl,
   });
 
   factory ResultSearchDto.fromJson(Map<String, dynamic> json) {
@@ -14,8 +14,8 @@ class ResultSearchDto extends ResultSearchEntity {
       id: json['id'] is String ? int.parse(json['id']) : json['id'],
       author: json['author'] ?? '',
       title: json['title'] ?? '',
-      cover_url: json['cover_url'],
-      download_url: json['download_url'],
+      coverUrl: json['cover_url'] ?? '',
+      downloadUrl: json['download_url'] ?? '',
     );
   }
 
@@ -24,8 +24,8 @@ class ResultSearchDto extends ResultSearchEntity {
       'id': id,
       'author': author,
       'title': title,
-      'cover_url': cover_url,
-      'download_url': download_url,
+      'cover_url': coverUrl,
+      'download_url': downloadUrl,
     };
   }
 }

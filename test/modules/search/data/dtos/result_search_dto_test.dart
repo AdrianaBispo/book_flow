@@ -19,8 +19,8 @@ void main() {
       expect(dto.id, equals(1));
       expect(dto.author, equals('Author Name'));
       expect(dto.title, equals('Book Title'));
-      expect(dto.cover_url, equals('https://example.com/cover.jpg'));
-      expect(dto.download_url, equals('https://example.com/download.pdf'));
+      expect(dto.coverUrl, equals('https://example.com/cover.jpg'));
+      expect(dto.downloadUrl, equals('https://example.com/download.pdf'));
     });
 
     test('deve converter DTO para JSON corretamente', () {
@@ -29,8 +29,8 @@ void main() {
         id: 1,
         author: 'Author Name',
         title: 'Book Title',
-        cover_url: 'https://example.com/cover.jpg',
-        download_url: 'https://example.com/download.pdf',
+        coverUrl: 'https://example.com/cover.jpg',
+        downloadUrl: 'https://example.com/download.pdf',
       );
 
       // act
@@ -40,7 +40,6 @@ void main() {
       expect(result, equals(json));
     });
 
-  
     test('deve converter id string para int corretamente no fromJson', () {
       // arrange
       final jsonStringId = {
@@ -58,6 +57,8 @@ void main() {
       expect(dto.id, equals(10));
       expect(dto.author, equals('String ID Author'));
       expect(dto.title, equals('String ID Title'));
+      expect(dto.coverUrl, equals(''));
+      expect(dto.downloadUrl, equals(''));
     });
   });
 }

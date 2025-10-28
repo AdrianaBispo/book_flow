@@ -11,8 +11,8 @@ class FakeResultSearchEntity extends ResultSearchEntity {
         id: 1,
         author: 'Author',
         title: 'Title',
-        cover_url: null,
-        download_url: null,
+        coverUrl: null,
+        downloadUrl: null,
       );
 }
 
