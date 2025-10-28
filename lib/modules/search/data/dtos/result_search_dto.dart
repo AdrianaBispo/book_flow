@@ -28,14 +28,4 @@ class ResultSearchDto extends ResultSearchEntity {
       'download_url': download_url,
     };
   }
-
-  factory ResultSearchDto.fromEntity(ResultSearchEntity entity) {
-    return ResultSearchDto(
-      id: entity.id,
-      author: entity.author,
-      title: entity.title,
-      cover_url: entity.cover_url,
-      download_url: entity.download_url,
-    );
-  }
 }
