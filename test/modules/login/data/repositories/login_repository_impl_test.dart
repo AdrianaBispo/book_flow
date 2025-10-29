@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
+import 'package:mockito/mockito.dart';
 import 'package:myapp/modules/modules.dart';
 
 class MockLoginRepositoryImpl extends Mock implements LoginRepositoryImpl {}
