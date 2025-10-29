@@ -13,7 +13,7 @@
   "termsOfUse": "Termos de Uso",
 
 
-  {
+  
   "errorDatabaseSearch": "Erro ao buscar dados: ",
   "errorUnknownSearch": "Erro inesperado: ",
   "@errorDatabaseSearch": {
@@ -34,6 +34,6 @@
       }
     }
   }
-}
+
 
 }
