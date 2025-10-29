@@ -10,5 +10,30 @@
   "orSeparator": "ou",
   "createAccount": "Criar conta",
   "help": "Ajuda",
-  "termsOfUse": "Termos de Uso"
+  "termsOfUse": "Termos de Uso",
+
+
+  {
+  "errorDatabaseSearch": "Erro ao buscar dados: ",
+  "errorUnknownSearch": "Erro inesperado: ",
+  "@errorDatabaseSearch": {
+    "description": "Mensagem exibida quando ocorre um erro ao buscar dados no banco de dados.",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Conexão perdida"
+      }
+    }
+  },
+  "@errorUnknownSearch": {
+    "description": "Mensagem exibida quando ocorre um erro inesperado durante a busca.",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Erro desconhecido"
+      }
+    }
+  }
+}
+
 }
