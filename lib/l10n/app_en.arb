@@ -10,5 +10,28 @@
   "orSeparator": "or",
   "createAccount": "Create account",
   "help": "Help",
-  "termsOfUse": "Terms of Use"
+  "termsOfUse": "Terms of Use",
+
+  
+  "errorDatabaseSearch": "Error fetching data: ",
+  "@errorDatabaseSearch": {
+    "description": "Message shown when an error occurs while fetching data from the database.",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Connection lost"
+      }
+    }
+  },
+
+  "errorUnknownSearch": "Unexpected error: ",
+  "@errorUnknownSearch": {
+    "description": "Message shown when an unexpected error occurs during a search.",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Unknown error"
+      }
+    }
+  }
 }
