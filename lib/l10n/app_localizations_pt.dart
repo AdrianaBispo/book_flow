@@ -40,4 +40,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get termsOfUse => 'Termos de Uso';
+
+  @override
+  String errorDatabaseSearch(String message) {
+    return 'Erro ao buscar dados: ';
+  }
+
+  @override
+  String errorUnknownSearch(String message) {
+    return 'Erro inesperado: ';
+  }
 }

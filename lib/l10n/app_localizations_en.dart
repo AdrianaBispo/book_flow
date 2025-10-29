@@ -40,4 +40,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsOfUse => 'Terms of Use';
+
+  @override
+  String errorDatabaseSearch(String message) {
+    return 'Error fetching data: ';
+  }
+
+  @override
+  String errorUnknownSearch(String message) {
+    return 'Unexpected error: ';
+  }
 }

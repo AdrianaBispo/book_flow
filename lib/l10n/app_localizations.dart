@@ -163,6 +163,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Terms of Use'**
   String get termsOfUse;
+
+  /// Message shown when an error occurs while fetching data from the database.
+  ///
+  /// In en, this message translates to:
+  /// **'Error fetching data: '**
+  String errorDatabaseSearch(String message);
+
+  /// Message shown when an unexpected error occurs during a search.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error: '**
+  String errorUnknownSearch(String message);
 }
 
 class _AppLocalizationsDelegate
