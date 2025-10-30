@@ -30,7 +30,7 @@
       }
     }
   },
-  "databaseError": "Database error: {message}",
+  "databaseError": "Database error: ",
   "@databaseError": {
     "description": "Database related error message",
     "placeholders": {
@@ -40,7 +40,7 @@
       }
     }
   },
-  "unexpectedError": "Unexpected error: {error}",
+  "unexpectedError": "Unexpected error: ",
   "@unexpectedError": {
     "description": "Message for unexpected errors",
     "placeholders": {
@@ -49,7 +49,7 @@
         "example": "NullPointerException"
       }
     }
-  }
+  },
   
   "errorDatabaseSearch": "Error fetching data: ",
   "@errorDatabaseSearch": {
