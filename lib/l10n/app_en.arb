@@ -12,6 +12,44 @@
   "help": "Help",
   "termsOfUse": "Terms of Use",
 
+  "invalidCredentials": "Invalid email or password.",
+  "@invalidCredentials": {
+    "description": "Message displayed when login credentials are invalid"
+  },
+  "emailNotConfirmed": "Please confirm your email before continuing.",
+  "@emailNotConfirmed": {
+    "description": "Message displayed when user tries to login without confirming email"
+  },
+  "authenticationError": "Authentication error: {message}",
+  "@authenticationError": {
+    "description": "Generic authentication error message",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Token expired"
+      }
+    }
+  },
+  "databaseError": "Database error: {message}",
+  "@databaseError": {
+    "description": "Database related error message",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Connection failed"
+      }
+    }
+  },
+  "unexpectedError": "Unexpected error: {error}",
+  "@unexpectedError": {
+    "description": "Message for unexpected errors",
+    "placeholders": {
+      "error": {
+        "type": "String",
+        "example": "NullPointerException"
+      }
+    }
+  }
   
   "errorDatabaseSearch": "Error fetching data: ",
   "@errorDatabaseSearch": {
