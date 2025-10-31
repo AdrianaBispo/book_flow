@@ -1,62 +1,107 @@
 {
   "@@locale": "pt",
-  "emailLabel": "E-mail",
-  "emailHint": "Digite seu email",
-  "invalidEmail": "Email inválido",
-  "passwordLabel": "Senha",
-  "passwordHint": "Digite sua senha",
-  "invalidPassword": "Senha deve ter pelo menos 6 caracteres",
-  "loginButton": "Entrar",
-  "orSeparator": "ou",
-  "createAccount": "Criar conta",
-  "help": "Ajuda",
-  "termsOfUse": "Termos de Uso",
-
-  "invalidCredentials": "E-mail ou senha incorretos.",
-    "@invalidCredentials": {
-      "description": "Mensagem exibida quando as credenciais de login são inválidas"
-    },
-    "emailNotConfirmed": "Confirme seu e-mail antes de continuar.",
-    "@emailNotConfirmed": {
-      "description": "Mensagem exibida quando o usuário tenta fazer login sem confirmar o e-mail"
-    },
-    "authenticationError": "Erro de autenticação: {message}",
-    "@authenticationError": {
-      "description": "Mensagem genérica de erro de autenticação",
-      "placeholders": {
-        "message": {
-          "type": "String",
-          "example": "Token expirado"
-        }
-      }
-    },
-    "databaseError": "Erro no banco de dados: {message}",
-    "@databaseError": {
-      "description": "Mensagem de erro relacionada ao banco de dados",
-      "placeholders": {
-        "message": {
-          "type": "String",
-          "example": "Conexão falhou"
-        }
-      }
-    },
-    "unexpectedError": "Erro inesperado: {error}",
-    "@unexpectedError": {
-      "description": "Mensagem para erros inesperados",
-      "placeholders": {
-        "error": {
-          "type": "String",
-          "example": "NullPointerException"
-        }
-      }
-  },
-
-
   
-  "errorDatabaseSearch": "Erro ao buscar dados: ",
-  "errorUnknownSearch": "Erro inesperado: ",
+  "emailLabel": "E-mail",
+  "@emailLabel": {
+    "description": "Rótulo do campo de entrada de e-mail"
+  },
+  
+  "emailHint": "Digite seu email",
+  "@emailHint": {
+    "description": "Texto de dica para o campo de e-mail"
+  },
+  
+  "invalidEmail": "Email inválido",
+  "@invalidEmail": {
+    "description": "Mensagem de validação quando o formato do e-mail está incorreto"
+  },
+  
+  "passwordLabel": "Senha",
+  "@passwordLabel": {
+    "description": "Rótulo do campo de entrada de senha"
+  },
+  
+  "passwordHint": "Digite sua senha",
+  "@passwordHint": {
+    "description": "Texto de dica para o campo de senha"
+  },
+  
+  "invalidPassword": "Senha deve ter pelo menos 6 caracteres",
+  "@invalidPassword": {
+    "description": "Mensagem de validação quando a senha não atende aos requisitos mínimos"
+  },
+  
+  "loginButton": "Entrar",
+  "@loginButton": {
+    "description": "Texto do botão de login"
+  },
+  
+  "orSeparator": "ou",
+  "@orSeparator": {
+    "description": "Separador entre opções de login"
+  },
+  
+  "createAccount": "Criar conta",
+  "@createAccount": {
+    "description": "Texto do link ou botão para criar nova conta"
+  },
+  
+  "help": "Ajuda",
+  "@help": {
+    "description": "Texto do link de ajuda"
+  },
+  
+  "termsOfUse": "Termos de Uso",
+  "@termsOfUse": {
+    "description": "Texto do link para os termos de uso"
+  },
+  
+  "invalidCredentials": "E-mail ou senha incorretos.",
+  "@invalidCredentials": {
+    "description": "Mensagem exibida quando as credenciais de login são inválidas"
+  },
+  
+  "emailNotConfirmed": "Confirme seu e-mail antes de continuar.",
+  "@emailNotConfirmed": {
+    "description": "Mensagem exibida quando o usuário tenta fazer login sem confirmar o e-mail"
+  },
+  
+  "authenticationError": "Erro de autenticação: {message}",
+  "@authenticationError": {
+    "description": "Mensagem genérica de erro de autenticação",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Token expirado"
+      }
+    }
+  },
+  
+  "databaseError": "Erro no banco de dados: {message}",
+  "@databaseError": {
+    "description": "Mensagem de erro relacionada ao banco de dados",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Conexão falhou"
+      }
+    }
+  },
+  
+  "unexpectedError": "Erro inesperado: {error}",
+  "@unexpectedError": {
+    "description": "Mensagem para erros inesperados",
+    "placeholders": {
+      "error": {
+        "type": "String",
+        "example": "NullPointerException"
+      }
+    }
+  },
+  
+  "errorDatabaseSearch": "Erro ao buscar dados: {message}",
   "@errorDatabaseSearch": {
-    "description": "Mensagem exibida quando ocorre um erro ao buscar dados no banco de dados.",
+    "description": "Mensagem exibida quando ocorre um erro ao buscar dados no banco de dados",
     "placeholders": {
       "message": {
         "type": "String",
@@ -64,8 +109,10 @@
       }
     }
   },
+  
+  "errorUnknownSearch": "Erro inesperado: {message}",
   "@errorUnknownSearch": {
-    "description": "Mensagem exibida quando ocorre um erro inesperado durante a busca.",
+    "description": "Mensagem exibida quando ocorre um erro inesperado durante a busca",
     "placeholders": {
       "message": {
         "type": "String",
@@ -73,6 +120,4 @@
       }
     }
   }
-
-
 }

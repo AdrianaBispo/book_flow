@@ -64,11 +64,11 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String errorDatabaseSearch(String message) {
-    return 'Erro ao buscar dados: ';
+    return 'Erro ao buscar dados: $message';
   }
 
   @override
   String errorUnknownSearch(String message) {
-    return 'Erro inesperado: ';
+    return 'Erro inesperado: $message';
   }
 }

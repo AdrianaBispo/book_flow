@@ -55,21 +55,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String databaseError(String message) {
-    return 'Database error: ';
+    return 'Database error: $message';
   }
 
   @override
   String unexpectedError(String error) {
-    return 'Unexpected error: ';
+    return 'Unexpected error: $error';
   }
 
   @override
   String errorDatabaseSearch(String message) {
-    return 'Error fetching data: ';
+    return 'Error fetching data: $message';
   }
 
   @override
   String errorUnknownSearch(String message) {
-    return 'Unexpected error: ';
+    return 'Unexpected error: $message';
   }
 }

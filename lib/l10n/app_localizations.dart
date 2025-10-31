@@ -98,67 +98,67 @@ abstract class AppLocalizations {
     Locale('pt'),
   ];
 
-  /// No description provided for @emailLabel.
+  /// Label for the email input field
   ///
   /// In en, this message translates to:
   /// **'Email'**
   String get emailLabel;
 
-  /// No description provided for @emailHint.
+  /// Hint text for the email field
   ///
   /// In en, this message translates to:
   /// **'Enter your email'**
   String get emailHint;
 
-  /// No description provided for @invalidEmail.
+  /// Validation message when email format is incorrect
   ///
   /// In en, this message translates to:
   /// **'Invalid email'**
   String get invalidEmail;
 
-  /// No description provided for @passwordLabel.
+  /// Label for the password input field
   ///
   /// In en, this message translates to:
   /// **'Password'**
   String get passwordLabel;
 
-  /// No description provided for @passwordHint.
+  /// Hint text for the password field
   ///
   /// In en, this message translates to:
   /// **'Enter your password'**
   String get passwordHint;
 
-  /// No description provided for @invalidPassword.
+  /// Validation message when password does not meet minimum requirements
   ///
   /// In en, this message translates to:
   /// **'Password must be at least 6 characters'**
   String get invalidPassword;
 
-  /// No description provided for @loginButton.
+  /// Text for the login button
   ///
   /// In en, this message translates to:
   /// **'Login'**
   String get loginButton;
 
-  /// No description provided for @orSeparator.
+  /// Separator between login options
   ///
   /// In en, this message translates to:
   /// **'or'**
   String get orSeparator;
 
-  /// No description provided for @createAccount.
+  /// Text for the create account link or button
   ///
   /// In en, this message translates to:
   /// **'Create account'**
   String get createAccount;
 
-  /// No description provided for @help.
+  /// Text for the help link
   ///
   /// In en, this message translates to:
   /// **'Help'**
   String get help;
 
-  /// No description provided for @termsOfUse.
+  /// Text for the terms of use link
   ///
   /// In en, this message translates to:
   /// **'Terms of Use'**
@@ -185,25 +185,25 @@ abstract class AppLocalizations {
   /// Database related error message
   ///
   /// In en, this message translates to:
-  /// **'Database error: '**
+  /// **'Database error: {message}'**
   String databaseError(String message);
 
   /// Message for unexpected errors
   ///
   /// In en, this message translates to:
-  /// **'Unexpected error: '**
+  /// **'Unexpected error: {error}'**
   String unexpectedError(String error);
 
-  /// Message shown when an error occurs while fetching data from the database.
+  /// Message shown when an error occurs while fetching data from the database
   ///
   /// In en, this message translates to:
-  /// **'Error fetching data: '**
+  /// **'Error fetching data: {message}'**
   String errorDatabaseSearch(String message);
 
-  /// Message shown when an unexpected error occurs during a search.
+  /// Message shown when an unexpected error occurs during a search
   ///
   /// In en, this message translates to:
-  /// **'Unexpected error: '**
+  /// **'Unexpected error: {message}'**
   String errorUnknownSearch(String message);
 }
 
