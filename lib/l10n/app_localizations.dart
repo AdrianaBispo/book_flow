@@ -164,6 +164,36 @@ abstract class AppLocalizations {
   /// **'Terms of Use'**
   String get termsOfUse;
 
+  /// Message displayed when login credentials are invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password.'**
+  String get invalidCredentials;
+
+  /// Message displayed when user tries to login without confirming email
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your email before continuing.'**
+  String get emailNotConfirmed;
+
+  /// Generic authentication error message
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication error: {message}'**
+  String authenticationError(String message);
+
+  /// Database related error message
+  ///
+  /// In en, this message translates to:
+  /// **'Database error: '**
+  String databaseError(String message);
+
+  /// Message for unexpected errors
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error: '**
+  String unexpectedError(String error);
+
   /// Message shown when an error occurs while fetching data from the database.
   ///
   /// In en, this message translates to:
