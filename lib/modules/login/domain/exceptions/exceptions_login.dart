@@ -1,17 +1,17 @@
 import 'package:myapp/utils/utils.dart';
 
 class InvalidCredentialsException extends AppException {
-  InvalidCredentialsException({required super.message, super.stackTrace});
+  InvalidCredentialsException({super.stackTrace});
 }
 
 class UnknownLoginException extends AppException {
-  UnknownLoginException({required super.message, super.stackTrace});
+  UnknownLoginException({super.stackTrace});
 }
 
 class DatabaseException extends AppException {
-  DatabaseException({required super.message, super.stackTrace});
+  DatabaseException({super.stackTrace});
 }
 
 class EmailNotConfirmedException extends AppException {
-  EmailNotConfirmedException({required super.message, super.stackTrace});
+  EmailNotConfirmedException({super.stackTrace});
 }
