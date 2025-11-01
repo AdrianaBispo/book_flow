@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/core.dart';
+import 'package:myapp/l10n/l10n.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../modules.dart';
 
@@ -16,7 +17,7 @@ class LoginView extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                state.errorMessage ?? 'Erro desconhecido',
+                state.errorMessage ?? '',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.lightBackground,
                 ),

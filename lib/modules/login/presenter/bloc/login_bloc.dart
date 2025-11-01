@@ -59,19 +59,5 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  /*
-      if (state.email == 'admin@biblioteca.com' && state.password == '123456') {
-        emit(state.copyWith(status: LoginStatus.success));
-      } else {
-        emit(state.copyWith(
-          status: LoginStatus.failure,
-          errorMessage: 'Email ou senha inválidos',
-        ));
-      }
-    } catch (error) {
-      emit(state.copyWith(
-        status: LoginStatus.failure,
-        errorMessage: 'Erro ao fazer login. Tente novamente.',
-      ));
-    }*/
+ 
 }

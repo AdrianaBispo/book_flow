@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/theme/app_colors.dart';
+import 'package:myapp/modules/search/search.dart';
 
 class BibliotecaBookCard extends StatefulWidget {
-  final String title;
-  final String author;
-  final String genre;
-  final String imageUrl;
+  final ResultSearchDto ebook;
 
-  const BibliotecaBookCard({
-    super.key,
-    required this.title,
-    required this.author,
-    required this.genre,
-    required this.imageUrl,
-  });
+  const BibliotecaBookCard({super.key, required this.ebook});
 
   @override
   State<BibliotecaBookCard> createState() => _BibliotecaBookCardState();
@@ -47,7 +39,7 @@ class _BibliotecaBookCardState extends State<BibliotecaBookCard>
             height: 100,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(widget.imageUrl),
+                image: NetworkImage(widget.ebook.coverUrl!),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.circular(8),
@@ -61,7 +53,7 @@ class _BibliotecaBookCardState extends State<BibliotecaBookCard>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.title,
+                  widget.ebook.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextTheme.of(
@@ -70,7 +62,7 @@ class _BibliotecaBookCardState extends State<BibliotecaBookCard>
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  widget.author,
+                  widget.ebook.author,
                   style: TextTheme.of(
                     context,
                   ).bodySmall!.copyWith(color: AppColors.grey60),
@@ -86,7 +78,7 @@ class _BibliotecaBookCardState extends State<BibliotecaBookCard>
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    widget.genre,
+                    'genre',
                     style: TextTheme.of(context).bodySmall!.copyWith(
                       color: AppColors.primaryPurple,
                       fontWeight: FontWeight.w600,
@@ -107,9 +99,7 @@ class _BibliotecaBookCardState extends State<BibliotecaBookCard>
 
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Visualizar livro "${widget.title}"'),
-                ),
+                SnackBar(content: Text('Visualizar livro "${widget.ebook.title}"')),
               );
             },
           ),

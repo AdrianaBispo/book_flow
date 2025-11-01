@@ -40,4 +40,35 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get termsOfUse => 'Termos de Uso';
+
+  @override
+  String get invalidCredentials => 'E-mail ou senha incorretos.';
+
+  @override
+  String get emailNotConfirmed => 'Confirme seu e-mail antes de continuar.';
+
+  @override
+  String authenticationError(String message) {
+    return 'Erro de autenticação: $message';
+  }
+
+  @override
+  String databaseError(String message) {
+    return 'Erro no banco de dados: $message';
+  }
+
+  @override
+  String unexpectedError(String error) {
+    return 'Erro inesperado: $error';
+  }
+
+  @override
+  String errorDatabaseSearch(String message) {
+    return 'Erro ao buscar dados: $message';
+  }
+
+  @override
+  String errorUnknownSearch(String message) {
+    return 'Erro inesperado: $message';
+  }
 }

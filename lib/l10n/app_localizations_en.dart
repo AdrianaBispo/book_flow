@@ -40,4 +40,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsOfUse => 'Terms of Use';
+
+  @override
+  String get invalidCredentials => 'Invalid email or password.';
+
+  @override
+  String get emailNotConfirmed =>
+      'Please confirm your email before continuing.';
+
+  @override
+  String authenticationError(String message) {
+    return 'Authentication error: $message';
+  }
+
+  @override
+  String databaseError(String message) {
+    return 'Database error: $message';
+  }
+
+  @override
+  String unexpectedError(String error) {
+    return 'Unexpected error: $error';
+  }
+
+  @override
+  String errorDatabaseSearch(String message) {
+    return 'Error fetching data: $message';
+  }
+
+  @override
+  String errorUnknownSearch(String message) {
+    return 'Unexpected error: $message';
+  }
 }

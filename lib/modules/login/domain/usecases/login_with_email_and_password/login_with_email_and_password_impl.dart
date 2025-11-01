@@ -7,7 +7,7 @@ class LoginWithEmailAndPasswordImpl implements LoginWithEmailAndPassword {
   LoginWithEmailAndPasswordImpl(this._repository);
 
   @override
-  Future<Either<AppException, UserLoginEntity>> call(UserLoginEntity login) async{
+  Future<Either<AppException, void>> call(UserLoginEntity login) async{
     return await _repository.loginWithEmailAndPassword(login);
   }
 }

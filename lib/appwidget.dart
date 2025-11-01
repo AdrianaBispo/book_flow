@@ -20,16 +20,16 @@ class AppWidget extends StatelessWidget {
             dataSource: context.read<LoginDatasouceRemoteImpl>(),
           ),
         ),
-        // Provider<HomeDatasourceRemoteImpl>(
-        //   create: (_) => HomeDatasourceRemoteImpl(
-        //     supabaseClient: Supabase.instance.client,
-        //   ),
-        // ),
-        // Provider<HomeRepository>(
-        //   create: (context) => HomeRepositoryImpl(
-        //     dataSource: context.read<HomeDatasourceRemoteImpl>(),
-        //   ),
-        // ),
+        Provider<SearchDataSourceRemoteImpl>(
+          create: (_) => SearchDataSourceRemoteImpl(
+            Supabase.instance.client,
+          ),
+        ),
+        Provider<SearchRepository>(
+          create: (context) => SearchRepositoryImpl(
+            dataSource: context.read<SearchDataSourceRemoteImpl>(),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [

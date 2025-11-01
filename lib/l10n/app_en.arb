@@ -1,14 +1,123 @@
 {
   "@@locale": "en",
+  
   "emailLabel": "Email",
+  "@emailLabel": {
+    "description": "Label for the email input field"
+  },
+  
   "emailHint": "Enter your email",
+  "@emailHint": {
+    "description": "Hint text for the email field"
+  },
+  
   "invalidEmail": "Invalid email",
+  "@invalidEmail": {
+    "description": "Validation message when email format is incorrect"
+  },
+  
   "passwordLabel": "Password",
+  "@passwordLabel": {
+    "description": "Label for the password input field"
+  },
+  
   "passwordHint": "Enter your password",
+  "@passwordHint": {
+    "description": "Hint text for the password field"
+  },
+  
   "invalidPassword": "Password must be at least 6 characters",
+  "@invalidPassword": {
+    "description": "Validation message when password does not meet minimum requirements"
+  },
+  
   "loginButton": "Login",
+  "@loginButton": {
+    "description": "Text for the login button"
+  },
+  
   "orSeparator": "or",
+  "@orSeparator": {
+    "description": "Separator between login options"
+  },
+  
   "createAccount": "Create account",
+  "@createAccount": {
+    "description": "Text for the create account link or button"
+  },
+  
   "help": "Help",
-  "termsOfUse": "Terms of Use"
+  "@help": {
+    "description": "Text for the help link"
+  },
+  
+  "termsOfUse": "Terms of Use",
+  "@termsOfUse": {
+    "description": "Text for the terms of use link"
+  },
+  
+  "invalidCredentials": "Invalid email or password.",
+  "@invalidCredentials": {
+    "description": "Message displayed when login credentials are invalid"
+  },
+  
+  "emailNotConfirmed": "Please confirm your email before continuing.",
+  "@emailNotConfirmed": {
+    "description": "Message displayed when user tries to login without confirming email"
+  },
+  
+  "authenticationError": "Authentication error: {message}",
+  "@authenticationError": {
+    "description": "Generic authentication error message",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Token expired"
+      }
+    }
+  },
+  
+  "databaseError": "Database error: {message}",
+  "@databaseError": {
+    "description": "Database related error message",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Connection failed"
+      }
+    }
+  },
+  
+  "unexpectedError": "Unexpected error: {error}",
+  "@unexpectedError": {
+    "description": "Message for unexpected errors",
+    "placeholders": {
+      "error": {
+        "type": "String",
+        "example": "NullPointerException"
+      }
+    }
+  },
+  
+  "errorDatabaseSearch": "Error fetching data: {message}",
+  "@errorDatabaseSearch": {
+    "description": "Message shown when an error occurs while fetching data from the database",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Connection lost"
+      }
+    }
+  },
+  
+  "errorUnknownSearch": "Unexpected error: {message}",
+  "@errorUnknownSearch": {
+    "description": "Message shown when an unexpected error occurs during a search",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Unknown error"
+      }
+    }
+  }
 }
