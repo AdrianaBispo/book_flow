@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:dartz/dartz.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:myapp/modules/login/domain/usecases/login_with_email_and_password/login_with_email_and_password_impl.dart';
 import 'package:myapp/modules/login/login.dart';
 import 'package:myapp/utils/exceptions/app_exception.dart';
+import 'package:mockito/mockito.dart';
 
 class MockLoginRepository extends Mock implements LoginRepository {}
 
