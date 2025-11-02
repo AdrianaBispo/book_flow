@@ -98,6 +98,12 @@ abstract class AppLocalizations {
     Locale('pt'),
   ];
 
+  /// Title or tagline shown on the app’s home screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Your digital library'**
+  String get digitalLibrary;
+
   /// Label for the email input field
   ///
   /// In en, this message translates to:

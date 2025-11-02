@@ -1,6 +1,12 @@
 {
   "@@locale": "en",
   
+  "digitalLibrary": "Your digital library",
+  "@digitalLibrary": {
+    "description": "Title or tagline shown on the app’s home screen."
+  },
+
+
   "emailLabel": "Email",
   "@emailLabel": {
     "description": "Label for the email input field"

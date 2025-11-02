@@ -9,6 +9,9 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get digitalLibrary => 'Your digital library';
+
+  @override
   String get emailLabel => 'Email';
 
   @override

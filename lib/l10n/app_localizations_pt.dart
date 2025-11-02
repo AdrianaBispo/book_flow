@@ -9,6 +9,9 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
+  String get digitalLibrary => 'Sua biblioteca digital';
+
+  @override
   String get emailLabel => 'E-mail';
 
   @override

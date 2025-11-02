@@ -1,6 +1,12 @@
 {
   "@@locale": "pt",
   
+  "digitalLibrary": "Sua biblioteca digital",
+  "@digitalLibrary": {
+    "description": "Título ou slogan exibido na tela inicial do aplicativo."
+  },
+
+
   "emailLabel": "E-mail",
   "@emailLabel": {
     "description": "Rótulo do campo de entrada de e-mail"
@@ -66,7 +72,7 @@
     "description": "Mensagem exibida quando o usuário tenta fazer login sem confirmar o e-mail"
   },
   
-    "authenticationError": "Não foi possível realizar o login. Verifique seu e-mail e senha e tente novamente.",
+  "authenticationError": "Não foi possível realizar o login. Verifique seu e-mail e senha e tente novamente.",
   "@authenticationError": {
     "description": "Erro de autenticação, geralmente causado por credenciais incorretas ou sessão expirada."
   },
