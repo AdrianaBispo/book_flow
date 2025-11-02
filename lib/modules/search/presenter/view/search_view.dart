@@ -69,7 +69,7 @@ class _SearchViewState extends State<SearchView>
           } else if (state is SearchEmpty) {
             return EmptyResultSearchWidget();
           } else if (state is SearchError) {
-            return _buildErrorState(context, state.message);
+            return SearchErroWidget(message: state.message);
           }
           return _buildInitialState();
         },
@@ -101,7 +101,8 @@ class _SearchViewState extends State<SearchView>
           contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
         ),
         onSubmitted: (value) {
-          debugPrint('Buscando: $value');
+          final searchText = _searchController.text;
+          context.read<SearchBloc>().add(SearchTextChanged(searchText));
         },
       ),
     );
@@ -125,40 +126,4 @@ class _SearchViewState extends State<SearchView>
     );
   }
 
-
-
-  Widget _buildErrorState(BuildContext context, String message) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error_outline, size: 80, color: AppColors.error),
-            const SizedBox(height: 16),
-            Text(
-              message,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton.icon(
-              onPressed: () {
-                final searchText = _searchController.text;
-                if (searchText.isNotEmpty) {
-                  context.read<SearchBloc>().add(SearchTextChanged(searchText));
-                }
-              },
-              icon: const Icon(Icons.refresh),
-              label: const Text('Tentar novamente'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.purple20,
-                foregroundColor: AppColors.lightBackground,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
