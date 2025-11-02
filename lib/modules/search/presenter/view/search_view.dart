@@ -4,7 +4,6 @@ import 'package:myapp/core/core.dart';
 import 'package:myapp/l10n/app_localizations.dart';
 import '../../search.dart';
 
-import '../presenter.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
