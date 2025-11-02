@@ -48,27 +48,22 @@ class AppLocalizationsPt extends AppLocalizations {
   String get emailNotConfirmed => 'Confirme seu e-mail antes de continuar.';
 
   @override
-  String authenticationError(String message) {
-    return 'Erro de autenticação: $message';
-  }
+  String get authenticationError =>
+      'Não foi possível realizar o login. Verifique seu e-mail e senha e tente novamente.';
 
   @override
-  String databaseError(String message) {
-    return 'Erro no banco de dados: $message';
-  }
+  String get databaseErrorMessage =>
+      'Falha ao acessar o banco de dados. Pode haver instabilidade no servidor — tente novamente em alguns instantes.';
 
   @override
-  String unexpectedError(String error) {
-    return 'Erro inesperado: $error';
-  }
+  String get unexpectedError =>
+      'Ocorreu um erro inesperado. Nossa equipe já foi notificada — tente novamente mais tarde.';
 
   @override
-  String errorDatabaseSearch(String message) {
-    return 'Erro ao buscar dados: $message';
-  }
+  String get errorDatabaseSearch =>
+      'Não foi possível carregar as informações solicitadas. Verifique sua conexão e tente novamente.';
 
   @override
-  String errorUnknownSearch(String message) {
-    return 'Erro inesperado: $message';
-  }
+  String get errorUnknownSearch =>
+      'Encontramos um problema ao buscar os dados. Tente novamente em alguns minutos.';
 }
