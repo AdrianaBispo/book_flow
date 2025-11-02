@@ -1,5 +1,4 @@
 import 'package:myapp/modules/modules.dart';
-import 'package:myapp/utils/exceptions/app_exception.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final SearchRepository repository;
@@ -26,8 +25,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
     result.fold(
       (exception) {
-        final errorMessage = _getErrorMessage(exception);
-        emit(SearchError(exception, errorMessage));
+        emit(SearchError(exception));
       },
       (results) {
         if (results.isEmpty) {
@@ -43,16 +41,4 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     emit(const SearchInitial());
   }
 
-  String _getErrorMessage(AppException exception) {
-    if (exception is DatabaseSearchException) {
-      return 'Não conseguimos acessar os dados no momento.\n'
-          'Verifique sua conexão e tente novamente.';
-    } else if (exception is UnknownSearchException) {
-      return 'Algo inesperado aconteceu.\n'
-          'Por favor, tente novamente em alguns instantes.';
-    }
-
-    return 'Erro ao realizar a busca.\n'
-        'Tente novamente mais tarde.';
-  }
 }
