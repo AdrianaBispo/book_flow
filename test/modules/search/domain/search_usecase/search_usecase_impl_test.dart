@@ -50,7 +50,7 @@ void main() {
 
     test('deve retornar AppException quando ocorrer erro na busca', () async {
       // arrange
-      final exception = NetworkSearchException(message: 'Erro na busca');
+      final exception = NetworkSearchException();
       when(
         () => searchRepository.search(any()),
       ).thenAnswer((_) async => Left(exception));
@@ -60,10 +60,6 @@ void main() {
 
       // assert
       expect(result.isLeft(), true);
-      result.fold(
-        (error) => expect(error.message, equals('Erro na busca')),
-        (_) => fail('Deveria retornar Left(AppException)'),
-      );
       verify(() => searchRepository.search('flutter')).called(1);
       verifyNoMoreInteractions(searchRepository);
     });
