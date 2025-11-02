@@ -78,7 +78,7 @@ class _SearchCardState extends State<SearchCard>
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    'genre',
+                    widget.ebook.genero ?? '',
                     style: TextTheme.of(context).bodySmall!.copyWith(
                       color: AppColors.primaryPurple,
                       fontWeight: FontWeight.w600,
