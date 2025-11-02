@@ -21,9 +21,7 @@ class AppWidget extends StatelessWidget {
           ),
         ),
         Provider<SearchDataSourceRemoteImpl>(
-          create: (_) => SearchDataSourceRemoteImpl(
-            Supabase.instance.client,
-          ),
+          create: (_) => SearchDataSourceRemoteImpl(Supabase.instance.client),
         ),
         Provider<SearchRepository>(
           create: (context) => SearchRepositoryImpl(
@@ -36,9 +34,10 @@ class AppWidget extends StatelessWidget {
           BlocProvider<LoginBloc>(
             create: (context) => LoginBloc(context.read<LoginRepository>()),
           ),
-          // BlocProvider<HomeBloc>(
-          //   create: (context) => HomeBloc(context.read<HomeRepository>()),
-          // ),
+          BlocProvider<SearchBloc>(
+            create: (context) =>
+                SearchBloc(repository: context.read<SearchRepository>()),
+          ),
         ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),
@@ -47,7 +46,7 @@ class AppWidget extends StatelessWidget {
           builder: (_, child) => MaterialApp.router(
             title: 'Book Flow',
             locale: const Locale('pt', 'BR'),
-            localizationsDelegates: AppLocalizations.localizationsDelegates,      
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
