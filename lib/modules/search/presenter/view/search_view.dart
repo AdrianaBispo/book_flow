@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/core/core.dart';
-import 'package:myapp/modules/search/data/dtos/result_search_dto.dart';
+import 'package:myapp/l10n/app_localizations.dart';
+import '../../search.dart';
 
 import '../presenter.dart';
 
@@ -68,8 +69,20 @@ class _SearchViewState extends State<SearchView>
             );
           } else if (state is SearchEmpty) {
             return EmptyResultSearchWidget();
+          } else if (state is SearchError &&
+              state.exception is DatabaseSearchException) {
+            return SearchErroWidget(
+              message: AppLocalizations.of(context)!.errorDatabaseSearch,
+            );
+          } else if (state is SearchError &&
+              state.exception is UnknownSearchException) {
+            return SearchErroWidget(
+              message: AppLocalizations.of(context)!.unexpectedError,
+            );
           } else if (state is SearchError) {
-            return SearchErroWidget(message: state.message);
+            return SearchErroWidget(
+              message: AppLocalizations.of(context)!.errorUnknownSearch,
+            );
           }
           return _buildInitialState();
         },
@@ -125,5 +138,4 @@ class _SearchViewState extends State<SearchView>
       ),
     );
   }
-
 }
