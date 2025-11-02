@@ -1,21 +1,21 @@
 import 'package:myapp/utils/utils.dart';
 
 class ServerCredentialsException extends AppException {
-  ServerCredentialsException({required super.message, super.stackTrace});
+  ServerCredentialsException({super.stackTrace});
 }
 
 class NetworkSearchException extends AppException {
-  NetworkSearchException({required super.message, super.stackTrace});
+  NetworkSearchException({super.stackTrace});
 }
 
 class UnknownSearchException extends AppException {
-  UnknownSearchException({required super.message, super.stackTrace});
+  UnknownSearchException({super.stackTrace});
 }
 
 class DatabaseSearchException extends AppException {
-  DatabaseSearchException({required super.message, super.stackTrace});
+  DatabaseSearchException({super.stackTrace});
 }
 
 class PostgrestSearchException extends AppException {
-  PostgrestSearchException({required super.message, super.stackTrace});
+  PostgrestSearchException({super.stackTrace});
 }
