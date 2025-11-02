@@ -9,6 +9,7 @@ void main() {
       'title': 'Book Title',
       'cover_url': 'https://example.com/cover.jpg',
       'download_url': 'https://example.com/download.pdf',
+      'genero': null,
     };
 
     test('deve converter JSON para DTO corretamente', () {
@@ -31,6 +32,7 @@ void main() {
         title: 'Book Title',
         coverUrl: 'https://example.com/cover.jpg',
         downloadUrl: 'https://example.com/download.pdf',
+        genero: null
       );
 
       // act
