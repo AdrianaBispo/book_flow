@@ -50,7 +50,7 @@ void main() {
         // Arrange
         when(
           () => mockDatasource.search(searchText),
-        ).thenThrow(PostgrestSearchException(message: 'Erro ao buscar dados'));
+        ).thenThrow(DatabaseSearchException());
 
         // Act
         final result = await repository.search(searchText);
