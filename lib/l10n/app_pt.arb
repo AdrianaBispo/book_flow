@@ -95,6 +95,9 @@
   "errorUnknownSearch": "Encontramos um problema ao buscar os dados. Tente novamente em alguns minutos.",
   "@errorUnknownSearch": {
     "description": "Erro inesperado durante uma operação de busca no banco de dados."
-  }
+  },
+
+  "emptyResultSearchTitle": "Tente buscar com outros termos",
+  "emptyResultSearchSubtitle": "'Tente buscar com outros termos"
 
 }
