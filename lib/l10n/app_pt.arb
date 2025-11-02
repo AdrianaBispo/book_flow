@@ -97,6 +97,8 @@
     "description": "Erro inesperado durante uma operação de busca no banco de dados."
   },
 
+  "searchPlaceholder": "Digite algo para buscar livros",
+  "searchBarHintText": "Buscar livros",
   "emptyResultSearchTitle": "Tente buscar com outros termos",
   "emptyResultSearchSubtitle": "'Tente buscar com outros termos"
 
