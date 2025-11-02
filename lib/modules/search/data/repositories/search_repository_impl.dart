@@ -12,10 +12,10 @@ class SearchRepositoryImpl implements SearchRepository {
     try {
       final result = await dataSource.search(searchText);
       return Right(result);
-    } on DatabaseSearchException catch (e) {
-      return Left( DatabaseSearchException(message: 'Erro ao buscar dados: ${e.message}'));
+    } on DatabaseSearchException {
+      return Left( DatabaseSearchException());
     } catch (e) {
-      return Left( UnknownSearchException(message: 'Erro inesperado: $e')
+      return Left( UnknownSearchException()
       );
     } 
   }
