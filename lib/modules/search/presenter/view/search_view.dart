@@ -100,7 +100,7 @@ class _SearchViewState extends State<SearchView>
         cursorColor: AppColors.lightBackground,
         decoration: InputDecoration(
           fillColor: AppColors.purple20,
-          hintText: 'Buscar livros',
+          hintText: AppLocalizations.of(context)!.searchBarHintText,
           labelStyle: Theme.of(context).inputDecorationTheme.labelStyle!
               .copyWith(color: AppColors.lightBackground),
           hintStyle: Theme.of(context).inputDecorationTheme.hintStyle!.copyWith(
@@ -128,7 +128,7 @@ class _SearchViewState extends State<SearchView>
           Icon(Icons.search, size: 80, color: AppColors.lightBorder80),
           const SizedBox(height: 16),
           Text(
-            'Digite algo para buscar livros',
+            AppLocalizations.of(context)!.searchPlaceholder,
             style: Theme.of(
               context,
             ).textTheme.bodyLarge!.copyWith(color: AppColors.lightBorder80),
