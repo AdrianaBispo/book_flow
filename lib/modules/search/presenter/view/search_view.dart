@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/core/core.dart';
-import 'package:myapp/modules/biblioteca/presenter/widgets/biblioteca_book_card.dart';
 import 'package:myapp/modules/search/data/dtos/result_search_dto.dart';
 
 import '../presenter.dart';
@@ -68,7 +67,7 @@ class _SearchViewState extends State<SearchView>
                   Divider(color: Theme.of(context).dividerColor, height: 24),
             );
           } else if (state is SearchEmpty) {
-            return _buildEmptyState();
+            return EmptyResultSearchWidget();
           } else if (state is SearchError) {
             return _buildErrorState(context, state.message);
           }
@@ -126,30 +125,7 @@ class _SearchViewState extends State<SearchView>
     );
   }
 
-  Widget _buildEmptyState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.search_off, size: 80, color: AppColors.lightBorder80),
-          const SizedBox(height: 16),
-          Text(
-            'Nenhum livro encontrado',
-            style: Theme.of(
-              context,
-            ).textTheme.titleMedium!.copyWith(color: AppColors.lightBorder80),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Tente buscar com outros termos',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.copyWith(color: AppColors.lightBorder80),
-          ),
-        ],
-      ),
-    );
-  }
+
 
   Widget _buildErrorState(BuildContext context, String message) {
     return Center(
