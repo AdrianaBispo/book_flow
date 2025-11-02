@@ -1,6 +1,12 @@
 {
   "@@locale": "en",
   
+  "digitalLibrary": "Your digital library",
+  "@digitalLibrary": {
+    "description": "Title or tagline shown on the app’s home screen."
+  },
+
+
   "emailLabel": "Email",
   "@emailLabel": {
     "description": "Label for the email input field"
@@ -66,58 +72,29 @@
     "description": "Message displayed when user tries to login without confirming email"
   },
   
-  "authenticationError": "Authentication error: {message}",
+  "authenticationError": "Login failed. Please check your email and password and try again.",
   "@authenticationError": {
-    "description": "Generic authentication error message",
-    "placeholders": {
-      "message": {
-        "type": "String",
-        "example": "Token expired"
-      }
-    }
+    "description": "Authentication error, usually caused by invalid credentials or an expired session."
   },
-  
-  "databaseError": "Database error: {message}",
-  "@databaseError": {
-    "description": "Database related error message",
-    "placeholders": {
-      "message": {
-        "type": "String",
-        "example": "Connection failed"
-      }
-    }
+
+  "databaseErrorMessage": "Failed to access the database. The server may be unstable — please try again in a few moments.",
+  "@databaseErrorMessage": {
+    "description": "Error related to database communication or connection failure."
   },
-  
-  "unexpectedError": "Unexpected error: {error}",
+
+  "unexpectedError": "An unexpected error occurred. Our team has been notified — please try again later.",
   "@unexpectedError": {
-    "description": "Message for unexpected errors",
-    "placeholders": {
-      "error": {
-        "type": "String",
-        "example": "NullPointerException"
-      }
-    }
+    "description": "Unhandled system error, usually caused by unexpected exceptions."
   },
-  
-  "errorDatabaseSearch": "Error fetching data: {message}",
+
+  "errorDatabaseSearch": "We couldn’t load the requested information. Please check your internet connection and try again.",
   "@errorDatabaseSearch": {
-    "description": "Message shown when an error occurs while fetching data from the database",
-    "placeholders": {
-      "message": {
-        "type": "String",
-        "example": "Connection lost"
-      }
-    }
+    "description": "Error when fetching data from the database, possibly due to a network or server issue."
   },
-  
-  "errorUnknownSearch": "Unexpected error: {message}",
+
+  "errorUnknownSearch": "We ran into a problem while fetching data. Try again in a few minutes.",
   "@errorUnknownSearch": {
-    "description": "Message shown when an unexpected error occurs during a search",
-    "placeholders": {
-      "message": {
-        "type": "String",
-        "example": "Unknown error"
-      }
-    }
+    "description": "Unexpected error that occurred while performing a data search operation."
   }
+
 }

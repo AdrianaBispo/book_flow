@@ -34,30 +34,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async {
     if (!state.isFormValid) return;
     emit(state.copyWith(status: LoginStatus.loading));
-    
+
     final result = await loginRepository.loginWithEmailAndPassword(
       LoginDto(email: state.email, password: state.password),
     );
-
-    if (result.isRight()) {
-      result.fold(
-        (l) => emit(
-          state.copyWith(
-            status: LoginStatus.failure,
-            errorMessage: 'Email ou senha inválidos',
-          ),
-        ),
-        (r) => emit(state.copyWith(status: LoginStatus.success)),
-      );
-    } else {
-      emit(
-        state.copyWith(
-          status: LoginStatus.failure,
-          errorMessage: 'Erro ao fazer login. Tente novamente.',
-        ),
-      );
-    }
+    result.fold(
+      (l) {
+        if (l is InvalidCredentialsException) {
+          emit(state.copyWith(status: LoginStatus.invalidCredentials));
+        } else if (l is EmailNotConfirmedException) {
+          emit(state.copyWith(status: LoginStatus.emailNotConfirmed));
+        } else if (l is DatabaseException) {
+          emit(state.copyWith(status: LoginStatus.databaseError));
+        } else {
+          emit(state.copyWith(status: LoginStatus.unknownError));
+        }
+      },
+      (r) {
+        emit(state.copyWith(status: LoginStatus.success));
+      },
+    );
   }
-
- 
 }

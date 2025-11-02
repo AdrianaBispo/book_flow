@@ -1,6 +1,12 @@
 {
   "@@locale": "pt",
   
+  "digitalLibrary": "Sua biblioteca digital",
+  "@digitalLibrary": {
+    "description": "Título ou slogan exibido na tela inicial do aplicativo."
+  },
+
+
   "emailLabel": "E-mail",
   "@emailLabel": {
     "description": "Rótulo do campo de entrada de e-mail"
@@ -66,58 +72,29 @@
     "description": "Mensagem exibida quando o usuário tenta fazer login sem confirmar o e-mail"
   },
   
-  "authenticationError": "Erro de autenticação: {message}",
+  "authenticationError": "Não foi possível realizar o login. Verifique seu e-mail e senha e tente novamente.",
   "@authenticationError": {
-    "description": "Mensagem genérica de erro de autenticação",
-    "placeholders": {
-      "message": {
-        "type": "String",
-        "example": "Token expirado"
-      }
-    }
+    "description": "Erro de autenticação, geralmente causado por credenciais incorretas ou sessão expirada."
   },
-  
-  "databaseError": "Erro no banco de dados: {message}",
-  "@databaseError": {
-    "description": "Mensagem de erro relacionada ao banco de dados",
-    "placeholders": {
-      "message": {
-        "type": "String",
-        "example": "Conexão falhou"
-      }
-    }
+
+  "databaseErrorMessage": "Falha ao acessar o banco de dados. Pode haver instabilidade no servidor — tente novamente em alguns instantes.",
+  "@databaseErrorMessage": {
+    "description": "Erro relacionado à comunicação com o banco de dados ou falha de conexão."
   },
-  
-  "unexpectedError": "Erro inesperado: {error}",
+
+  "unexpectedError": "Ocorreu um erro inesperado. Nossa equipe já foi notificada — tente novamente mais tarde.",
   "@unexpectedError": {
-    "description": "Mensagem para erros inesperados",
-    "placeholders": {
-      "error": {
-        "type": "String",
-        "example": "NullPointerException"
-      }
-    }
+    "description": "Erro não previsto pelo sistema, geralmente causado por exceções não tratadas."
   },
-  
-  "errorDatabaseSearch": "Erro ao buscar dados: {message}",
+
+  "errorDatabaseSearch": "Não foi possível carregar as informações solicitadas. Verifique sua conexão e tente novamente.",
   "@errorDatabaseSearch": {
-    "description": "Mensagem exibida quando ocorre um erro ao buscar dados no banco de dados",
-    "placeholders": {
-      "message": {
-        "type": "String",
-        "example": "Conexão perdida"
-      }
-    }
+    "description": "Erro ao buscar dados no banco, possivelmente por falha de rede ou de conexão com o servidor."
   },
-  
-  "errorUnknownSearch": "Erro inesperado: {message}",
+
+  "errorUnknownSearch": "Encontramos um problema ao buscar os dados. Tente novamente em alguns minutos.",
   "@errorUnknownSearch": {
-    "description": "Mensagem exibida quando ocorre um erro inesperado durante a busca",
-    "placeholders": {
-      "message": {
-        "type": "String",
-        "example": "Erro desconhecido"
-      }
-    }
+    "description": "Erro inesperado durante uma operação de busca no banco de dados."
   }
+
 }

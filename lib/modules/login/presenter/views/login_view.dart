@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/core.dart';
-import 'package:myapp/l10n/l10n.dart';
+import 'package:myapp/l10n/app_localizations.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../../modules.dart';
 
@@ -13,16 +13,52 @@ class LoginView extends StatelessWidget {
       listener: (context, state) {
         if (state.status == LoginStatus.success) {
           context.go('/home');
-        } else if (state.status == LoginStatus.failure) {
+        } else if (state.status == LoginStatus.databaseError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
+              backgroundColor: AppColors.error,
               content: Text(
-                state.errorMessage ?? '',
+                AppLocalizations.of(context)!.databaseErrorMessage,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.lightBackground,
                 ),
               ),
+            ),
+          );
+        } else if (state.status == LoginStatus.emailNotConfirmed) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
               backgroundColor: AppColors.error,
+              content: Text(
+                AppLocalizations.of(context)!.emailNotConfirmed,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.lightBackground,
+                ),
+              ),
+            ),
+          );
+        } else if (state.status == LoginStatus.invalidCredentials) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: AppColors.error,
+              content: Text(
+                AppLocalizations.of(context)!.invalidCredentials,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.lightBackground,
+                ),
+              ),
+            ),
+          );
+        }else if (state.status == LoginStatus.unknownError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: AppColors.error,
+              content: Text(
+                AppLocalizations.of(context)!.unexpectedError,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.lightBackground,
+                ),
+              ),
             ),
           );
         }
@@ -59,7 +95,7 @@ class LoginView extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Sua biblioteca digital',
+                      AppLocalizations.of(context)!.digitalLibrary,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ],

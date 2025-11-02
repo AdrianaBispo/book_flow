@@ -98,6 +98,12 @@ abstract class AppLocalizations {
     Locale('pt'),
   ];
 
+  /// Title or tagline shown on the app’s home screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Your digital library'**
+  String get digitalLibrary;
+
   /// Label for the email input field
   ///
   /// In en, this message translates to:
@@ -176,35 +182,35 @@ abstract class AppLocalizations {
   /// **'Please confirm your email before continuing.'**
   String get emailNotConfirmed;
 
-  /// Generic authentication error message
+  /// Authentication error, usually caused by invalid credentials or an expired session.
   ///
   /// In en, this message translates to:
-  /// **'Authentication error: {message}'**
-  String authenticationError(String message);
+  /// **'Login failed. Please check your email and password and try again.'**
+  String get authenticationError;
 
-  /// Database related error message
+  /// Error related to database communication or connection failure.
   ///
   /// In en, this message translates to:
-  /// **'Database error: {message}'**
-  String databaseError(String message);
+  /// **'Failed to access the database. The server may be unstable — please try again in a few moments.'**
+  String get databaseErrorMessage;
 
-  /// Message for unexpected errors
+  /// Unhandled system error, usually caused by unexpected exceptions.
   ///
   /// In en, this message translates to:
-  /// **'Unexpected error: {error}'**
-  String unexpectedError(String error);
+  /// **'An unexpected error occurred. Our team has been notified — please try again later.'**
+  String get unexpectedError;
 
-  /// Message shown when an error occurs while fetching data from the database
+  /// Error when fetching data from the database, possibly due to a network or server issue.
   ///
   /// In en, this message translates to:
-  /// **'Error fetching data: {message}'**
-  String errorDatabaseSearch(String message);
+  /// **'We couldn’t load the requested information. Please check your internet connection and try again.'**
+  String get errorDatabaseSearch;
 
-  /// Message shown when an unexpected error occurs during a search
+  /// Unexpected error that occurred while performing a data search operation.
   ///
   /// In en, this message translates to:
-  /// **'Unexpected error: {message}'**
-  String errorUnknownSearch(String message);
+  /// **'We ran into a problem while fetching data. Try again in a few minutes.'**
+  String get errorUnknownSearch;
 }
 
 class _AppLocalizationsDelegate

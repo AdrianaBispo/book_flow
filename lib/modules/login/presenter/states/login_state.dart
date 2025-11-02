@@ -1,5 +1,12 @@
-
-enum LoginStatus { initial, loading, success, failure }
+enum LoginStatus {
+  initial,
+  loading,
+  success,
+  invalidCredentials,
+  emailNotConfirmed,
+  databaseError,
+  unknownError,
+}
 
 class LoginState {
   const LoginState({
@@ -16,7 +23,8 @@ class LoginState {
   final bool isPasswordVisible;
   final String? errorMessage;
 
-  bool get isEmailValid => RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
+  bool get isEmailValid =>
+      RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   bool get isPasswordValid => password.length >= 6;
   bool get isFormValid => isEmailValid && isPasswordValid;
 
@@ -25,14 +33,12 @@ class LoginState {
     String? email,
     String? password,
     bool? isPasswordVisible,
-    String? errorMessage,
   }) {
     return LoginState(
       status: status ?? this.status,
       email: email ?? this.email,
       password: password ?? this.password,
       isPasswordVisible: isPasswordVisible ?? this.isPasswordVisible,
-      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 }

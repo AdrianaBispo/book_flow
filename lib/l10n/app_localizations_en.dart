@@ -9,6 +9,9 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get digitalLibrary => 'Your digital library';
+
+  @override
   String get emailLabel => 'Email';
 
   @override
@@ -49,27 +52,22 @@ class AppLocalizationsEn extends AppLocalizations {
       'Please confirm your email before continuing.';
 
   @override
-  String authenticationError(String message) {
-    return 'Authentication error: $message';
-  }
+  String get authenticationError =>
+      'Login failed. Please check your email and password and try again.';
 
   @override
-  String databaseError(String message) {
-    return 'Database error: $message';
-  }
+  String get databaseErrorMessage =>
+      'Failed to access the database. The server may be unstable — please try again in a few moments.';
 
   @override
-  String unexpectedError(String error) {
-    return 'Unexpected error: $error';
-  }
+  String get unexpectedError =>
+      'An unexpected error occurred. Our team has been notified — please try again later.';
 
   @override
-  String errorDatabaseSearch(String message) {
-    return 'Error fetching data: $message';
-  }
+  String get errorDatabaseSearch =>
+      'We couldn’t load the requested information. Please check your internet connection and try again.';
 
   @override
-  String errorUnknownSearch(String message) {
-    return 'Unexpected error: $message';
-  }
+  String get errorUnknownSearch =>
+      'We ran into a problem while fetching data. Try again in a few minutes.';
 }
