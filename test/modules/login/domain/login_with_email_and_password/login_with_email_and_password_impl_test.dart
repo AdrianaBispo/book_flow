@@ -12,7 +12,7 @@ class FakeUserLoginEntity extends UserLoginEntity {
 }
 
 class FakeAppException extends AppException {
-  FakeAppException() : super(message: 'Erro');
+  FakeAppException() : super();
 }
 
 void main() {

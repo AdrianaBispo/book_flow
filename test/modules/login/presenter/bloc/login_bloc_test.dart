@@ -29,11 +29,11 @@ void main() {
     expect(loginBloc.state, isA<LoginState>());
   });
   blocTest<LoginBloc, LoginState>(
-    'Deve emit [LoginStatus.failure] quando tentar logar com form inválido',
+    'Deve emit [LoginStatus.invalidCredentials] quando tentar logar as informações erradas',
     build: () => LoginBloc(mockLoginRepository),
     act: (bloc) => bloc.add(LoginSubmitted()),
     expect: () => [
-      isA<LoginState>().having((s) => s.status, 'status', LoginStatus.failure),
+      isA<LoginState>().having((s) => s.status, 'status', LoginStatus.invalidCredentials),
     ],
   );
 
@@ -73,12 +73,12 @@ void main() {
   );
 
   blocTest<LoginBloc, LoginState>(
-    'deve emitir [failure] quando o formulário for inválido',
+    'deve emitir [invalidCredentials] quando as credencias forem inválidas',
     build: () => loginBloc,
     act: (bloc) => bloc.add(LoginSubmitted()),
     expect: () => [
       isA<LoginState>()
-          .having((s) => s.status, 'status', LoginStatus.failure)
+          .having((s) => s.status, 'status', LoginStatus.invalidCredentials)
           .having(
             (s) => s.errorMessage,
             'errorMessage',

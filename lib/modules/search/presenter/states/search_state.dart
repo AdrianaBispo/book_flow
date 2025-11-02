@@ -25,7 +25,6 @@ class SearchEmpty extends SearchState {
 
 class SearchError extends SearchState {
   final AppException exception;
-  final String message;
-
-  const SearchError(this.exception, this.message);
+  
+  const SearchError(this.exception);
 }

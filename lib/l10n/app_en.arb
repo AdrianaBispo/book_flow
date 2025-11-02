@@ -95,6 +95,11 @@
   "errorUnknownSearch": "We ran into a problem while fetching data. Try again in a few minutes.",
   "@errorUnknownSearch": {
     "description": "Unexpected error that occurred while performing a data search operation."
-  }
+  },
+  "searchPlaceholder": "Type something to search for books",
+  "searchBarHintText": "Search books",
+  "emptyResultSearchTitle": "Try searching with different terms",
+  "emptyResultSearchSubtitle": "Try searching with different keywords"
+
 
 }

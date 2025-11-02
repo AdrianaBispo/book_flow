@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/core/core.dart';
-import 'package:myapp/modules/biblioteca/presenter/widgets/biblioteca_book_card.dart';
-import 'package:myapp/modules/search/data/dtos/result_search_dto.dart';
+import 'package:myapp/l10n/app_localizations.dart';
+import '../../search.dart';
 
-import '../presenter.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -62,15 +61,27 @@ class _SearchViewState extends State<SearchView>
               itemCount: state.results.length,
               itemBuilder: (context, index) {
                 final ebook = state.results[index];
-                return BibliotecaBookCard(ebook: ebook as ResultSearchDto);
+                return SearchCard(ebook: ebook as ResultSearchDto);
               },
               separatorBuilder: (context, index) =>
                   Divider(color: Theme.of(context).dividerColor, height: 24),
             );
           } else if (state is SearchEmpty) {
-            return _buildEmptyState();
+            return EmptyResultSearchWidget();
+          } else if (state is SearchError &&
+              state.exception is DatabaseSearchException) {
+            return SearchErroWidget(
+              message: AppLocalizations.of(context)!.errorDatabaseSearch,
+            );
+          } else if (state is SearchError &&
+              state.exception is UnknownSearchException) {
+            return SearchErroWidget(
+              message: AppLocalizations.of(context)!.unexpectedError,
+            );
           } else if (state is SearchError) {
-            return _buildErrorState(context, state.message);
+            return SearchErroWidget(
+              message: AppLocalizations.of(context)!.errorUnknownSearch,
+            );
           }
           return _buildInitialState();
         },
@@ -89,7 +100,7 @@ class _SearchViewState extends State<SearchView>
         cursorColor: AppColors.lightBackground,
         decoration: InputDecoration(
           fillColor: AppColors.purple20,
-          hintText: 'Buscar livros',
+          hintText: AppLocalizations.of(context)!.searchBarHintText,
           labelStyle: Theme.of(context).inputDecorationTheme.labelStyle!
               .copyWith(color: AppColors.lightBackground),
           hintStyle: Theme.of(context).inputDecorationTheme.hintStyle!.copyWith(
@@ -102,7 +113,8 @@ class _SearchViewState extends State<SearchView>
           contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
         ),
         onSubmitted: (value) {
-          debugPrint('Buscando: $value');
+          final searchText = _searchController.text;
+          context.read<SearchBloc>().add(SearchTextChanged(searchText));
         },
       ),
     );
@@ -116,72 +128,12 @@ class _SearchViewState extends State<SearchView>
           Icon(Icons.search, size: 80, color: AppColors.lightBorder80),
           const SizedBox(height: 16),
           Text(
-            'Digite algo para buscar livros',
+            AppLocalizations.of(context)!.searchPlaceholder,
             style: Theme.of(
               context,
             ).textTheme.bodyLarge!.copyWith(color: AppColors.lightBorder80),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildEmptyState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.search_off, size: 80, color: AppColors.lightBorder80),
-          const SizedBox(height: 16),
-          Text(
-            'Nenhum livro encontrado',
-            style: Theme.of(
-              context,
-            ).textTheme.titleMedium!.copyWith(color: AppColors.lightBorder80),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Tente buscar com outros termos',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.copyWith(color: AppColors.lightBorder80),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildErrorState(BuildContext context, String message) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error_outline, size: 80, color: AppColors.error),
-            const SizedBox(height: 16),
-            Text(
-              message,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(height: 24),
-            ElevatedButton.icon(
-              onPressed: () {
-                final searchText = _searchController.text;
-                if (searchText.isNotEmpty) {
-                  context.read<SearchBloc>().add(SearchTextChanged(searchText));
-                }
-              },
-              icon: const Icon(Icons.refresh),
-              label: const Text('Tentar novamente'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.purple20,
-                foregroundColor: AppColors.lightBackground,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
