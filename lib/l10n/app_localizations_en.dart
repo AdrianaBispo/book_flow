@@ -72,6 +72,12 @@ class AppLocalizationsEn extends AppLocalizations {
       'We ran into a problem while fetching data. Try again in a few minutes.';
 
   @override
+  String get searchPlaceholder => 'Type something to search for books';
+
+  @override
+  String get searchBarHintText => 'Search books';
+
+  @override
   String get emptyResultSearchTitle => 'Try searching with different terms';
 
   @override

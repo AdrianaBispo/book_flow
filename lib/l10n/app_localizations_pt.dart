@@ -71,6 +71,12 @@ class AppLocalizationsPt extends AppLocalizations {
       'Encontramos um problema ao buscar os dados. Tente novamente em alguns minutos.';
 
   @override
+  String get searchPlaceholder => 'Digite algo para buscar livros';
+
+  @override
+  String get searchBarHintText => 'Buscar livros';
+
+  @override
   String get emptyResultSearchTitle => 'Tente buscar com outros termos';
 
   @override
