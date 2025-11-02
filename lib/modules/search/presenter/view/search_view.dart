@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/core/core.dart';
 import 'package:myapp/l10n/app_localizations.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../search.dart';
-
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -39,7 +39,10 @@ class _SearchViewState extends State<SearchView>
         title: _buildSearchBar(),
         actions: [
           IconButton(
-            icon: const Icon(Icons.close, color: AppColors.lightCard),
+            icon: Icon(
+              PhosphorIcons.x(PhosphorIconsStyle.regular),
+              color: AppColors.lightCard,
+            ),
             onPressed: () {
               _searchController.clear();
               context.read<SearchBloc>().add(const SearchCleared());
@@ -106,10 +109,13 @@ class _SearchViewState extends State<SearchView>
           hintStyle: Theme.of(context).inputDecorationTheme.hintStyle!.copyWith(
             color: AppColors.lightBorder80,
           ),
-          border: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          prefixIcon: Icon(Icons.search, color: AppColors.lightBackground),
+          filled: true,
+          enabledBorder: Theme.of(context).inputDecorationTheme.border!
+              .copyWith(borderSide: BorderSide(color: AppColors.primaryPurple)),
+          prefixIcon: Icon(
+            PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
+            color: AppColors.lightBackground,
+          ),
           contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
         ),
         onSubmitted: (value) {
@@ -125,13 +131,17 @@ class _SearchViewState extends State<SearchView>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.search, size: 80, color: AppColors.lightBorder80),
+          Icon(
+            PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
+            size: 40,
+            color: AppColors.lightBorder80,
+          ),
           const SizedBox(height: 16),
           Text(
             AppLocalizations.of(context)!.searchPlaceholder,
             style: Theme.of(
               context,
-            ).textTheme.bodyLarge!.copyWith(color: AppColors.lightBorder80),
+            ).textTheme.bodyMedium!.copyWith(color: AppColors.lightBorder80),
           ),
         ],
       ),
