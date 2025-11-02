@@ -69,4 +69,10 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get errorUnknownSearch =>
       'Encontramos um problema ao buscar os dados. Tente novamente em alguns minutos.';
+
+  @override
+  String get emptyResultSearchTitle => 'Tente buscar com outros termos';
+
+  @override
+  String get emptyResultSearchSubtitle => '\'Tente buscar com outros termos';
 }

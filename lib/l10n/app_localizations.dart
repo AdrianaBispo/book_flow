@@ -211,6 +211,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We ran into a problem while fetching data. Try again in a few minutes.'**
   String get errorUnknownSearch;
+
+  /// No description provided for @emptyResultSearchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Try searching with different terms'**
+  String get emptyResultSearchTitle;
+
+  /// No description provided for @emptyResultSearchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Try searching with different keywords'**
+  String get emptyResultSearchSubtitle;
 }
 
 class _AppLocalizationsDelegate

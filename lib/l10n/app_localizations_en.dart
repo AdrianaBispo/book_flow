@@ -70,4 +70,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get errorUnknownSearch =>
       'We ran into a problem while fetching data. Try again in a few minutes.';
+
+  @override
+  String get emptyResultSearchTitle => 'Try searching with different terms';
+
+  @override
+  String get emptyResultSearchSubtitle =>
+      'Try searching with different keywords';
 }
