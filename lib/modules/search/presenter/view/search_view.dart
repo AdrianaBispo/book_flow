@@ -16,11 +16,14 @@ class _SearchViewState extends State<SearchView>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final TextEditingController _searchController = TextEditingController();
+  late SearchBloc blocSearch;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this);
+    blocSearch = context.read<SearchBloc>();
+    blocSearch.add(SearchTextChanged(''));
   }
 
   @override
@@ -112,9 +115,16 @@ class _SearchViewState extends State<SearchView>
           filled: true,
           enabledBorder: Theme.of(context).inputDecorationTheme.border!
               .copyWith(borderSide: BorderSide(color: AppColors.primaryPurple)),
-          prefixIcon: Icon(
-            PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
+          prefixIcon: IconButton(
+            icon: Icon(
+              PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
+              color: AppColors.lightBackground,
+            ),
             color: AppColors.lightBackground,
+            onPressed: () {
+              final searchText = _searchController.text;
+              context.read<SearchBloc>().add(SearchTextChanged(searchText));
+            },
           ),
           contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
         ),
