@@ -14,11 +14,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   ) async {
     final searchText = event.searchText.trim();
 
-    if (searchText.isEmpty) {
-      emit(const SearchInitial());
-      return;
-    }
-
     emit(const SearchLoading());
 
     final result = await repository.search(searchText);
