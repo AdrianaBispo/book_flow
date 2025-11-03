@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:myapp/modules/modules.dart';
 
 class MockLoginRepositoryImpl extends Mock implements LoginRepositoryImpl {}
@@ -19,11 +19,20 @@ void main() {
   });
 
   test('Deve retornar null quando sucesso', () async {
+    final mockUser = User(
+      id: '123',
+      email: 'email@example.com',
+      appMetadata: {},
+      userMetadata: {},
+      aud: '',
+      createdAt: '',
+    );
     when(
-      () => datasource.login(loginDto: any(named: 'loginDto')),
-    ).thenAnswer((_) async => AuthResponse());
+      () => datasource.login(loginDto: userCredentials),
+    ).thenAnswer((_) async => AuthResponse(user: mockUser));
 
     final result = await repository.loginWithEmailAndPassword(userCredentials);
+
     expect(result.isRight(), true);
   });
   test(
