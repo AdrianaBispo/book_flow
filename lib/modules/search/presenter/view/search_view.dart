@@ -143,7 +143,7 @@ class _SearchViewState extends State<SearchView>
         children: [
           Icon(
             PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
-            size: 40,
+            size: 80,
             color: AppColors.lightBorder80,
           ),
           const SizedBox(height: 16),
@@ -151,7 +151,7 @@ class _SearchViewState extends State<SearchView>
             AppLocalizations.of(context)!.searchPlaceholder,
             style: Theme.of(
               context,
-            ).textTheme.bodyMedium!.copyWith(color: AppColors.lightBorder80),
+            ).textTheme.bodyMedium!.copyWith(color: AppColors.grey40),
           ),
         ],
       ),
