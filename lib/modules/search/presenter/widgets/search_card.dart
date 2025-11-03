@@ -68,6 +68,9 @@ class _SearchCardState extends State<SearchCard>
                   ).bodySmall!.copyWith(color: AppColors.grey60),
                 ),
                 const SizedBox(height: 8),
+                widget.ebook.genero!.isEmpty
+                    ? const SizedBox.shrink()
+                    :
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
