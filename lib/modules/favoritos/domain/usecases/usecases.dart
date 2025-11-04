@@ -1,0 +1,1 @@
+export 'obter_favorito_usecase/obter_favorito_usecase_impl.dart';
