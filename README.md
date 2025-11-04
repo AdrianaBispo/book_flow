@@ -54,9 +54,9 @@ O BookFlow é um aplicativo móvel desenvolvido em Flutter que oferece uma exper
 
 <p align="center"> 
   <p>
-    Login
+    Search
   </p>
-  <img src="screenshots/search.png.png" width="250px">
+  <img src="screenshots/search.png" width="250px">
 </p>
 
 </p>
