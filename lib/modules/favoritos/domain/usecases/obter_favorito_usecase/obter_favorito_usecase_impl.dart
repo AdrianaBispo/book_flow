@@ -8,7 +8,7 @@ class ObterFavoritoUsecaseImpl implements ObterFavoritoUsecase {
   ObterFavoritoUsecaseImpl({required this.repository});
 
   @override
-  Future<Either<AppException, List<FavoritoEntity>>> call(int idUser) {
-    return repository.getFavorites(idUser);
+  Future<Either<AppException, List<FavoritoEntity>>> call(int idUser) async{
+    return await repository.obterFavoritos(idUser);
   }
 }
