@@ -1,4 +1,4 @@
 export 'entities/entities.dart';
 export 'usecases/usecases.dart';
-export 'exceptions/exceptions_login.dart';
-export 'repositories/repostiories.dart';
+export 'repositories/favorite_repository.dart';
+export 'exceptions/exceptions_favoritos.dart';
