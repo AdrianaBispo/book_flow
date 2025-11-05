@@ -1,1 +1,2 @@
 export 'obter_favorito_usecase/obter_favorito_usecase_impl.dart';
+export 'remover_favorito_usecase/remover_favorito_usecase_impl.dart';
