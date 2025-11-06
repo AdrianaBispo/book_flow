@@ -1,0 +1,1 @@
+export 'favorito_dto.dart';
