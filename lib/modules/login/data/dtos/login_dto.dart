@@ -7,12 +7,12 @@ class LoginDto extends UserLoginEntity {
   LoginDto({required this.email, required this.password})
     : super(email: email, password: password);
 
-  LoginDto.fromMap(Map<String, dynamic> map)
+  LoginDto.fromJson(Map<String, dynamic> map)
     : email = map['email'],
       password = map['password'],
       super(email: map['email'], password: map['password']);
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {'email': email, 'password': password};
   }
 }
