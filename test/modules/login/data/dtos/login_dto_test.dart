@@ -8,12 +8,12 @@ void main() {
   });
 
   test('deve retornar Map', () {
-    final result = loginDto.toMap();
+    final result = loginDto.toJson();
     expect(result, {'email': 'teste@gmail.com', 'password': '123456'});
   });
 
   test('deve retornar LoginDto a partir de um Map', () {
-    final result = LoginDto.fromMap({
+    final result = LoginDto.fromJson({
       'email': 'teste@gmail.com',
       'password': '123456',
     });

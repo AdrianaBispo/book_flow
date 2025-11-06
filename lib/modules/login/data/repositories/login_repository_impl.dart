@@ -14,7 +14,7 @@ class LoginRepositoryImpl implements LoginRepository {
       final AuthResponse user = await dataSource.login(
         loginDto: login as dynamic,
       );
-      final UserLoginEntity useData = LoginDto.fromMap(user.user!.toJson());
+      final UserLoginEntity useData = LoginDto.fromJson(user.user!.toJson());
       return Right(useData);
     } on AuthException catch (e, s) {
       switch (e.message.toLowerCase()) {
