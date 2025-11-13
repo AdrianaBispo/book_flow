@@ -6,7 +6,6 @@ import '../../../../../testing/fakes/fakes.dart';
 import '../../../../../testing/mocks/mocks.dart';
 
 
-
 void main() {
   late MockFavoritoRepository favoritoRepository;
   late ObterFavoritoUsecaseImpl usecase;
@@ -19,11 +18,11 @@ void main() {
   test('deve retornar List<FavoritoEntity> quando for  bem-sucedida', () async {
     when(
       () => favoritoRepository.getFavorites(any()),
-    ).thenAnswer((_) async => const Right(<FavoritoEntity>[]));
+    ).thenAnswer((_) async => const Right(<FavoritEntity>[]));
 
     final result = await usecase.call(1);
     expect(result.isRight(), true);
-    expect(result.getOrElse(() => []), isA<List<FavoritoEntity>>());
+    expect(result.getOrElse(() => []), isA<List<FavoritEntity>>());
   });
 
   test('deve retornar AppException em caso de erro', () async {
