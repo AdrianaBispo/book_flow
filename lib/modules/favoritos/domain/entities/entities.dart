@@ -1,1 +1,1 @@
-export 'favorito_entity.dart';
+export 'favorit_entity.dart';
