@@ -1,4 +1,4 @@
-abstract class FavoritoEntity {
+abstract class FavoritEntity {
   final int id;
   final String title;
   final String author;
@@ -6,7 +6,7 @@ abstract class FavoritoEntity {
   final String? downloadUrl;
   final String? genero;
 
-  FavoritoEntity({
+  FavoritEntity({
     required this.id,
     required this.author,
     required this.title,
