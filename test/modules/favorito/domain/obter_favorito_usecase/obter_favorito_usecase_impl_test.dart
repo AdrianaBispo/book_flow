@@ -2,13 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:myapp/modules/favoritos/domain/domain.dart';
-import 'package:myapp/utils/utils.dart';
+import '../../../../../testing/fakes/fakes.dart';
+import '../../../../../testing/mocks/mocks.dart';
 
-class MockFavoritoRepository extends Mock implements FavoritesRepository {}
 
-class FakeAppException extends AppException {
-  FakeAppException() : super();
-}
 
 void main() {
   late MockFavoritoRepository favoritoRepository;
@@ -21,7 +18,7 @@ void main() {
   
   test('deve retornar List<FavoritoEntity> quando for  bem-sucedida', () async {
     when(
-      () => favoritoRepository.obterFavoritos(any()),
+      () => favoritoRepository.getFavorites(any()),
     ).thenAnswer((_) async => const Right(<FavoritoEntity>[]));
 
     final result = await usecase.call(1);
@@ -31,7 +28,7 @@ void main() {
 
   test('deve retornar AppException em caso de erro', () async {
     when(
-      () => favoritoRepository.obterFavoritos(any()),
+      () => favoritoRepository.getFavorites(any()),
     ).thenAnswer((_) async => Left(FakeAppException()));
 
     final result = await usecase.call(1);
