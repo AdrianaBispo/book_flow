@@ -1,6 +1,6 @@
 import 'package:myapp/modules/modules.dart';
 import 'package:myapp/utils/utils.dart';
 
-abstract class RemoverFavoritoUsecase {
+abstract class RemoveFavoriteUsecase {
   Future<Either<AppException, void>> call(int favoriteId);
 }

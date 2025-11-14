@@ -1,11 +1,11 @@
 import 'package:myapp/modules/modules.dart';
 import 'package:myapp/utils/utils.dart';
-import 'remover_favorito_usecase.dart';
+import 'remove_favorite_usecase.dart';
 
-class RemoverFavoritoUsecaseImpl implements RemoverFavoritoUsecase {
+class RemoveFavoriteUsecaseImpl implements RemoveFavoriteUsecase {
   final FavoriteRepository repository;
 
-  RemoverFavoritoUsecaseImpl({required this.repository});
+  RemoveFavoriteUsecaseImpl({required this.repository});
 
   @override
   Future<Either<AppException, void>> call(int favoriteId) async{
