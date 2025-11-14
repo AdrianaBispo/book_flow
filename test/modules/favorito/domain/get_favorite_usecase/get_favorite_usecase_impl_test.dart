@@ -8,11 +8,11 @@ import '../../../../../testing/mocks/mocks.dart';
 
 void main() {
   late MockFavoritoRepository favoritoRepository;
-  late ObterFavoritoUsecaseImpl usecase;
+  late GetFavoriteUsecaseImpl usecase;
 
   setUp(() {
     favoritoRepository = MockFavoritoRepository();
-    usecase = ObterFavoritoUsecaseImpl(repository: favoritoRepository);
+    usecase = GetFavoriteUsecaseImpl(repository: favoritoRepository);
   });
   
   test('deve retornar List<FavoritoEntity> quando for  bem-sucedida', () async {
