@@ -8,11 +8,11 @@ import '../../../../../testing/mocks/mocks.dart';
 
 void main() {
   late MockFavoritoRepository favoritoRepository;
-  late RemoverFavoritoUsecaseImpl usecase;
+  late RemoveFavoriteUsecaseImpl usecase;
 
   setUp(() {
     favoritoRepository = MockFavoritoRepository();
-    usecase = RemoverFavoritoUsecaseImpl(repository: favoritoRepository);
+    usecase = RemoveFavoriteUsecaseImpl(repository: favoritoRepository);
   });
   test('deve retornar void quando a remoção for bem-sucedida', () async {
     when(
