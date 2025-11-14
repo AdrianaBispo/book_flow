@@ -1,6 +1,6 @@
 import 'package:myapp/modules/favoritos/domain/domain.dart';
 
-class FavoritoDto implements FavoritoEntity {
+class FavoritoDto implements FavoritEntity {
   final int id;
   final String title;
   final String author;
