@@ -1,11 +1,11 @@
 import 'package:myapp/modules/modules.dart';
 import 'package:myapp/utils/utils.dart';
-import 'obter_favorito_usecase.dart';
+import 'get_favorite_usecase.dart';
 
-class ObterFavoritoUsecaseImpl implements ObterFavoritoUsecase {
+class GetFavoriteUsecaseImpl implements GetFavoriteUsecase {
   final FavoriteRepository repository;
 
-  ObterFavoritoUsecaseImpl({required this.repository});
+  GetFavoriteUsecaseImpl({required this.repository});
 
   @override
   Future<Either<AppException, List<FavoritEntity>>> call(int idUser) async{
