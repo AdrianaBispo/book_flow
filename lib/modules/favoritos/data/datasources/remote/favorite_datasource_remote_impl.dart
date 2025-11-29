@@ -11,7 +11,7 @@ class FavoriteDatasourceRemoteImpl implements FavoriteDatasourceRemote {
   Future<List<FavoritoDto>> getFavoriteList({required int idUser}) async {
     try {
       final response = await client
-          .from('favorites')
+          .from('vw_favoritos')
           .select()
           .eq('user_id', idUser);
 
@@ -31,7 +31,7 @@ class FavoriteDatasourceRemoteImpl implements FavoriteDatasourceRemote {
   }) async {
     try {
       await client
-          .from('favorites')
+          .from('sgb_favoritos')
           .delete()
           .eq('id', favoriteId)
           .eq('user_id', idUser);
