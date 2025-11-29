@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/utils/utils.dart';
+import 'package:myapp/core/utils/utils.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class AppScaffold extends StatefulWidget {

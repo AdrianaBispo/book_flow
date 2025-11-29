@@ -1,5 +1,5 @@
 import 'package:myapp/modules/modules.dart';
-import 'package:myapp/utils/utils.dart';
+import 'package:myapp/core/utils/utils.dart';
 
 class SearchUsecaseImpl implements SearchUsecase {
     final SearchRepository _repository;

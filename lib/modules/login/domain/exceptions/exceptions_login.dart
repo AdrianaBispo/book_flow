@@ -1,4 +1,4 @@
-import 'package:myapp/utils/utils.dart';
+import 'package:myapp/core/utils/utils.dart';
 
 class InvalidCredentialsException extends AppException {
   InvalidCredentialsException({super.stackTrace});

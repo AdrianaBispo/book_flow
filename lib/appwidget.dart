@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/l10n/app_localizations.dart';
-import 'package:myapp/utils/utils.dart';
 import 'core/core.dart';
 import 'modules/modules.dart';
 

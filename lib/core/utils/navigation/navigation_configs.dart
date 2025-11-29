@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/core.dart';
-import 'package:myapp/modules/biblioteca/presenter/view/biblioteca_view.dart';
 import 'package:myapp/modules/favoritos/presenter/view/favoritos_view.dart';
-import '../../modules/perfil/presenter/view/perfil_view.dart';
-import '../../modules/search/presenter/view/search_view.dart';
-import 'route_path.dart';
+import '../../../modules/perfil/presenter/view/perfil_view.dart';
 import 'package:myapp/modules/modules.dart';
 
 abstract class NavigationConfigs {

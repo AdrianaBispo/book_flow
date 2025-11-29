@@ -1,5 +1,5 @@
 import 'package:myapp/modules/modules.dart';
-import 'package:myapp/utils/utils.dart';
+import 'package:myapp/core/utils/utils.dart';
 import 'get_favorite_usecase.dart';
 
 class GetFavoriteUsecaseImpl implements GetFavoriteUsecase {

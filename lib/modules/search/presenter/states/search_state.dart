@@ -1,5 +1,5 @@
 import 'package:myapp/modules/modules.dart';
-import 'package:myapp/utils/exceptions/app_exception.dart';
+import 'package:myapp/core/utils/exceptions/app_exception.dart';
 
 abstract class SearchState {
   const SearchState();

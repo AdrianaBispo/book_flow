@@ -1,4 +1,4 @@
-import 'package:myapp/utils/utils.dart';
+import 'package:myapp/core/utils/utils.dart';
 import 'package:myapp/modules/modules.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
