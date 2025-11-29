@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/theme/app_colors.dart';
+import 'package:myapp/core/core.dart';
 import 'package:myapp/modules/search/search.dart';
 
 class SearchCard extends StatefulWidget {
@@ -38,10 +38,16 @@ class _SearchCardState extends State<SearchCard>
             width: 70,
             height: 100,
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(widget.ebook.coverUrl!),
-                fit: BoxFit.cover,
-              ),
+              image: widget.ebook.coverUrl == ''
+                  ? DecorationImage(
+                      image:
+                          const AssetImage(AppAssets.notfound) as ImageProvider,
+                      fit: BoxFit.contain,
+                    )
+                  : DecorationImage(
+                      image: NetworkImage(widget.ebook.coverUrl!),
+                      fit: BoxFit.cover,
+                    ),
               borderRadius: BorderRadius.circular(8),
             ),
           ),
@@ -70,25 +76,24 @@ class _SearchCardState extends State<SearchCard>
                 const SizedBox(height: 8),
                 widget.ebook.genero!.isEmpty
                     ? const SizedBox.shrink()
-                    :
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.purple20,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Text(
-                    widget.ebook.genero ?? '',
-                    style: TextTheme.of(context).bodySmall!.copyWith(
-                      color: AppColors.primaryPurple,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 10,
-                    ),
-                  ),
-                ),
+                    : Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.purple20,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          widget.ebook.genero ?? '',
+                          style: TextTheme.of(context).bodySmall!.copyWith(
+                            color: AppColors.primaryPurple,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
               ],
             ),
           ),
@@ -102,7 +107,9 @@ class _SearchCardState extends State<SearchCard>
 
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Visualizar livro "${widget.ebook.title}"')),
+                SnackBar(
+                  content: Text('Visualizar livro "${widget.ebook.title}"'),
+                ),
               );
             },
           ),
