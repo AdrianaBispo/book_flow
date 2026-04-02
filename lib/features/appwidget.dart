@@ -30,7 +30,12 @@ class AppWidget extends StatelessWidget {
         Provider<LoginWithEmailAndPasswordImpl>(
           create: (context) => LoginWithEmailAndPasswordImpl(
            // dataSource: context.read<SearchDataSourceRemoteImpl>(),
+           context.read<LoginRepositoryImpl>(),
           ),
+
+        ),
+        Provider<SearchUsecaseImpl>(
+          create: (context) => SearchUsecaseImpl(context.read<SearchRepositoryImpl>()),
 
         ),
       ],
@@ -41,7 +46,7 @@ class AppWidget extends StatelessWidget {
           ),
           BlocProvider<SearchBloc>(
             create: (context) =>
-                SearchBloc(repository: context.read<SearchRepository>()),
+                SearchBloc(usecaseSearch: context.read<SearchUsecaseImpl>()),
           ),
         ],
         child: ScreenUtilInit(

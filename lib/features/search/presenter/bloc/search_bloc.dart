@@ -1,9 +1,10 @@
 import 'package:myapp/modules/modules.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final SearchRepository repository;
+  //final SearchRepository repository;
+  final Usecase<Either<AppException, List<ResultSearchEntity>>> usecaseSearch;
 
-  SearchBloc({required this.repository}) : super(const SearchInitial()) {
+  SearchBloc({required this.usecaseSearch}) : super(const SearchInitial()) {
     on<SearchTextChanged>(_onSearchTextChanged);
     on<SearchCleared>(_onSearchCleared);
   }
@@ -16,7 +17,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
     emit(const SearchLoading());
 
-    final result = await repository.search(searchText);
+    final result = await usecaseSearch(searchText);
 
     result.fold(
       (exception) {
