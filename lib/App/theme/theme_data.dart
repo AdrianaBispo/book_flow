@@ -177,15 +177,6 @@ abstract class AppTheme {
         borderSide: const BorderSide(color: AppColors.error, width: 2.0),
       ),
 
-      focusedSuccessBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.success, width: 2.0),
-      ),
-      successBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: AppColors.success, width: 1.0),
-      ),
-
       // Border desabilitado
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
