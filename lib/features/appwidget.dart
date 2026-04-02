@@ -27,11 +27,17 @@ class AppWidget extends StatelessWidget {
             dataSource: context.read<SearchDataSourceRemoteImpl>(),
           ),
         ),
+        Provider<LoginWithEmailAndPasswordImpl>(
+          create: (context) => LoginWithEmailAndPasswordImpl(
+           // dataSource: context.read<SearchDataSourceRemoteImpl>(),
+          ),
+
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider<LoginBloc>(
-            create: (context) => LoginBloc(context.read<LoginRepository>()),
+            create: (context) => LoginBloc(context.read<LoginWithEmailAndPasswordImpl>()),
           ),
           BlocProvider<SearchBloc>(
             create: (context) =>

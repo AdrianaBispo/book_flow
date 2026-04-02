@@ -1,9 +1,11 @@
 import '../../../modules.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final LoginRepository loginRepository;
+  //final LoginRepository loginRepository;
+  //final LoginWithEmailAndPassword usecaseEmail;
+  final Usecase<Either, void> usecases;
 
-  LoginBloc(this.loginRepository) : super(LoginState()) {
+  LoginBloc(this.usecaseEmail) : super(LoginState()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginSubmitted>(_onSubmitted);
@@ -33,10 +35,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) async {
     if (!state.isFormValid) return;
+    
     emit(state.copyWith(status: LoginStatus.loading));
 
-    final result = await loginRepository.loginWithEmailAndPassword(
-      LoginDto(email: state.email, password: state.password),
+    final result = await usecaseEmail(
+      UserLoginEntity(email: state.email, password: state.password),
     );
     result.fold(
       (l) {

@@ -1,7 +1,7 @@
 import 'package:myapp/modules/modules.dart';
 import 'package:myapp/core/utils/utils.dart';
 
-class LoginWithEmailAndPasswordImpl implements LoginWithEmailAndPassword {
+class LoginWithEmailAndPasswordImpl implements Usecase<Either, void>  {
   final LoginRepository _repository;
 
   LoginWithEmailAndPasswordImpl(this._repository);

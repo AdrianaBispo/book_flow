@@ -8,12 +8,12 @@ class FavoriteDatasourceRemoteImpl implements FavoriteDatasourceRemote {
   FavoriteDatasourceRemoteImpl({required this.client});
 
   @override
-  Future<List<FavoritoDto>> getFavoriteList({required int idUser}) async {
+  Future<List<FavoritoDto>> getFavoriteList() async {
     try {
       final response = await client
           .from('vw_favoritos')
           .select()
-          .eq('user_id', idUser);
+          .eq('user_id', client.auth.user?.id);
 
       List<FavoritoDto> data = response
           .map((toElement) => FavoritoDto.fromJson(toElement))
@@ -26,15 +26,14 @@ class FavoriteDatasourceRemoteImpl implements FavoriteDatasourceRemote {
 
   @override
   Future<void> removeFavorite({
-    required int favoriteId,
-    required int idUser,
+    required int favoriteId
   }) async {
     try {
       await client
           .from('sgb_favoritos')
           .delete()
           .eq('id', favoriteId)
-          .eq('user_id', idUser);
+          .eq('user_id', client.auth.user?.id);
     } catch (e) {
       throw Exception(e);
     }
