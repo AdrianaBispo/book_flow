@@ -12,6 +12,9 @@ abstract class AppTheme {
       primary: AppColors.primaryPurple,
       secondary: AppColors.secondaryYellow,
       surface: AppColors.lightCard,
+      error: AppColors.error,  // Cor de erro
+      onError: AppColors.lightBackground,   // Cor de texto para erro (usado em Snackbar, por exemplo)    
+      onSurface: AppColors.lightBackground, 
     ),
 
     dividerColor: AppColors.lightBorder,
@@ -172,6 +175,15 @@ abstract class AppTheme {
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(color: AppColors.error, width: 2.0),
+      ),
+
+      focusedSuccessBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: AppColors.success, width: 2.0),
+      ),
+      successBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: AppColors.success, width: 1.0),
       ),
 
       // Border desabilitado
