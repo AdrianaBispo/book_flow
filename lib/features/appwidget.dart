@@ -38,6 +38,15 @@ class AppWidget extends StatelessWidget {
           create: (context) => SearchUsecaseImpl(context.read<SearchRepositoryImpl>()),
 
         ),
+        Provider<HelpDatasourceImpl>(
+          create: (_) => HelpDatasourceImpl(),
+        ),
+        Provider<HelpRepositoryImpl>(
+          create: (context) => HelpRepositoryImpl(context.read<HelpDatasourceImpl>()),
+        ),
+        Provider<GetHelpItemsImpl>(
+          create: (context) => GetHelpItemsImpl(context.read<HelpRepositoryImpl>()),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -47,6 +56,9 @@ class AppWidget extends StatelessWidget {
           BlocProvider<SearchBloc>(
             create: (context) =>
                 SearchBloc(usecaseSearch: context.read<SearchUsecaseImpl>()),
+          ),
+          BlocProvider<HelpBloc>(
+            create: (context) => HelpBloc(getHelpItems: context.read<GetHelpItemsImpl>()),
           ),
         ],
         child: ScreenUtilInit(

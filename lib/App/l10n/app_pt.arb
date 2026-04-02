@@ -100,6 +100,20 @@
   "searchPlaceholder": "Digite algo para buscar livros",
   "searchBarHintText": "Buscar livros",
   "emptyResultSearchTitle": "Tente buscar com outros termos",
-  "emptyResultSearchSubtitle": "'Tente buscar com outros termos"
-
+  "emptyResultSearchSubtitle": "'Tente buscar com outros termos",
+  "helpHeaderTitle": "Como podemos ajudar?",
+  "helpHeaderSubtitle": "Encontre respostas para as dúvidas mais frequentes.",
+  "faq1Title": "Como criar uma conta?",
+  "faq1Content": "Para criar uma conta, clique no botão 'Criar conta' na tela de login e preencha seus dados.",
+  "faq2Title": "Como recuperar minha senha?",
+  "faq2Content": "Na tela de login, clique em 'Esqueci minha senha' para receber um e-mail de recuperação.",
+  "faq3Title": "Como buscar livros?",
+  "faq3Content": "Use a barra de busca na tela principal para encontrar livros por título, autor ou gênero.",
+  "faq4Title": "Como favoritar um livro?",
+  "faq4Content": "Ao abrir os detalhes de um livro, clique no ícone de coração para adicioná-lo aos seus favoritos.",
+  "faq5Title": "Posso ler offline?",
+  "faq5Content": "Sim, você pode baixar livros para ler quando não estiver conectado à internet.",
+  "contactSupport": "Falar com Suporte",
+  "contactSupportLegend": "Não encontrou o que procurava?",
+  "contactSupportDescription": "Nossa equipe de suporte está pronta para ajudar você."
 }

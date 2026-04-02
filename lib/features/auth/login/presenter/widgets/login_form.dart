@@ -140,7 +140,7 @@ class LoginForm extends StatelessWidget {
                   children: [
                     TextButton(
                       onPressed: () {
-                        // Implementar página de ajuda
+                        NavigationConfigs.push(routePath: RoutePath.help);
                       },
                       child: Text(
                         AppLocalizations.of(context)!.help,

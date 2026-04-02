@@ -99,7 +99,20 @@
   "searchPlaceholder": "Type something to search for books",
   "searchBarHintText": "Search books",
   "emptyResultSearchTitle": "Try searching with different terms",
-  "emptyResultSearchSubtitle": "Try searching with different keywords"
-
-
+  "emptyResultSearchSubtitle": "Try searching with different keywords",
+  "helpHeaderTitle": "How can we help?",
+  "helpHeaderSubtitle": "Find answers to the most frequently asked questions.",
+  "faq1Title": "How to create an account?",
+  "faq1Content": "To create an account, click the 'Create account' button on the login screen and fill in your details.",
+  "faq2Title": "How to recover my password?",
+  "faq2Content": "On the login screen, click 'Forgot my password' to receive a recovery email.",
+  "faq3Title": "How to search for books?",
+  "faq3Content": "Use the search bar on the main screen to find books by title, author, or genre.",
+  "faq4Title": "How to favorite a book?",
+  "faq4Content": "When opening the details of a book, click on the heart icon to add it to your favorites.",
+  "faq5Title": "Can I read offline?",
+  "faq5Content": "Yes, you can download books to read when you are not connected to the internet.",
+  "contactSupport": "Contact Support",
+  "contactSupportLegend": "Didn't find what you were looking for?",
+  "contactSupportDescription": "Our support team is ready to help you."
 }

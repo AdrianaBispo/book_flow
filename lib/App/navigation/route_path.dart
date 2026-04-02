@@ -20,4 +20,7 @@ abstract class RoutePath {
   //PERFIL
   static const perfil = '/perfil';
 
+  //HELP
+  static const help = '/help';
+
 }

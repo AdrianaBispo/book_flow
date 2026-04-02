@@ -11,3 +11,4 @@ export 'login/login.dart';
 export 'search/search.dart';
 //export 'biblioteca/biblioteca.dart';
 export 'favoritos/favoritos.dart';
+export 'help/help.dart';

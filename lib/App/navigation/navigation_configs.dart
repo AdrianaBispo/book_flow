@@ -3,6 +3,7 @@ import 'package:myapp/core/core.dart';
 import 'package:myapp/modules/favoritos/presenter/view/favoritos_view.dart';
 import '../../../modules/perfil/presenter/view/perfil_view.dart';
 import 'package:myapp/modules/modules.dart';
+import 'package:myapp/features/help/presenter/view/help_view.dart';
 
 abstract class NavigationConfigs {
   static final GlobalKey<ScaffoldState> scaffoldKey =
@@ -23,6 +24,11 @@ abstract class NavigationConfigs {
         path: RoutePath.login,
         builder: (_, state) => LoginView(),
         name: 'LOGIN',
+      ),
+      GoRoute(
+        path: RoutePath.help,
+        builder: (_, state) => const HelpView(),
+        name: 'HELP',
       ),
       ShellRoute(
         builder: (context, state, child) {
