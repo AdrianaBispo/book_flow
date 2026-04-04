@@ -1,11 +1,15 @@
-import '../../../modules.dart';
+import 'package:myapp/app/app.dart';
+// import '../../../../../shared/shared.dart';
+import '../../login.dart';
+//import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myapp/shared/shared.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   //final LoginRepository loginRepository;
   //final LoginWithEmailAndPassword usecaseEmail;
-  final Usecase<Either, void> usecases;
+  final Usecase usecases;
 
-  LoginBloc(this.usecaseEmail) : super(LoginState()) {
+  LoginBloc({required this.usecases}) : super(LoginState()) {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginSubmitted>(_onSubmitted);
@@ -35,11 +39,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) async {
     if (!state.isFormValid) return;
-    
+
     emit(state.copyWith(status: LoginStatus.loading));
 
-    final result = await usecaseEmail(
-      UserLoginEntity(email: state.email, password: state.password),
+    final result = await usecases(
+      param: LoginDto(email: state.email, password: state.password),
     );
     result.fold(
       (l) {

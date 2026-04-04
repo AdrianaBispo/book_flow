@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/core.dart';
-import 'package:myapp/modules/favoritos/presenter/view/favoritos_view.dart';
-import '../../../modules/perfil/presenter/view/perfil_view.dart';
-import 'package:myapp/modules/modules.dart';
-import 'package:myapp/features/help/presenter/view/help_view.dart';
+import 'package:myapp/app/app.dart';
+import 'package:myapp/features/features.dart';
+
+import '../../shared/shared.dart';
 
 abstract class NavigationConfigs {
   static final GlobalKey<ScaffoldState> scaffoldKey =
@@ -30,44 +29,44 @@ abstract class NavigationConfigs {
         builder: (_, state) => const HelpView(),
         name: 'HELP',
       ),
-      ShellRoute(
-        builder: (context, state, child) {
-          return AppScaffold(child: child);
-        },
-        navigatorKey: shellNavigationKey,
-        routes: [
-          GoRoute(
-            path: RoutePath.home,
-            builder: (_, state) => const FavoritosView(),
-            parentNavigatorKey: shellNavigationKey,
-            name: 'HOME',
-          ),
-          GoRoute(
-            path: RoutePath.search,
-            builder: (_, state) => const SearchView(),
-            parentNavigatorKey: shellNavigationKey,
-            name: 'SEARCH',
-          ),
-          GoRoute(
-            path: RoutePath.biblioteca,
-            builder: (_, state) => const SearchView(),
-            parentNavigatorKey: shellNavigationKey,
-            name: 'BIBLIOTECA',
-          ),
-          GoRoute(
-            path: RoutePath.favoritos,
-            builder: (_, state) => const FavoritosView(),
-            parentNavigatorKey: shellNavigationKey,
-            name: 'FAVORITOS',
-          ),
-          GoRoute(
-            path: RoutePath.perfil,
-            builder: (_, state) => const PerfilView(),
-            parentNavigatorKey: shellNavigationKey,
-            name: 'PERFIL',
-          ),
-        ],
-      ),
+      // ShellRoute(
+      //   builder: (context, state, child) {
+      //     return AppScaffold(child: child);
+      //   },
+      //   navigatorKey: shellNavigationKey,
+      //  // routes: [
+          // GoRoute(
+          //   path: RoutePath.home,
+          //   builder: (_, state) => const SearchView(),
+          //   parentNavigatorKey: shellNavigationKey,
+          //   name: 'HOME',
+          // ),
+          // GoRoute(
+          //   path: RoutePath.search,
+          //   builder: (_, state) => const SearchView(),
+          //   parentNavigatorKey: shellNavigationKey,
+          //   name: 'SEARCH',
+          // ),
+          // GoRoute(
+          //   path: RoutePath.biblioteca,
+          //   builder: (_, state) => const SearchView(),
+          //   parentNavigatorKey: shellNavigationKey,
+          //   name: 'BIBLIOTECA',
+          // ),
+          // GoRoute(
+          //   path: RoutePath.favoritos,
+          //   builder: (_, state) => const SearchView(),
+          //   parentNavigatorKey: shellNavigationKey,
+          //   name: 'FAVORITOS',
+          // ),
+          // GoRoute(
+          //   path: RoutePath.perfil,
+          //   builder: (_, state) => const SearchView(),
+          //   parentNavigatorKey: shellNavigationKey,
+          //   name: 'PERFIL',
+          // ),
+     //   ],
+     // ),
     ],
   );
   static String get currentRoute {

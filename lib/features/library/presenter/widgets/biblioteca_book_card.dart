@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/theme/app_colors.dart';
-import 'package:myapp/modules/search/search.dart';
+
+import '../../../../app/app.dart';
+import '../../../features.dart';
 
 class BibliotecaBookCard extends StatefulWidget {
   final ResultSearchDto ebook;

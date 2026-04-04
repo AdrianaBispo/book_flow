@@ -1,5 +1,6 @@
-import 'package:myapp/core/utils/utils.dart';
-import 'package:myapp/modules/modules.dart';
+import 'package:myapp/app/app.dart';
+import '../../../../../shared/shared.dart';
+import '../../login.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
   final LoginDatasouceRemote dataSource;
@@ -8,7 +9,7 @@ class LoginRepositoryImpl implements LoginRepository {
 
   @override
   Future<Either<AppException, UserLoginEntity>> loginWithEmailAndPassword(
-    UserLoginEntity login,
+    UserLoginEntity? login,
   ) async {
     try {
       final AuthResponse user = await dataSource.login(

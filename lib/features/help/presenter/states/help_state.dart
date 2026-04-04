@@ -1,10 +1,12 @@
-import '../../domain/entities/help_item.dart';
+import 'package:myapp/features/features.dart';
+
+//import '../../domain/entities/help_item.dart';
 
 enum HelpStatus { initial, loading, success, failure }
 
 class HelpState {
   final HelpStatus status;
-  final List<HelpItem> items;
+  final List<HelpItemDto> items;
   final String? errorMessage;
 
   const HelpState({
@@ -15,7 +17,7 @@ class HelpState {
 
   HelpState copyWith({
     HelpStatus? status,
-    List<HelpItem>? items,
+    List<HelpItemDto>? items,
     String? errorMessage,
   }) {
     return HelpState(

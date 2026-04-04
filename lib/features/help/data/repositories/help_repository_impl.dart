@@ -1,20 +1,19 @@
+import 'package:myapp/app/exceptions/app_exception.dart';
 import 'package:myapp/features/features.dart';
-import '../../domain/entities/help_item.dart';
-import '../../domain/repositories/help_repository.dart';
-import '../datasources/help_datasource.dart';
+import 'package:dartz/dartz.dart';
 
 class HelpRepositoryImpl implements HelpRepository {
-  final HelpDatasource datasource;
+  final HelpDatasourceLocal datasource;
 
   HelpRepositoryImpl(this.datasource);
 
   @override
-  Future<Either<dynamic, List<HelpItem>>> getHelpItems() async {
+  Future<Either<AppException, List<HelpItemEntity>>> getHelpItems() async {
     try {
       final items = await datasource.getHelpItems();
       return Right(items);
     } catch (e) {
-      return Left(e);
+      return Left(UnknownHelpException(stackTrace: StackTrace.current));
     }
   }
 }

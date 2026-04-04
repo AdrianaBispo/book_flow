@@ -3,19 +3,20 @@ import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:bloc_test/bloc_test.dart';
 
-import 'package:myapp/modules/login/login.dart';
+import 'package:myapp/features/auth/login/login.dart';
+import 'package:myapp/app/app.dart';
 
-class MockLoginRepository extends Mock implements LoginRepositoryImpl {}
+class MockLoginUsecase extends Mock implements Usecase {}
 
 class FakeLoginDto extends Fake implements LoginDto {}
 
 void main() {
   late LoginBloc loginBloc;
-  late MockLoginRepository mockLoginRepository;
+  late MockLoginUsecase mockLoginUsecase;
 
   setUp(() {
-    mockLoginRepository = MockLoginRepository();
-    loginBloc = LoginBloc(mockLoginRepository);
+    mockLoginUsecase = MockLoginUsecase();
+    loginBloc = LoginBloc(usecases: mockLoginUsecase);
   });
 
   setUpAll(() {
@@ -68,7 +69,7 @@ void main() {
     'deve emitir [loading, success] quando o login for bem-sucedido',
     build: () {
       when(
-        () => mockLoginRepository.loginWithEmailAndPassword(any()),
+        () => mockLoginUsecase.call(param: any(named: 'param')),
       ).thenAnswer(
         (_) async => Right(LoginDto(email: 'a@b.com', password: '123456')),
       );

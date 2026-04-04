@@ -81,4 +81,56 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get emptyResultSearchSubtitle => '\'Tente buscar com outros termos';
+
+  @override
+  String get helpHeaderTitle => 'Como podemos ajudar?';
+
+  @override
+  String get helpHeaderSubtitle =>
+      'Encontre respostas para as dúvidas mais frequentes.';
+
+  @override
+  String get faq1Title => 'Como criar uma conta?';
+
+  @override
+  String get faq1Content =>
+      'Para criar uma conta, clique no botão \'Criar conta\' na tela de login e preencha seus dados.';
+
+  @override
+  String get faq2Title => 'Como recuperar minha senha?';
+
+  @override
+  String get faq2Content =>
+      'Na tela de login, clique em \'Esqueci minha senha\' para receber um e-mail de recuperação.';
+
+  @override
+  String get faq3Title => 'Como buscar livros?';
+
+  @override
+  String get faq3Content =>
+      'Use a barra de busca na tela principal para encontrar livros por título, autor ou gênero.';
+
+  @override
+  String get faq4Title => 'Como favoritar um livro?';
+
+  @override
+  String get faq4Content =>
+      'Ao abrir os detalhes de um livro, clique no ícone de coração para adicioná-lo aos seus favoritos.';
+
+  @override
+  String get faq5Title => 'Posso ler offline?';
+
+  @override
+  String get faq5Content =>
+      'Sim, você pode baixar livros para ler quando não estiver conectado à internet.';
+
+  @override
+  String get contactSupport => 'Falar com Suporte';
+
+  @override
+  String get contactSupportLegend => 'Não encontrou o que procurava?';
+
+  @override
+  String get contactSupportDescription =>
+      'Nossa equipe de suporte está pronta para ajudar você.';
 }

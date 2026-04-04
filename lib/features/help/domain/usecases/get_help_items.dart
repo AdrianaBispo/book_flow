@@ -1,18 +1,17 @@
-import 'package:myapp/features/features.dart';
-import '../entities/help_item.dart';
-import '../repositories/help_repository.dart';
+import 'package:myapp/app/app.dart';
+import '../../../../shared/shared.dart';
+import '../domain.dart';
 
-abstract class GetHelpItems {
-  Future<Either<dynamic, List<HelpItem>>> call();
-}
 
-class GetHelpItemsImpl implements GetHelpItems {
+class GetHelpItemsImpl implements Usecase<Either, List<HelpItemEntity>> {
   final HelpRepository repository;
 
   GetHelpItemsImpl(this.repository);
 
   @override
-  Future<Either<dynamic, List<HelpItem>>> call() async {
+  Future<Either<AppException, List<HelpItemEntity>>> call({
+    List<HelpItemEntity>? param,
+  }) async {
     return await repository.getHelpItems();
   }
 }

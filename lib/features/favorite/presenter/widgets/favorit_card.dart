@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/theme/app_colors.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import '../../../../app/app.dart';
 
 class FavoriteBookCard extends StatelessWidget {
   final String title;

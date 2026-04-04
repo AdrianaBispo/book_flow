@@ -117,7 +117,7 @@ class TextFormFieldWidget extends StatelessWidget {
     this.restorationId,
     this.enableIMEPersonalizedLearning = true,
     this.mouseCursor,
-  }) : super(key: key); 
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +136,7 @@ class TextFormFieldWidget extends StatelessWidget {
           keyboardType: keyboardType,
           textInputAction: textInputAction,
           textCapitalization: textCapitalization,
-          style:style ?? Theme.of(context).textTheme.bodyMedium?.copyWith(),
+          style: style ?? Theme.of(context).textTheme.bodyMedium?.copyWith(),
           strutStyle: strutStyle,
           textAlign: textAlign,
           textAlignVertical: textAlignVertical,

@@ -1,4 +1,5 @@
-import 'package:myapp/modules/modules.dart';
+import '../../../../../../shared/shared.dart';
+import '../../../login.dart';
 
 class LoginDatasouceRemoteImpl extends LoginDatasouceRemote {
   final SupabaseClient supabaseClient;

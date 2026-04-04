@@ -1,10 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/usecases/get_help_items.dart';
-import 'help_event.dart';
-import 'help_state.dart';
+import 'package:myapp/app/app.dart';
+import '../presenter.dart';
 
 class HelpBloc extends Bloc<HelpEvent, HelpState> {
-  final GetHelpItems getHelpItems;
+  final Usecase getHelpItems;
 
   HelpBloc({required this.getHelpItems}) : super(const HelpState()) {
     on<HelpGetItemsStarted>(_onGetItemsStarted);

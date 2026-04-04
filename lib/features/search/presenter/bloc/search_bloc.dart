@@ -1,4 +1,6 @@
-import 'package:myapp/modules/modules.dart';
+import 'package:dartz/dartz.dart';
+
+import '../../../../app/app.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   //final SearchRepository repository;
