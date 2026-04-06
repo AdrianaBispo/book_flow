@@ -37,8 +37,8 @@ class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
     if (_box.containsKey(book.id)) return;
 
     final (epubPath, coverPath) = await _remoteDataSource.downloadBook(
-      epubUrl: book.epubUrl,
-      coverUrl: book.coverUrl,
+      epubUrl: book.epubPath,
+      coverUrl: book.coverPath,
       fileName: book.id.toString(),
     );
 
