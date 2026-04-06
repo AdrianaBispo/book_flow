@@ -9,6 +9,7 @@ export 'package:flutter_localizations/flutter_localizations.dart';
 
 export 'login/login.dart';
 export 'search/search.dart';
-//export 'biblioteca/biblioteca.dart';
+export 'library/library.dart';
+
 export 'favoritos/favoritos.dart';
 export 'help/help.dart';
