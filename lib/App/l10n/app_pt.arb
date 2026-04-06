@@ -115,5 +115,12 @@
   "faq5Content": "Sim, você pode baixar livros para ler quando não estiver conectado à internet.",
   "contactSupport": "Falar com Suporte",
   "contactSupportLegend": "Não encontrou o que procurava?",
-  "contactSupportDescription": "Nossa equipe de suporte está pronta para ajudar você."
-}
+  "contactSupportDescription": "Nossa equipe de suporte está pronta para ajudar você.",
+  "myLibrary": "Minha Biblioteca",
+  "emptyLibraryTitle": "Sua biblioteca está vazia.",
+  "emptyLibrarySubtitle": "Explore a busca para baixar novos livros.",
+  "errorLoadingLibrary": "Erro ao carregar sua biblioteca.",
+  "tryAgain": "Tentar novamente",
+  "readingStatus": "Lendo...",
+  "newStatus": "NOVO"
+}
