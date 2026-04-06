@@ -3,4 +3,5 @@ abstract class LibraryLocalDataSource {
   Future<void> saveBook(LibraryDTO book);
   Future<bool> exists(int bookId);
   Future<void> removeBook(int bookId);
+  Future<void> openBook(String path);
 }

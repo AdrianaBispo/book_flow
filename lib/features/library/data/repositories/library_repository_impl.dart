@@ -54,5 +54,14 @@ class LibraryRepositoryImpl implements LibraryRepository {
     } catch (e) {
       return Left(AppException(message: 'Erro ao atualizar progresso: $e'));
     }
+  @override
+  Future<Either<AppException, void>> openBook(String path) async {
+    try {
+      await localDataSource.openBook(path);
+      return const Right(null);
+    } catch (e) {
+      return Left(AppException(message: 'Erro ao abrir livro: $e'));
+    }
   }
 }
+

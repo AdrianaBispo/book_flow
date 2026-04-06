@@ -72,6 +72,9 @@ class AppWidget extends StatelessWidget {
         Provider<RemoveBookFromLibraryUsecaseImpl>(
           create: (context) => RemoveBookFromLibraryUsecaseImpl(context.read<LibraryRepositoryImpl>()),
         ),
+        Provider<OpenBookUsecaseImpl>(
+          create: (context) => OpenBookUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -90,9 +93,11 @@ class AppWidget extends StatelessWidget {
               getListBooks: context.read<GetListBooksUsecaseImpl>(),
               addBook: context.read<AddBookInLibraryUsecaseImpl>(),
               removeBook: context.read<RemoveBookFromLibraryUsecaseImpl>(),
+              openBook: context.read<OpenBookUsecaseImpl>(),
             ),
           ),
         ],
+
 
         child: ScreenUtilInit(
           designSize: const Size(360, 690),

@@ -14,6 +14,12 @@ class RemoveBookFromLibrary extends LibraryEvent {
   RemoveBookFromLibrary(this.id);
 }
 
+class OpenBook extends LibraryEvent {
+  final String path;
+  OpenBook(this.path);
+}
+
+
 class UpdateReadingProgress extends LibraryEvent {
   final String id;
   final int page;

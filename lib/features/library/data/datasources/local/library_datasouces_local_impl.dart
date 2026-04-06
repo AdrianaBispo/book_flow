@@ -1,5 +1,9 @@
 import 'dart:io';
 import 'package:hive/hive.dart';
+import 'package:vocsy_epub_viewer/epub_viewer.dart';
+import 'package:myapp/core/core.dart';
+import '../datasources.dart';
+import '../../dtos/library_dto.dart';
 
 class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
   final Box _box;
@@ -76,4 +80,18 @@ class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
       await _box.delete(id);
     }
   }
-}
+
+  @override
+  Future<void> openBook(String path) async {
+    VocsyEpub.setConfig(
+      themeColor: AppColors.primaryPurple,
+      identifier: "iosBook",
+      scrollDirection: EpubScrollDirection.ALL_DIRECTIONS,
+      allowSharing: true,
+      enableTts: true,
+      nightMode: true,
+    );
+
+    VocsyEpub.open(path);
+  }
+}

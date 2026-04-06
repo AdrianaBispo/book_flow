@@ -6,15 +6,19 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
   final GetListBooksUsecaseImpl getListBooks;
   final AddBookInLibraryUsecaseImpl addBook;
   final RemoveBookFromLibraryUsecaseImpl removeBook;
+  final OpenBookUsecaseImpl openBook;
 
   LibraryBloc({
     required this.getListBooks,
     required this.addBook,
     required this.removeBook,
+    required this.openBook,
   }) : super(LibraryInitial()) {
     on<LoadLibrary>(_onLoadLibrary);
     on<RemoveBookFromLibrary>(_onRemoveBook);
+    on<OpenBook>(_onOpenBook);
   }
+
 
   Future<void> _onLoadLibrary(LoadLibrary event, Emitter<LibraryState> emit) async {
     emit(LibraryLoading());
@@ -32,4 +36,13 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
       (_) => add(LoadLibrary()),
     );
   }
+
+  Future<void> _onOpenBook(OpenBook event, Emitter<LibraryState> emit) async {
+    final result = await openBook(event.path);
+    result.fold(
+      (failure) => emit(LibraryFailure(failure)),
+      (_) => null, // No state change needed for opening external viewer
+    );
+  }
 }
+

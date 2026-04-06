@@ -9,4 +9,5 @@ abstract class LibraryRepository {
     required String id,
     required int page,
   });
-}
+  Future<Either<AppException, void>> openBook(String path);
+}

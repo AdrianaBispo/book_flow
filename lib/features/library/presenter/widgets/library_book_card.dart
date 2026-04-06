@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:myapp/core/core.dart';
+import 'package:myapp/App/l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../domain/domain.dart';
 
 class LibraryBookCard extends StatelessWidget {
