@@ -1,3 +1,5 @@
+import 'package:myapp/features/library/domain/domain.dart';
+
 class LibraryEntity {
   final String id;
   final String title;
