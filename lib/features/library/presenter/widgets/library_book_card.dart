@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/core/core.dart';
 import 'package:myapp/App/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../domain/domain.dart';
 
 class LibraryBookCard extends StatelessWidget {
@@ -17,37 +18,22 @@ class LibraryBookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12.r),
-      child: Container(
+      child: Padding(
         padding: EdgeInsets.all(12.w),
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(12.r),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withAlpha(0.05),
-              blurRadius: 10.r,
-              offset: Offset(0, 4.h),
-            ),
-          ],
-        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // 1. Capa do Livro
             Container(
-              width: 80.w,
-              height: 110.h,
+              width: 70.w,
+              height: 100.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.r),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withAlpha(0.2),
-                    blurRadius: 5.r,
-                    offset: Offset(2.w, 2.h),
-                  ),
-                ],
                 image: book.coverPath.isNotEmpty && File(book.coverPath).existsSync()
                     ? DecorationImage(
                         image: FileImage(File(book.coverPath)),
@@ -59,8 +45,9 @@ class LibraryBookCard extends StatelessWidget {
                       ),
               ),
             ),
-            SizedBox(width: 16.w),
+            SizedBox(width: 12.w),
 
+            // 2. Detalhes do Livro
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,78 +56,64 @@ class LibraryBookCard extends StatelessWidget {
                     book.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextTheme.of(context).titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
+                    style: theme.textTheme.titleSmall?.copyWith(
                       fontFamily: 'PT Serif',
-                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(height: 4.h),
                   Text(
                     book.author,
-                    style: TextTheme.of(context).bodySmall?.copyWith(
-                      color: AppColors.grey60,
-                      fontSize: 12.sp,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.textTheme.bodySmall?.color?.withAlpha(150),
                     ),
                   ),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 8.h),
 
-                  if (book.status != ReadingStatus.notStarted)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(4.r),
-                          child: LinearProgressIndicator(
-                            value: 0.1, // Placeholder since we don't have total pages yet
-                            backgroundColor: AppColors.grey20,
-                            valueColor: const AlwaysStoppedAnimation(AppColors.primaryPurple),
-                            minHeight: 6.h,
-                          ),
-                        ),
-                        SizedBox(height: 4.h),
-                        Text(
-                          AppLocalizations.of(context)!.readingStatus,
-                          style: TextTheme.of(context).labelSmall?.copyWith(
-                            color: AppColors.primaryPurple,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 10.sp,
-                          ),
-                        ),
-                      ],
-                    )
-                  else
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-                      decoration: BoxDecoration(
-                        color: AppColors.purple20,
-                        borderRadius: BorderRadius.circular(4.r),
-                      ),
-                      child: Text(
-                        AppLocalizations.of(context)!.newStatus,
-                        style: TextTheme.of(context).labelSmall?.copyWith(
-                          color: AppColors.primaryPurple,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 10.sp,
-                        ),
+                  // Status Tag
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.w,
+                      vertical: 4.h,
+                    ),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary.withAlpha(40),
+                      borderRadius: BorderRadius.circular(4.r),
+                    ),
+                    child: Text(
+                      book.status == ReadingStatus.notStarted
+                          ? AppLocalizations.of(context)!.newStatus
+                          : AppLocalizations.of(context)!.readingStatus,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 10.sp,
                       ),
                     ),
+                  ),
                 ],
               ),
             ),
 
-            Padding(
-              padding: EdgeInsets.only(top: 4.h),
+            // 3. Botão de Ação
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              width: 22.w,
+              height: 22.w,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primary,
+                shape: BoxShape.circle,
+              ),
               child: Icon(
-                Icons.play_circle_fill,
-                color: AppColors.primaryPurple,
-                size: 28.r,
+                PhosphorIcons.play(PhosphorIconsStyle.fill),
+                color: theme.colorScheme.onPrimary,
+                size: 14.w,
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 }
+
