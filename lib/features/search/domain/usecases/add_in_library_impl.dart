@@ -1,14 +1,14 @@
-import 'package:myapp/core/core.dart';
-import 'package:myapp/modules/modules.dart';
+import 'package:myapp/app/app.dart';
+import '../domain.dart';
 
-class AddInLibraryUsecaseImpl implements Usecase<Either<AppException, void>> {
+class AddInLibraryUsecaseImpl
+    implements Usecase<Either<AppException, void>, int> {
   final SearchRepository _repository;
 
   AddInLibraryUsecaseImpl(this._repository);
 
   @override
-  Future<Either<AppException, void>> call(
-      int bookId) async {
-    return await _repository.addInLibrary(bookId);
+  Future<Either<AppException, void>> call({int? param}) async {
+    return await _repository.addInLibrary(param!);
   }
 }

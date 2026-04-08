@@ -19,4 +19,10 @@ class SearchRepositoryImpl implements SearchRepository {
       return Left(UnknownSearchException());
     }
   }
+
+  @override
+  Future<Either<AppException, void>> addInLibrary(int bookId) {
+    // TODO: implement addInLibrary
+    throw UnimplementedError();
+  }
 }
