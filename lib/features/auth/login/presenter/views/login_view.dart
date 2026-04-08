@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/l10n/app_localizations.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+import 'package:myapp/app/app.dart';
+import '../../../../../shared/shared.dart';
+import '../../login.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -18,7 +20,7 @@ class LoginView extends StatelessWidget {
               content: Text(
                 AppLocalizations.of(context)!.databaseErrorMessage,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                   color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),
@@ -30,7 +32,7 @@ class LoginView extends StatelessWidget {
               content: Text(
                 AppLocalizations.of(context)!.emailNotConfirmed,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                   color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),
@@ -42,19 +44,19 @@ class LoginView extends StatelessWidget {
               content: Text(
                 AppLocalizations.of(context)!.invalidCredentials,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                   color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),
           );
-        }else if (state.status == LoginStatus.unknownError) {
+        } else if (state.status == LoginStatus.unknownError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Theme.of(context).colorScheme.error,
               content: Text(
                 AppLocalizations.of(context)!.unexpectedError,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                   color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),
@@ -77,7 +79,7 @@ class LoginView extends StatelessWidget {
                       width: 100.w,
                       height: 100.h,
                       decoration: BoxDecoration(
-                        color: AppColors.primaryPurple,
+                        color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: Icon(
@@ -86,15 +88,16 @@ class LoginView extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 10.h),
                     Text(
                       'BookFlow',
-                      style: Theme.of(context).textTheme.headlineLarge,
+                      style: Theme.of(context).textTheme.headlineLarge!,
                     ),
+
                     SizedBox(height: 8.h),
                     Text(
                       AppLocalizations.of(context)!.digitalLibrary,
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],
                 ),

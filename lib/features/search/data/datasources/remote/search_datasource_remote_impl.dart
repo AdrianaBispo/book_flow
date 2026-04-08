@@ -1,4 +1,5 @@
-import 'package:myapp/modules/modules.dart';
+import '../../../../../shared/shared.dart';
+import '../../../search.dart';
 
 class SearchDataSourceRemoteImpl implements SearchDatasourceRemote {
   final SupabaseClient supabase;

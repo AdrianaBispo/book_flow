@@ -83,4 +83,56 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get emptyResultSearchSubtitle =>
       'Try searching with different keywords';
+
+  @override
+  String get helpHeaderTitle => 'How can we help?';
+
+  @override
+  String get helpHeaderSubtitle =>
+      'Find answers to the most frequently asked questions.';
+
+  @override
+  String get faq1Title => 'How to create an account?';
+
+  @override
+  String get faq1Content =>
+      'To create an account, click the \'Create account\' button on the login screen and fill in your details.';
+
+  @override
+  String get faq2Title => 'How to recover my password?';
+
+  @override
+  String get faq2Content =>
+      'On the login screen, click \'Forgot my password\' to receive a recovery email.';
+
+  @override
+  String get faq3Title => 'How to search for books?';
+
+  @override
+  String get faq3Content =>
+      'Use the search bar on the main screen to find books by title, author, or genre.';
+
+  @override
+  String get faq4Title => 'How to favorite a book?';
+
+  @override
+  String get faq4Content =>
+      'When opening the details of a book, click on the heart icon to add it to your favorites.';
+
+  @override
+  String get faq5Title => 'Can I read offline?';
+
+  @override
+  String get faq5Content =>
+      'Yes, you can download books to read when you are not connected to the internet.';
+
+  @override
+  String get contactSupport => 'Contact Support';
+
+  @override
+  String get contactSupportLegend => 'Didn\'t find what you were looking for?';
+
+  @override
+  String get contactSupportDescription =>
+      'Our support team is ready to help you.';
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/core.dart';
-import 'package:myapp/modules/search/search.dart';
+import 'package:myapp/app/app.dart';
+import '../../search.dart';
 
 class SearchCard extends StatefulWidget {
   final ResultSearchDto ebook;

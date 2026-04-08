@@ -1,5 +1,5 @@
-import 'package:myapp/modules/modules.dart';
-import 'package:myapp/core/utils/exceptions/app_exception.dart';
+import 'package:myapp/app/app.dart';
+import '../../domain/domain.dart';
 
 abstract class SearchState {
   const SearchState();
@@ -25,6 +25,6 @@ class SearchEmpty extends SearchState {
 
 class SearchError extends SearchState {
   final AppException exception;
-  
+
   const SearchError(this.exception);
 }

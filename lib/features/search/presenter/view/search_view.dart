@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myapp/core/core.dart';
-import 'package:myapp/l10n/app_localizations.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
-import '../../search.dart';
+import 'package:myapp/app/app.dart';
+import 'package:myapp/shared/shared.dart';
+
+import '../../../features.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});

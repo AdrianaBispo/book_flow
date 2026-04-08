@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/l10n/app_localizations.dart';
-import 'core/core.dart';
-import 'modules/modules.dart';
+import 'package:myapp/features/features.dart';
+import '../app/app.dart';
+import '../shared/shared.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -28,24 +28,23 @@ class AppWidget extends StatelessWidget {
           ),
         ),
         Provider<LoginWithEmailAndPasswordImpl>(
-          create: (context) => LoginWithEmailAndPasswordImpl(
-           // dataSource: context.read<SearchDataSourceRemoteImpl>(),
-           context.read<LoginRepositoryImpl>(),
-          ),
-
+          create: (context) =>
+              LoginWithEmailAndPasswordImpl(context.read<LoginRepository>()),
         ),
         Provider<SearchUsecaseImpl>(
-          create: (context) => SearchUsecaseImpl(context.read<SearchRepositoryImpl>()),
-
+          create: (context) =>
+              SearchUsecaseImpl(context.read<SearchRepository>()),
         ),
-        Provider<HelpDatasourceImpl>(
-          create: (_) => HelpDatasourceImpl(),
+        Provider<HelpDatasourceLocalImpl>(
+          create: (_) => HelpDatasourceLocalImpl(),
         ),
         Provider<HelpRepositoryImpl>(
-          create: (context) => HelpRepositoryImpl(context.read<HelpDatasourceImpl>()),
+          create: (context) =>
+              HelpRepositoryImpl(context.read<HelpDatasourceLocalImpl>()),
         ),
         Provider<GetHelpItemsImpl>(
-          create: (context) => GetHelpItemsImpl(context.read<HelpRepositoryImpl>()),
+          create: (context) =>
+              GetHelpItemsImpl(context.read<HelpRepositoryImpl>()),
         ),
         // LIBRARY
         Provider<LibraryRemoteDataSourceImpl>(
@@ -79,14 +78,17 @@ class AppWidget extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<LoginBloc>(
-            create: (context) => LoginBloc(context.read<LoginWithEmailAndPasswordImpl>()),
+            create: (context) => LoginBloc(
+              usecases: context.read<LoginWithEmailAndPasswordImpl>(),
+            ),
           ),
           BlocProvider<SearchBloc>(
             create: (context) =>
                 SearchBloc(usecaseSearch: context.read<SearchUsecaseImpl>()),
           ),
           BlocProvider<HelpBloc>(
-            create: (context) => HelpBloc(getHelpItems: context.read<GetHelpItemsImpl>()),
+            create: (context) =>
+                HelpBloc(getHelpItems: context.read<GetHelpItemsImpl>()),
           ),
           BlocProvider<LibraryBloc>(
             create: (context) => LibraryBloc(

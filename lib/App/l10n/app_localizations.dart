@@ -235,6 +235,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try searching with different keywords'**
   String get emptyResultSearchSubtitle;
+
+  /// No description provided for @helpHeaderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How can we help?'**
+  String get helpHeaderTitle;
+
+  /// No description provided for @helpHeaderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find answers to the most frequently asked questions.'**
+  String get helpHeaderSubtitle;
+
+  /// No description provided for @faq1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'How to create an account?'**
+  String get faq1Title;
+
+  /// No description provided for @faq1Content.
+  ///
+  /// In en, this message translates to:
+  /// **'To create an account, click the \'Create account\' button on the login screen and fill in your details.'**
+  String get faq1Content;
+
+  /// No description provided for @faq2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'How to recover my password?'**
+  String get faq2Title;
+
+  /// No description provided for @faq2Content.
+  ///
+  /// In en, this message translates to:
+  /// **'On the login screen, click \'Forgot my password\' to receive a recovery email.'**
+  String get faq2Content;
+
+  /// No description provided for @faq3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'How to search for books?'**
+  String get faq3Title;
+
+  /// No description provided for @faq3Content.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the search bar on the main screen to find books by title, author, or genre.'**
+  String get faq3Content;
+
+  /// No description provided for @faq4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'How to favorite a book?'**
+  String get faq4Title;
+
+  /// No description provided for @faq4Content.
+  ///
+  /// In en, this message translates to:
+  /// **'When opening the details of a book, click on the heart icon to add it to your favorites.'**
+  String get faq4Content;
+
+  /// No description provided for @faq5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Can I read offline?'**
+  String get faq5Title;
+
+  /// No description provided for @faq5Content.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, you can download books to read when you are not connected to the internet.'**
+  String get faq5Content;
+
+  /// No description provided for @contactSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Support'**
+  String get contactSupport;
+
+  /// No description provided for @contactSupportLegend.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t find what you were looking for?'**
+  String get contactSupportLegend;
+
+  /// No description provided for @contactSupportDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Our support team is ready to help you.'**
+  String get contactSupportDescription;
 }
 
 class _AppLocalizationsDelegate

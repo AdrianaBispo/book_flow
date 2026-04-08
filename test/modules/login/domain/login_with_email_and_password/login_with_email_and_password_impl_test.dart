@@ -1,19 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:myapp/modules/login/domain/usecases/login_with_email_and_password/login_with_email_and_password_impl.dart';
-import 'package:myapp/modules/login/login.dart';
-import 'package:myapp/core/utils/exceptions/app_exception.dart';
-
+import 'package:myapp/features/auth/login/login.dart';
+import 'package:myapp/shared/shared.dart';
+import 'package:myapp/app/exceptions/app_exception.dart';
 class MockLoginRepository extends Mock implements LoginRepository {}
 
 class FakeUserLoginEntity extends UserLoginEntity {
   FakeUserLoginEntity() : super(email: 'test@test.com', password: '123456');
 }
 
-class FakeAppException extends AppException {
-  FakeAppException() : super();
-}
+class FakeAppException extends Mock implements AppException {}
 
 void main() {
   late MockLoginRepository loginRepository;
@@ -32,7 +29,7 @@ void main() {
       () => loginRepository.loginWithEmailAndPassword(expectedLogin),
     ).thenAnswer((_) async => const Right(null));
 
-    final result = await usecase.call(expectedLogin);
+    final result = await usecase.call(param: expectedLogin);
 
     expect(result, const Right(null));
     verify(
@@ -45,7 +42,7 @@ void main() {
     when(
       () => loginRepository.loginWithEmailAndPassword(expectedLogin),
     ).thenAnswer((_) async => Left(FakeAppException()));
-    final result = await usecase.call(expectedLogin);
+    final result = await usecase.call(param: expectedLogin);
     expect(result, isA<Left>());
     verify(
       () => loginRepository.loginWithEmailAndPassword(expectedLogin),

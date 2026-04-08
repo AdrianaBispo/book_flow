@@ -1,6 +1,6 @@
+import 'package:myapp/app/app.dart';
 import 'package:myapp/features/features.dart';
-import '../entities/help_item.dart';
 
 abstract class HelpRepository {
-  Future<Either<dynamic, List<HelpItem>>> getHelpItems();
+  Future<Either<AppException, List<HelpItemEntity>>> getHelpItems();
 }

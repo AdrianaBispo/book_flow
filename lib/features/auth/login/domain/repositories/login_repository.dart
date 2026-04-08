@@ -1,8 +1,10 @@
-import 'package:myapp/modules/modules.dart';
-import 'package:myapp/core/utils/utils.dart';
+import 'package:myapp/app/app.dart';
+import '../../../../../shared/shared.dart';
+import '../../login.dart';
+
 
 abstract class LoginRepository {
   Future<Either<AppException, void>> loginWithEmailAndPassword(
-    UserLoginEntity login
+    UserLoginEntity? login
   );
 }
