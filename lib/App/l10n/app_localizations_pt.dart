@@ -133,4 +133,26 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get contactSupportDescription =>
       'Nossa equipe de suporte está pronta para ajudar você.';
+
+  @override
+  String get myLibrary => 'Minha Biblioteca';
+
+  @override
+  String get emptyLibraryTitle => 'Sua biblioteca está vazia.';
+
+  @override
+  String get emptyLibrarySubtitle =>
+      'Explore a busca para baixar novos livros.';
+
+  @override
+  String get errorLoadingLibrary => 'Erro ao carregar sua biblioteca.';
+
+  @override
+  String get tryAgain => 'Tentar novamente';
+
+  @override
+  String get readingStatus => 'Lendo...';
+
+  @override
+  String get newStatus => 'NOVO';
 }

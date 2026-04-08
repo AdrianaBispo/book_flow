@@ -1,25 +1,19 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:myapp/core/core.dart';
-import 'package:myapp/App/l10n/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:myapp/app/app.dart';
+import 'package:myapp/shared/shared.dart';
 import '../../domain/domain.dart';
 
 class LibraryBookCard extends StatelessWidget {
   final LibraryEntity book;
   final VoidCallback onTap;
 
-  const LibraryBookCard({
-    super.key,
-    required this.book,
-    required this.onTap,
-  });
+  const LibraryBookCard({super.key, required this.book, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12.r),
@@ -34,7 +28,9 @@ class LibraryBookCard extends StatelessWidget {
               height: 100.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.r),
-                image: book.coverPath.isNotEmpty && File(book.coverPath).existsSync()
+                image:
+                    book.coverPath.isNotEmpty &&
+                        File(book.coverPath).existsSync()
                     ? DecorationImage(
                         image: FileImage(File(book.coverPath)),
                         fit: BoxFit.cover,
@@ -116,4 +112,3 @@ class LibraryBookCard extends StatelessWidget {
     );
   }
 }
-

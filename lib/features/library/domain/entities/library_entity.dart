@@ -6,6 +6,7 @@ class LibraryEntity {
   final String author;
   final String coverPath; 
   final String epubPath;
+  final String genre;
   final ReadingStatus status;
   final int currentPage;
 
@@ -16,7 +17,7 @@ class LibraryEntity {
     required this.coverPath,
     required this.epubPath,
     required this.status,
+    required this.genre,
     this.currentPage = 0,
-    this.status = ReadingStatus.notStarted,
   });
 }

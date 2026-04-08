@@ -1,6 +1,7 @@
 abstract class LibraryRemoteDatasource {
-  Future<String> downloadBook({
-    required String url,
+  Future<(String epubPath, String coverPath)> downloadBook({
+    required String epubUrl,
+    required String coverUrl,
     required String fileName,
     Function(double progress)? onProgress,
   });

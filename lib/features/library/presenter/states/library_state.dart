@@ -1,5 +1,5 @@
 import 'package:myapp/features/library/domain/domain.dart';
-import 'package:myapp/core/core.dart';
+import 'package:myapp/app/app.dart';
 
 abstract class LibraryState {}
 

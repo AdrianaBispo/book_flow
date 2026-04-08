@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/App/l10n/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myapp/app/app.dart';
+import 'package:myapp/shared/shared.dart';
 
 class LibraryErrorWidget extends StatelessWidget {
   final VoidCallback onRetry;
 
-  const LibraryErrorWidget({
-    super.key,
-    required this.onRetry,
-  });
+  const LibraryErrorWidget({super.key, required this.onRetry});
 
   @override
   Widget build(BuildContext context) {
-
     return Center(
       child: Padding(
         padding: EdgeInsets.all(20.w),
@@ -28,15 +24,13 @@ class LibraryErrorWidget extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.errorLoadingLibrary,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.of(context).bodyMedium?.copyWith(
-                fontSize: 14.sp,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             SizedBox(height: 12.h),
             TextButton(
               onPressed: onRetry,
               child: Text(
-                l10n.tryAgain,
+                AppLocalizations.of(context)!.tryAgain,
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: Theme.of(context).colorScheme.primary,

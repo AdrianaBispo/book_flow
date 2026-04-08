@@ -1,4 +1,4 @@
-export 'view/biblioteca_view.dart';
+export 'view/library_view.dart';
 export 'widgets/widgets.dart';
 export 'bloc/library_bloc.dart';
 export 'events/library_event.dart';

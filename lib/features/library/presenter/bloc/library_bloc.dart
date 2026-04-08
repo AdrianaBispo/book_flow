@@ -30,7 +30,7 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
   }
 
   Future<void> _onRemoveBook(RemoveBookFromLibrary event, Emitter<LibraryState> emit) async {
-    final result = await removeBook(event.id);
+    final result = await removeBook(param: event.id);
     result.fold(
       (failure) => emit(LibraryFailure(failure)),
       (_) => add(LoadLibrary()),
@@ -38,7 +38,7 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
   }
 
   Future<void> _onOpenBook(OpenBook event, Emitter<LibraryState> emit) async {
-    final result = await openBook(event.path);
+    final result = await openBook(param: event.path);
     result.fold(
       (failure) => emit(LibraryFailure(failure)),
       (_) => null, // No state change needed for opening external viewer

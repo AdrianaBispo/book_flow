@@ -325,6 +325,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Our support team is ready to help you.'**
   String get contactSupportDescription;
+
+  /// No description provided for @myLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'My Library'**
+  String get myLibrary;
+
+  /// No description provided for @emptyLibraryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your library is empty.'**
+  String get emptyLibraryTitle;
+
+  /// No description provided for @emptyLibrarySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore search to download new books.'**
+  String get emptyLibrarySubtitle;
+
+  /// No description provided for @errorLoadingLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading your library.'**
+  String get errorLoadingLibrary;
+
+  /// No description provided for @tryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get tryAgain;
+
+  /// No description provided for @readingStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading...'**
+  String get readingStatus;
+
+  /// No description provided for @newStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'NEW'**
+  String get newStatus;
 }
 
 class _AppLocalizationsDelegate

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/App/ AppLocalizations.of(context)!/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myapp/app/app.dart';
+import 'package:myapp/shared/shared.dart';
 
 class LibraryEmptyWidget extends StatelessWidget {
   const LibraryEmptyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Center(
       child: Padding(
         padding: EdgeInsets.all(24.w),
@@ -21,19 +20,21 @@ class LibraryEmptyWidget extends StatelessWidget {
             ),
             SizedBox(height: 24.h),
             Text(
-               AppLocalizations.of(context)!.emptyLibraryTitle,
+              AppLocalizations.of(context)!.emptyLibraryTitle,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.of(context).titleLarge?.copyWith(
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.sp,
               ),
             ),
             SizedBox(height: 8.h),
             Text(
-               AppLocalizations.of(context)!.emptyLibrarySubtitle,
+              AppLocalizations.of(context)!.emptyLibrarySubtitle,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.of(context).bodyMedium?.copyWith(
-                color: Theme.of(context).textTheme.of(context).bodyMedium?.color?.withAlpha(150),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.color?.withAlpha(150),
                 fontSize: 14.sp,
               ),
             ),

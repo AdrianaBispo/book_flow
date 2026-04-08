@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myapp/features/features.dart';
 import '../app/app.dart';
 import '../shared/shared.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
+import 'favorite/data/data.dart';
+import 'library/data/data.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -45,6 +49,32 @@ class AppWidget extends StatelessWidget {
         Provider<GetHelpItemsImpl>(
           create: (context) =>
               GetHelpItemsImpl(context.read<HelpRepositoryImpl>()),
+        ),
+        // FAVORITE
+        Provider<FavoriteDatasourceRemoteImpl>(
+          create: (_) => FavoriteDatasourceRemoteImpl(
+            client: Supabase.instance.client,
+          ),
+        ),
+        Provider<FavoriteRepository>(
+          create: (context) => FavoriteRepositoryImpl(
+            datasource: context.read<FavoriteDatasourceRemoteImpl>(),
+          ),
+        ),
+        Provider<GetFavoriteUsecaseImpl>(
+          create: (context) => GetFavoriteUsecaseImpl(
+            repository: context.read<FavoriteRepository>(),
+          ),
+        ),
+        Provider<RemoveFavoriteUsecaseImpl>(
+          create: (context) => RemoveFavoriteUsecaseImpl(
+            repository: context.read<FavoriteRepository>(),
+          ),
+        ),
+        Provider<AddFavoriteUsecaseImpl>(
+          create: (context) => AddFavoriteUsecaseImpl(
+            context.read<FavoriteRepository>(),
+          ),
         ),
         // LIBRARY
         Provider<LibraryRemoteDataSourceImpl>(

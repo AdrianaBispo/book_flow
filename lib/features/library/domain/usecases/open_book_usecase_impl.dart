@@ -1,13 +1,15 @@
-import 'package:myapp/core/core.dart';
-import '../repositories/library_repository.dart';
+import 'package:dartz/dartz.dart';
+import 'package:myapp/app/app.dart';
+import '../domain.dart';
 
-class OpenBookUsecaseImpl implements Usecase<Either<AppException, void>> {
+class OpenBookUsecaseImpl
+    implements Usecase<Either<AppException, void>, String> {
   final LibraryRepository _repository;
 
   OpenBookUsecaseImpl(this._repository);
 
   @override
-  Future<Either<AppException, void>> call(String path) async {
-    return await _repository.openBook(path);
+  Future<Either<AppException, void>> call({String? param}) async {
+    return await _repository.openBook(param!);
   }
 }

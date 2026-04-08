@@ -135,4 +135,25 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get contactSupportDescription =>
       'Our support team is ready to help you.';
+
+  @override
+  String get myLibrary => 'My Library';
+
+  @override
+  String get emptyLibraryTitle => 'Your library is empty.';
+
+  @override
+  String get emptyLibrarySubtitle => 'Explore search to download new books.';
+
+  @override
+  String get errorLoadingLibrary => 'Error loading your library.';
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
+  String get readingStatus => 'Reading...';
+
+  @override
+  String get newStatus => 'NEW';
 }

@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../bloc/library_bloc.dart';
-import '../bloc/library_event.dart';
-import '../../domain/domain.dart';
-import 'library_book_card.dart';
+import 'package:myapp/shared/shared.dart';
+import '../../../features.dart';
 
 class LibraryListWidget extends StatelessWidget {
   final List<LibraryEntity> books;
 
-  const LibraryListWidget({
-    super.key,
-    required this.books,
-  });
+  const LibraryListWidget({super.key, required this.books});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +21,8 @@ class LibraryListWidget extends StatelessWidget {
           final book = books[index];
           return LibraryBookCard(
             book: book,
-            onTap: () => context.read<LibraryBloc>().add(OpenBook(book.epubPath)),
+            onTap: () =>
+                context.read<LibraryBloc>().add(OpenBook(book.epubPath)),
           );
         },
       ),

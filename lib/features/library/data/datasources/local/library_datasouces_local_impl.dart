@@ -1,18 +1,14 @@
 import 'dart:io';
-import 'package:hive/hive.dart';
-import 'package:vocsy_epub_viewer/epub_viewer.dart';
-import 'package:myapp/core/core.dart';
+import 'package:myapp/app/theme/app_colors.dart';
 import '../datasources.dart';
 import '../../dtos/library_dto.dart';
+import 'package:myapp/shared/shared.dart';
 
 class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
   final Box _box;
-  final LibraryRemoteDataSource _remoteDataSource;
+  final LibraryRemoteDatasource _remoteDataSource;
 
-  LibraryLocalDataSourceImpl(
-    this._box,
-    this._remoteDataSource,
-  );
+  LibraryLocalDataSourceImpl(this._box, this._remoteDataSource);
 
   @override
   Future<List<LibraryDTO>> getBooks() async {
@@ -22,10 +18,7 @@ class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
   }
 
   @override
-  Future<void> updateProgress({
-    required String id,
-    required int page,
-  }) async {
+  Future<void> updateProgress({required String id, required int page}) async {
     final data = _box.get(id);
 
     if (data != null) {
@@ -46,10 +39,7 @@ class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
       fileName: book.id.toString(),
     );
 
-    final updatedBook = book.copyWith(
-      epubPath: epubPath,
-      coverPath: coverPath,
-    );
+    final updatedBook = book.copyWith(epubPath: epubPath, coverPath: coverPath);
 
     await _box.put(book.id, updatedBook.toMap());
   }
@@ -86,7 +76,7 @@ class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
     VocsyEpub.setConfig(
       themeColor: AppColors.primaryPurple,
       identifier: "iosBook",
-      scrollDirection: EpubScrollDirection.ALL_DIRECTIONS,
+      scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
       allowSharing: true,
       enableTts: true,
       nightMode: true,
@@ -94,4 +84,4 @@ class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
 
     VocsyEpub.open(path);
   }
-}
+}

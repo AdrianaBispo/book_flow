@@ -1,5 +1,6 @@
-import 'package:myapp/core/core.dart';
-import 'package:myapp/modules/modules.dart';
+import 'package:myapp/app/app.dart';
+import '../../../search/search.dart';
+import '../domain.dart';
 
 abstract class LibraryRepository {
   Future<Either<AppException, List<LibraryEntity>>> getListBooks();
@@ -10,4 +11,4 @@ abstract class LibraryRepository {
     required int page,
   });
   Future<Either<AppException, void>> openBook(String path);
-}
+}

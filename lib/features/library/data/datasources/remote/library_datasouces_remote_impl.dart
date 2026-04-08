@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
+import '../datasources.dart';
 
-class LibraryRemoteDataSourceImpl implements LibraryRemoteDataSource {
+class LibraryRemoteDataSourceImpl implements LibraryRemoteDatasource {
   @override
   Future<(String epubPath, String coverPath)> downloadBook({
     required String epubUrl,
@@ -10,7 +11,6 @@ class LibraryRemoteDataSourceImpl implements LibraryRemoteDataSource {
     required String fileName,
     Function(double progress)? onProgress,
   }) async {
-    
     Directory? appDocDir = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationDocumentsDirectory();
@@ -41,7 +41,7 @@ class LibraryRemoteDataSourceImpl implements LibraryRemoteDataSource {
     return (epubPath, coverPath);
   }
 
-   Future<String> _downloadFile({
+  Future<String> _downloadFile({
     required String url,
     required String path,
     Function(double progress)? onProgress,
@@ -72,5 +72,4 @@ class LibraryRemoteDataSourceImpl implements LibraryRemoteDataSource {
 
     return path;
   }
-}
 }

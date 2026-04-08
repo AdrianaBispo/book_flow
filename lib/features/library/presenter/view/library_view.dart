@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:myapp/shared/widgets/widgets.dart';
-import 'package:myapp/App/l10n/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../presenter/presenter.dart';
+import 'package:myapp/app/app.dart';
+import 'package:myapp/shared/shared.dart';
+import '../../library.dart';
+import '../presenter.dart';
 
 class BibliotecaView extends StatefulWidget {
   const BibliotecaView({super.key});
@@ -60,6 +59,3 @@ class _BibliotecaViewState extends State<BibliotecaView> {
     );
   }
 }
-
-
-
