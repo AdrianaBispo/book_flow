@@ -19,28 +19,28 @@ class AppWidget extends StatelessWidget {
             dataSource: context.read<LoginDatasouceRemoteImpl>(),
           ),
         ),
-        // Provider<SearchDataSourceRemoteImpl>(
-        //   create: (_) => SearchDataSourceRemoteImpl(Supabase.instance.client),
-        // ),
-        // Provider<SearchRepository>(
-        //   create: (context) => SearchRepositoryImpl(
-        //     dataSource: context.read<SearchDataSourceRemoteImpl>(),
-        //   ),
-        // ),
-         Provider<LoginWithEmailAndPasswordImpl>(
-           create: (context) => LoginWithEmailAndPasswordImpl(
-             //dataSource: context.read<SearchDataSourceRemoteImpl>(),
-            context.read<LoginRepository>(),
-           ),
-         ),
-        // Provider<SearchUsecaseImpl>(
-        //   create: (context) => SearchUsecaseImpl(context.read<SearchRepositoryImpl>()),
-
-        // ),
-        Provider<HelpDatasourceImpl>(create: (_) => HelpDatasourceImpl()),
+        Provider<SearchDataSourceRemoteImpl>(
+          create: (_) => SearchDataSourceRemoteImpl(Supabase.instance.client),
+        ),
+        Provider<SearchRepository>(
+          create: (context) => SearchRepositoryImpl(
+            dataSource: context.read<SearchDataSourceRemoteImpl>(),
+          ),
+        ),
+        Provider<LoginWithEmailAndPasswordImpl>(
+          create: (context) =>
+              LoginWithEmailAndPasswordImpl(context.read<LoginRepository>()),
+        ),
+        Provider<SearchUsecaseImpl>(
+          create: (context) =>
+              SearchUsecaseImpl(context.read<SearchRepository>()),
+        ),
+        Provider<HelpDatasourceLocalImpl>(
+          create: (_) => HelpDatasourceLocalImpl(),
+        ),
         Provider<HelpRepositoryImpl>(
           create: (context) =>
-              HelpRepositoryImpl(context.read<HelpDatasourceImpl>()),
+              HelpRepositoryImpl(context.read<HelpDatasourceLocalImpl>()),
         ),
         Provider<GetHelpItemsImpl>(
           create: (context) =>
@@ -51,14 +51,13 @@ class AppWidget extends StatelessWidget {
         providers: [
           BlocProvider<LoginBloc>(
             create: (context) => LoginBloc(
-               usecases: context.read<LoginWithEmailAndPasswordImpl>(),
+              usecases: context.read<LoginWithEmailAndPasswordImpl>(),
             ),
           ),
-          // BlocProvider<SearchBloc>(
-          //   create: (context) =>
-          //       SearchBloc(usecaseSearch: context.read<SearchUsecaseImpl>(),
-          // ),
-          // ),
+          BlocProvider<SearchBloc>(
+            create: (context) =>
+                SearchBloc(usecaseSearch: context.read<SearchUsecaseImpl>()),
+          ),
           BlocProvider<HelpBloc>(
             create: (context) =>
                 HelpBloc(getHelpItems: context.read<GetHelpItemsImpl>()),

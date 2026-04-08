@@ -1,5 +1,6 @@
-import 'package:myapp/modules/modules.dart';
-import 'package:myapp/core/utils/exceptions/app_exception.dart';
+import 'package:myapp/app/app.dart';
+
+import '../../search.dart';
 
 class SearchRepositoryImpl implements SearchRepository {
   final SearchDatasourceRemote dataSource;
@@ -13,10 +14,9 @@ class SearchRepositoryImpl implements SearchRepository {
       final result = await dataSource.search(searchText);
       return Right(result);
     } on DatabaseSearchException {
-      return Left( DatabaseSearchException());
+      return Left(DatabaseSearchException());
     } catch (e) {
-      return Left( UnknownSearchException()
-      );
-    } 
+      return Left(UnknownSearchException());
+    }
   }
 }

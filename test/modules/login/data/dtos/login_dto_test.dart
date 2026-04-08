@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myapp/modules/login/data/data.dart';
+import 'package:myapp/features/auth/login/login.dart';
 
 void main() {
   late LoginDto loginDto;

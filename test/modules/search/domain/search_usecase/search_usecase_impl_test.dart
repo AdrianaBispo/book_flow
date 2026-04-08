@@ -1,7 +1,6 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:myapp/modules/search/domain/domain.dart';
+import 'package:myapp/features/search/search.dart';
 
 class MockSearchRepository extends Mock implements SearchRepository {}
 
@@ -37,7 +36,7 @@ void main() {
         ).thenAnswer((_) async => Right([expectedResult]));
 
         // act
-        final result = await usecase('flutter');
+        final result = await usecase(param: 'flutter');
 
         // assert
         expect(result.isRight(), true);
@@ -56,7 +55,7 @@ void main() {
       ).thenAnswer((_) async => Left(exception));
 
       // act
-      final result = await usecase('flutter');
+      final result = await usecase(param: 'flutter');
 
       // assert
       expect(result.isLeft(), true);

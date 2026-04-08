@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/core.dart';
-import 'package:myapp/l10n/app_localizations.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:myapp/app/app.dart';
+import 'package:myapp/shared/shared.dart';
 
-class EmptyResultSearchWidget extends StatefulWidget {
+class EmptyResultSearchWidget extends StatelessWidget {
   const EmptyResultSearchWidget({super.key});
 
-  @override
-  State<EmptyResultSearchWidget> createState() =>
-      _EmptyResultSearchWidgetState();
-}
-
-class _EmptyResultSearchWidgetState extends State<EmptyResultSearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Center(

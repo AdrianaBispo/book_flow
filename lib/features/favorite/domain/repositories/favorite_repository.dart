@@ -1,5 +1,5 @@
-import 'package:myapp/modules/modules.dart';
-import 'package:myapp/core/utils/utils.dart';
+import 'package:myapp/features/features.dart';
+import 'package:myapp/app/app.dart';
 
 abstract class FavoriteRepository {
   Future<Either<AppException, List<FavoritEntity>>> getFavorites(int idUser);

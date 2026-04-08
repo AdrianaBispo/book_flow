@@ -1,10 +1,10 @@
-import 'package:dartz/dartz.dart';
-
-import '../../../../app/app.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myapp/app/app.dart';
+import '../../search.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  //final SearchRepository repository;
-  final Usecase<Either<AppException, List<ResultSearchEntity>>> usecaseSearch;
+  final Usecase<Either<AppException, List<ResultSearchEntity>>, String>
+  usecaseSearch;
 
   SearchBloc({required this.usecaseSearch}) : super(const SearchInitial()) {
     on<SearchTextChanged>(_onSearchTextChanged);
@@ -19,7 +19,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
     emit(const SearchLoading());
 
-    final result = await usecaseSearch(searchText);
+    final result = await usecaseSearch(param: searchText);
 
     result.fold(
       (exception) {
@@ -38,5 +38,4 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   void _onSearchCleared(SearchCleared event, Emitter<SearchState> emit) {
     emit(const SearchInitial());
   }
-
 }

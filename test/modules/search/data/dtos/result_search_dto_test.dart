@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myapp/modules/search/data/dtos/dtos.dart';
+import 'package:myapp/features/search/data/dtos/dtos.dart';
 
 void main() {
   group('ResultSearchDto', () {

@@ -1,25 +1,16 @@
-import 'package:myapp/modules/modules.dart';
-import 'package:myapp/core/utils/utils.dart';
+import 'package:myapp/app/app.dart';
+import '../../domain.dart';
 
-// class SearchUsecaseImpl implements SearchUsecase {
-//     final SearchRepository _repository;
-//     SearchUsecaseImpl(this._repository);
-
-//     @override
-//      Future<Either<AppException,List<ResultSearchEntity>>> call (String searchText) async{
-//         return await _repository.search(searchText);
-//      }
-
-// }
-
-class SearchUsecaseImpl implements Usecase<Either<AppException, List<ResultSearchEntity>> {
+class SearchUsecaseImpl
+    implements Usecase<Either<AppException, List<ResultSearchEntity>>, String> {
   final SearchRepository _repository;
 
   SearchUsecaseImpl(this._repository);
 
   @override
-  Future<Either<AppException, List<ResultSearchEntity>>> call(
-      String searchText) async {
-    return await _repository.search(searchText);
+  Future<Either<AppException, List<ResultSearchEntity>>> call({
+    String? param,
+  }) async {
+    return await _repository.search(param!);
   }
 }

@@ -29,44 +29,44 @@ abstract class NavigationConfigs {
         builder: (_, state) => const HelpView(),
         name: 'HELP',
       ),
-      // ShellRoute(
-      //   builder: (context, state, child) {
-      //     return AppScaffold(child: child);
-      //   },
-      //   navigatorKey: shellNavigationKey,
-      //  // routes: [
-          // GoRoute(
-          //   path: RoutePath.home,
-          //   builder: (_, state) => const SearchView(),
-          //   parentNavigatorKey: shellNavigationKey,
-          //   name: 'HOME',
-          // ),
-          // GoRoute(
-          //   path: RoutePath.search,
-          //   builder: (_, state) => const SearchView(),
-          //   parentNavigatorKey: shellNavigationKey,
-          //   name: 'SEARCH',
-          // ),
-          // GoRoute(
-          //   path: RoutePath.biblioteca,
-          //   builder: (_, state) => const SearchView(),
-          //   parentNavigatorKey: shellNavigationKey,
-          //   name: 'BIBLIOTECA',
-          // ),
-          // GoRoute(
-          //   path: RoutePath.favoritos,
-          //   builder: (_, state) => const SearchView(),
-          //   parentNavigatorKey: shellNavigationKey,
-          //   name: 'FAVORITOS',
-          // ),
-          // GoRoute(
-          //   path: RoutePath.perfil,
-          //   builder: (_, state) => const SearchView(),
-          //   parentNavigatorKey: shellNavigationKey,
-          //   name: 'PERFIL',
-          // ),
-     //   ],
-     // ),
+      ShellRoute(
+        builder: (context, state, child) {
+          return AppScaffold(child: child);
+        },
+        navigatorKey: shellNavigationKey,
+        routes: [
+          GoRoute(
+            path: RoutePath.home,
+            builder: (_, state) => const SearchView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'HOME',
+          ),
+          GoRoute(
+            path: RoutePath.search,
+            builder: (_, state) => const SearchView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'SEARCH',
+          ),
+          GoRoute(
+            path: RoutePath.biblioteca,
+            builder: (_, state) => const SearchView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'BIBLIOTECA',
+          ),
+          GoRoute(
+            path: RoutePath.favoritos,
+            builder: (_, state) => const SearchView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'FAVORITOS',
+          ),
+          GoRoute(
+            path: RoutePath.perfil,
+            builder: (_, state) => const SearchView(),
+            parentNavigatorKey: shellNavigationKey,
+            name: 'PERFIL',
+          ),
+        ],
+      ),
     ],
   );
   static String get currentRoute {

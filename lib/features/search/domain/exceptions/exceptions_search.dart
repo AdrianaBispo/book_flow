@@ -1,4 +1,4 @@
-import 'package:myapp/core/utils/utils.dart';
+import 'package:myapp/app/exceptions/app_exception.dart';
 
 class ServerCredentialsException extends AppException {
   ServerCredentialsException({super.stackTrace});
