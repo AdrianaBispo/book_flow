@@ -10,16 +10,16 @@ class SearchErroWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24.r),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               PhosphorIcons.warningCircle(PhosphorIconsStyle.regular),
-              size: 80,
-              color: AppColors.error,
+              size: 80.r,
+              color: Theme.of(context).colorScheme.error,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
             Text(
               message,
               textAlign: TextAlign.center,
