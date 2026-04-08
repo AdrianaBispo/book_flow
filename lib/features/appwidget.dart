@@ -46,6 +46,34 @@ class AppWidget extends StatelessWidget {
           create: (context) =>
               GetHelpItemsImpl(context.read<HelpRepositoryImpl>()),
         ),
+        // LIBRARY
+        Provider<LibraryRemoteDataSourceImpl>(
+          create: (_) => LibraryRemoteDataSourceImpl(),
+        ),
+        Provider<LibraryLocalDataSourceImpl>(
+          create: (context) => LibraryLocalDataSourceImpl(
+            Hive.box('library_box'),
+            context.read<LibraryRemoteDataSourceImpl>(),
+          ),
+        ),
+        Provider<LibraryRepositoryImpl>(
+          create: (context) => LibraryRepositoryImpl(
+            localDataSource: context.read<LibraryLocalDataSourceImpl>(),
+            remoteDataSource: context.read<LibraryRemoteDataSourceImpl>(),
+          ),
+        ),
+        Provider<GetListBooksUsecaseImpl>(
+          create: (context) => GetListBooksUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+        ),
+        Provider<AddBookInLibraryUsecaseImpl>(
+          create: (context) => AddBookInLibraryUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+        ),
+        Provider<RemoveBookFromLibraryUsecaseImpl>(
+          create: (context) => RemoveBookFromLibraryUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+        ),
+        Provider<OpenBookUsecaseImpl>(
+          create: (context) => OpenBookUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -62,7 +90,17 @@ class AppWidget extends StatelessWidget {
             create: (context) =>
                 HelpBloc(getHelpItems: context.read<GetHelpItemsImpl>()),
           ),
+          BlocProvider<LibraryBloc>(
+            create: (context) => LibraryBloc(
+              getListBooks: context.read<GetListBooksUsecaseImpl>(),
+              addBook: context.read<AddBookInLibraryUsecaseImpl>(),
+              removeBook: context.read<RemoveBookFromLibraryUsecaseImpl>(),
+              openBook: context.read<OpenBookUsecaseImpl>(),
+            ),
+          ),
         ],
+
+
         child: ScreenUtilInit(
           designSize: const Size(360, 690),
           minTextAdapt: true,
