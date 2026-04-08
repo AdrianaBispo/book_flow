@@ -1,12 +1,8 @@
 import 'package:myapp/app/app.dart';
-// import '../../../../../shared/shared.dart';
 import '../../login.dart';
-//import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myapp/shared/shared.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  //final LoginRepository loginRepository;
-  //final LoginWithEmailAndPassword usecaseEmail;
   final Usecase usecases;
 
   LoginBloc({required this.usecases}) : super(LoginState()) {

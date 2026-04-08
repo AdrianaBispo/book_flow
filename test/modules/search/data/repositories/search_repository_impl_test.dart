@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:myapp/features/search/search.dart';import 'package:myapp/features/search/data/repositories/search_repository_impl.dart';
-
+import 'package:myapp/features/search/search.dart';
 
 class MockSearchDatasourceRemote extends Mock
     implements SearchDatasourceRemote {}
@@ -18,15 +17,11 @@ void main() {
   const searchText = 'flutter';
 
   final mockDtoList = [
-    ResultSearchDto(
-      id: 1,
-      title: 'Flutter Dev',
-      author: '',
-    ),
+    ResultSearchDto(id: 1, title: 'Flutter Dev', author: ''),
   ];
 
   group('SearchRepositoryImpl', () {
-    test( 
+    test(
       'Deve retornar Right(List<ResultSearchEntity>) quando a busca for bem-sucedida',
       () async {
         // Arrange

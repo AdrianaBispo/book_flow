@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:myapp/modules/favoritos/domain/domain.dart';
+import 'package:myapp/features/favorite/domain/domain.dart';
+import 'package:myapp/features/favorite/domain/usecases/remove_favorite_usecase/remove_favorite_usecase_impl.dart';
+
 import '../../../../../testing/fakes/fakes.dart';
 import '../../../../../testing/mocks/mocks.dart';
 
@@ -19,7 +21,7 @@ void main() {
       () => favoritoRepository.removeFavorite(any()),
     ).thenAnswer((_) async => const Right(null));
 
-    final result = await usecase.call(1);
+    final result = await usecase.call(param: 1);
 
     expect(result, Right(null));
   });
@@ -29,7 +31,7 @@ void main() {
       () => favoritoRepository.removeFavorite(any()),
     ).thenAnswer((_) async => Left(FakeAppException()));
 
-    final result = await usecase.call(1);
+    final result = await usecase.call(param: 1);
 
     expect(result, isA<Left>());
   });

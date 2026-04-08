@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:myapp/features/help/help.dart';
-import 'package:myapp/app/exceptions/app_exception.dart';
 
 class MockHelpRepository extends Mock implements HelpRepository {}
 
@@ -16,9 +15,9 @@ void main() {
   });
 
   test('deve repassar o Right contendo os itens quando sucesso', () async {
-    when(() => repository.getHelpItems()).thenAnswer(
-      (_) async => const Right([]),
-    );
+    when(
+      () => repository.getHelpItems(),
+    ).thenAnswer((_) async => const Right([]));
 
     final result = await usecase.call();
 
@@ -26,15 +25,18 @@ void main() {
     verify(() => repository.getHelpItems()).called(1);
   });
 
-  test('deve repassar o Left contendo algum AppException quando ocorrer erro', () async {
-    final error = UnknownHelpException(stackTrace: StackTrace.current);
-    when(() => repository.getHelpItems()).thenAnswer(
-      (_) async => Left(error),
-    );
+  test(
+    'deve repassar o Left contendo algum AppException quando ocorrer erro',
+    () async {
+      final error = UnknownHelpException(stackTrace: StackTrace.current);
+      when(
+        () => repository.getHelpItems(),
+      ).thenAnswer((_) async => Left(error));
 
-    final result = await usecase.call();
+      final result = await usecase.call();
 
-    expect(result.fold((l) => l, (r) => null), isA<UnknownHelpException>());
-    verify(() => repository.getHelpItems()).called(1);
-  });
+      expect(result.fold((l) => l, (r) => null), isA<UnknownHelpException>());
+      verify(() => repository.getHelpItems()).called(1);
+    },
+  );
 }

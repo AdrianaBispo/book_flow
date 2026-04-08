@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/app/app.dart';
+import 'package:myapp/features/favorite/presenter/view/favoritos_view.dart';
 import 'package:myapp/features/features.dart';
 
 import '../../shared/shared.dart';
@@ -55,7 +56,7 @@ abstract class NavigationConfigs {
           ),
           GoRoute(
             path: RoutePath.favoritos,
-            builder: (_, state) => const SearchView(),
+            builder: (_, state) => const FavoritosView(),
             parentNavigatorKey: shellNavigationKey,
             name: 'FAVORITOS',
           ),

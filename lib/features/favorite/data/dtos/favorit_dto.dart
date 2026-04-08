@@ -21,7 +21,7 @@ class FavoritDto extends FavoritEntity {
     );
   }
 
-  Map<String, dynamic> tojson() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'title': title,

@@ -11,7 +11,6 @@ class LoginForm extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         return SingleChildScrollView(
-          // Usando SingleChildScrollView para evitar overflow em telas pequenas
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -34,7 +33,7 @@ class LoginForm extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 16.h), // Usando altura responsiva
+              SizedBox(height: 16.h),
               // Campo de senha
               TextFormFieldWidget(
                 key: const Key('passwordInput_textField'),
@@ -66,7 +65,7 @@ class LoginForm extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 24.h), // Usando altura responsiva
+              SizedBox(height: 24.h),
               // Botão de login
               ElevatedButton(
                 key: const Key('continue_raisedButton'),
@@ -89,7 +88,7 @@ class LoginForm extends StatelessWidget {
                     : Text(AppLocalizations.of(context)!.loginButton),
               ),
 
-              SizedBox(height: 24.h), // Usando altura responsiva
+              SizedBox(height: 24.h),
               // Divisor
               Row(
                 children: [
@@ -111,7 +110,7 @@ class LoginForm extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(height: 24.h), // Usando altura responsiva
+              SizedBox(height: 24.h),
               // Botão de cadastro
               OutlinedButton(
                 onPressed: () {

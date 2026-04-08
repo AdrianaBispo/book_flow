@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myapp/modules/favoritos/data/dtos/dtos.dart';
+import 'package:myapp/features/favorite/data/dtos/dtos.dart';
 
 void main() {
-  group('FavoritoDto', () {
-    test('deve criar FavoritoDto a partir de JSON corretamente', () {
+  group('FavoritDto', () {
+    test('deve criar FavoritDto a partir de JSON corretamente', () {
       final json = {
         'id': 1,
         'title': 'O Senhor dos Anéis',
@@ -13,7 +13,7 @@ void main() {
         'genero': 'Fantasia',
       };
 
-      final dto = FavoritoDto.fromJson(json);
+      final dto = FavoritDto.fromJson(json);
 
       expect(dto.id, 1);
       expect(dto.title, 'O Senhor dos Anéis');
@@ -23,8 +23,8 @@ void main() {
       expect(dto.genero, 'Fantasia');
     });
 
-    test('deve converter FavoritoDto para JSON corretamente', () {
-      final dto = FavoritoDto(
+    test('deve converter FavoritDto para JSON corretamente', () {
+      final dto = FavoritDto(
         id: 1,
         title: 'O Senhor dos Anéis',
         author: 'J.R.R. Tolkien',
@@ -33,7 +33,7 @@ void main() {
         genero: 'Fantasia',
       );
 
-      final json = dto.tojson();
+      final json = dto.toJson();
 
       expect(json['id'], 1);
       expect(json['title'], 'O Senhor dos Anéis');
@@ -53,8 +53,8 @@ void main() {
         'genero': 'Distopia',
       };
 
-      final dto = FavoritoDto.fromJson(originalJson);
-      final resultJson = dto.tojson();
+      final dto = FavoritDto.fromJson(originalJson);
+      final resultJson = dto.toJson();
 
       expect(resultJson, originalJson);
     });
