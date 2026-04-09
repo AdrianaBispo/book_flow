@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:myapp/app/app.dart';
 import '../../search.dart';
 
@@ -29,91 +30,118 @@ class _SearchCardState extends State<SearchCard>
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 70,
-            height: 100,
-            decoration: BoxDecoration(
-              image: widget.ebook.coverUrl == ''
-                  ? DecorationImage(
-                      image:
-                          const AssetImage(AppAssets.notfound) as ImageProvider,
+    return InkWell(
+      onTap: () {
+        NavigationConfigs.push(
+          routePath: RoutePath.searchDetails,
+          extra: widget.ebook,
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.all(12.r),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          Hero(
+            tag: 'book-cover-${widget.ebook.id}',
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: widget.ebook.coverUrl == ''
+                  ? Image.asset(
+                      AppAssets.notfound,
+                      width: 70.w,
+                      height: 100.h,
                       fit: BoxFit.contain,
                     )
-                  : DecorationImage(
-                      image: NetworkImage(widget.ebook.coverUrl!),
+                  : Image.network(
+                      widget.ebook.coverUrl!,
+                      width: 70.w,
+                      height: 100.h,
                       fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Skeletonizer(
+                          enabled: true,
+                          child: Container(
+                            width: 70.w,
+                            height: 100.h,
+                            color: AppColors.skeletonLoading,
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) => Image.asset(
+                        AppAssets.notfound,
+                        width: 70.w,
+                        height: 100.h,
+                        fit: BoxFit.contain,
+                      ),
                     ),
-              borderRadius: BorderRadius.circular(8),
             ),
           ),
-          const SizedBox(width: 12),
-
-          // 2. Detalhes do Livro
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.ebook.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextTheme.of(
-                    context,
-                  ).titleSmall!.copyWith(fontFamily: 'PT Serif'),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  widget.ebook.author,
-                  style: TextTheme.of(
-                    context,
-                  ).bodySmall!.copyWith(color: AppColors.grey60),
-                ),
-                const SizedBox(height: 8),
-                widget.ebook.genero!.isEmpty
-                    ? const SizedBox.shrink()
-                    : Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.purple20,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Text(
-                          widget.ebook.genero ?? '',
-                          style: TextTheme.of(context).bodySmall!.copyWith(
-                            color: AppColors.primaryPurple,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 10,
+            SizedBox(width: 12.w),
+    
+            // 2. Detalhes do Livro
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.ebook.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextTheme.of(
+                      context,
+                    ).titleSmall!.copyWith(
+                        fontFamily: 'PT Serif',)
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    widget.ebook.author,
+                    style: TextTheme.of(
+                      context,
+                    ).titleSmall,
+                  ),
+                  SizedBox(height: 8.h),
+                  widget.ebook.genero!.isEmpty
+                      ? const SizedBox.shrink()
+                      : Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 8.w,
+                            vertical: 4.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.purple20,
+                            borderRadius: BorderRadius.circular(4.r),
+                          ),
+                          child: Text(
+                            widget.ebook.genero ?? '',
+                            style: TextTheme.of(context).bodySmall!.copyWith(
+                              Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 10.sp,
+                            ),
                           ),
                         ),
-                      ),
-              ],
+                ],
+              ),
             ),
-          ),
-
-          IconButton(
-            icon: Icon(
-              Icons.arrow_forward_ios_outlined,
-              size: 16,
-              color: AppColors.primaryPurple,
+    
+            IconButton(
+              icon: Icon(
+                Icons.arrow_forward_ios_outlined,
+                size: 16.r,
+                color: AppColors.primaryPurple,
+              ),
+    
+              onPressed: () {
+                NavigationConfigs.push(
+                  routePath: RoutePath.searchDetails,
+                  extra: widget.ebook,
+                );
+              },
             ),
-
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Visualizar livro "${widget.ebook.title}"'),
-                ),
-              );
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -13,10 +13,10 @@ class EmptyResultSearchWidget extends StatelessWidget {
         children: [
           Icon(
             PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
-            size: 80,
+            size: 80.r,
             color: AppColors.lightBorder80,
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           Text(
             AppLocalizations.of(context)!.emptyResultSearchTitle,
             style: Theme.of(

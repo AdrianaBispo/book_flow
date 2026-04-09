@@ -23,4 +23,6 @@ abstract class RoutePath {
   //HELP
   static const help = '/help';
 
+  //DETAILS
+  static const searchDetails = '/search/details';
 }

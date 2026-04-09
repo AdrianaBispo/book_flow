@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:myapp/app/app.dart';
 import 'package:myapp/shared/shared.dart';
 
@@ -36,7 +37,7 @@ class _SearchViewState extends State<SearchView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 72,
+        toolbarHeight: 72.h,
         automaticallyImplyLeading: false,
         title: _buildSearchBar(),
         actions: [
@@ -44,6 +45,7 @@ class _SearchViewState extends State<SearchView>
             icon: Icon(
               PhosphorIcons.x(PhosphorIconsStyle.regular),
               color: AppColors.lightCard,
+              size: 24.r,
             ),
             onPressed: () {
               _searchController.clear();
@@ -57,19 +59,36 @@ class _SearchViewState extends State<SearchView>
           if (state is SearchInitial) {
             return _buildInitialState();
           } else if (state is SearchLoading) {
-            return const Center(
-              child: CircularProgressIndicator(color: AppColors.primaryPurple),
+            return Skeletonizer(
+              enabled: true,
+              child: ListView.separated(
+                padding: EdgeInsets.all(16.r),
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return SearchCard(
+                    ebook: ResultSearchDto(
+                      id: 0,
+                      title: '',
+                      author: '',
+                      coverUrl: '',
+                      genero: '',
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) =>
+                    Divider(color: Theme.of(context).dividerColor, height: 24.h),
+              ),
             );
           } else if (state is SearchSuccess) {
             return ListView.separated(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.r),
               itemCount: state.results.length,
               itemBuilder: (context, index) {
                 final ebook = state.results[index];
                 return SearchCard(ebook: ebook as ResultSearchDto);
               },
               separatorBuilder: (context, index) =>
-                  Divider(color: Theme.of(context).dividerColor, height: 24),
+                  Divider(color: Theme.of(context).dividerColor, height: 24.h),
             );
           } else if (state is SearchEmpty) {
             return EmptyResultSearchWidget();
@@ -96,20 +115,24 @@ class _SearchViewState extends State<SearchView>
 
   Widget _buildSearchBar() {
     return SizedBox(
-      height: 48,
+      height: 48.h,
       child: TextField(
         controller: _searchController,
         style: Theme.of(
           context,
-        ).textTheme.bodyMedium!.copyWith(color: AppColors.lightBackground),
+        ).textTheme.bodyMedium!.copyWith(
+              color: AppColors.lightBackground,
+              fontSize: 14.sp,
+            ),
         cursorColor: AppColors.lightBackground,
         decoration: InputDecoration(
           fillColor: AppColors.purple20,
           hintText: AppLocalizations.of(context)!.searchBarHintText,
           labelStyle: Theme.of(context).inputDecorationTheme.labelStyle!
-              .copyWith(color: AppColors.lightBackground),
+              .copyWith(color: AppColors.lightBackground, fontSize: 14.sp),
           hintStyle: Theme.of(context).inputDecorationTheme.hintStyle!.copyWith(
             color: AppColors.lightBorder80,
+            fontSize: 14.sp,
           ),
           filled: true,
           enabledBorder: Theme.of(context).inputDecorationTheme.border!
@@ -118,6 +141,7 @@ class _SearchViewState extends State<SearchView>
             icon: Icon(
               PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
               color: AppColors.lightBackground,
+              size: 20.r,
             ),
             color: AppColors.lightBackground,
             onPressed: () {
@@ -125,7 +149,7 @@ class _SearchViewState extends State<SearchView>
               context.read<SearchBloc>().add(SearchTextChanged(searchText));
             },
           ),
-          contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
+          contentPadding: EdgeInsets.symmetric(vertical: 16.h),
         ),
         onSubmitted: (value) {
           final searchText = _searchController.text;
@@ -142,15 +166,18 @@ class _SearchViewState extends State<SearchView>
         children: [
           Icon(
             PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
-            size: 80,
+            size: 80.r,
             color: AppColors.lightBorder80,
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           Text(
             AppLocalizations.of(context)!.searchPlaceholder,
             style: Theme.of(
               context,
-            ).textTheme.bodyMedium!.copyWith(color: AppColors.grey40),
+            ).textTheme.bodyMedium!.copyWith(
+                  color: AppColors.grey40,
+                  fontSize: 14.sp,
+                ),
           ),
         ],
       ),

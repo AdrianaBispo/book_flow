@@ -68,6 +68,11 @@ abstract class NavigationConfigs {
           ),
         ],
       ),
+      GoRoute(
+        path: RoutePath.searchDetails,
+        builder: (_, state) => DetailsSearchView(ebook: state.extra as ResultSearchDto),
+        name: 'SEARCH_DETAILS',
+      ),
     ],
   );
   static String get currentRoute {

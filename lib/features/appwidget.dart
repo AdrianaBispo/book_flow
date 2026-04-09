@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myapp/features/features.dart';
 import '../app/app.dart';
 import '../shared/shared.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive/hive.dart';
 import 'favorite/data/data.dart';
 import 'library/data/data.dart';
 
@@ -128,6 +126,13 @@ class AppWidget extends StatelessWidget {
               openBook: context.read<OpenBookUsecaseImpl>(),
             ),
           ),
+          BlocProvider<FavoriteBloc>(
+            create: (context) => FavoriteBloc(
+              getFavorites: context.read<GetFavoriteUsecaseImpl>(),
+              addFavorite: context.read<AddFavoriteUsecaseImpl>(),
+              removeFavorite: context.read<RemoveFavoriteUsecaseImpl>(),
+            )..add(LoadFavorites()),
+          ),
         ],
 
 
@@ -135,16 +140,25 @@ class AppWidget extends StatelessWidget {
           designSize: const Size(360, 690),
           minTextAdapt: true,
           splitScreenMode: true,
-          builder: (_, child) => MaterialApp.router(
-            title: 'Book Flow',
-            locale: const Locale('pt', 'BR'),
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: ThemeMode.system,
-            debugShowCheckedModeBanner: false,
-            routerConfig: NavigationConfigs.routes,
+          builder: (_, child) => SkeletonizerConfig(
+            data: SkeletonizerConfigData(
+              containersColor: AppColors.skeletonLoading,
+              effect: ShimmerEffect(
+                baseColor: AppColors.skeletonLoading,
+                highlightColor: AppColors.skeletonHighlight,
+              ),
+            ),
+            child: MaterialApp.router(
+              title: 'Book Flow',
+              locale: const Locale('pt', 'BR'),
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              themeMode: ThemeMode.system,
+              debugShowCheckedModeBanner: false,
+              routerConfig: NavigationConfigs.routes,
+            ),
           ),
         ),
       ),

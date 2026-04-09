@@ -10,3 +10,5 @@ export 'package:go_router/go_router.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:hive/hive.dart';
 export 'package:vocsy_epub_viewer/epub_viewer.dart';
+export 'package:skeletonizer/skeletonizer.dart';
+export 'package:hive_flutter/hive_flutter.dart';

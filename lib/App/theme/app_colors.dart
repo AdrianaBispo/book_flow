@@ -35,4 +35,8 @@ abstract class AppColors {
   static final Color purple60 = Color.fromRGBO(91, 33, 182, 1);
   static final Color purple70 = Color.fromRGBO(91, 33, 182, .6);
   static final Color purple20 = Color.fromRGBO(91, 33, 182, 0.2);
+
+  // Cores para Shimmer/Skeleton
+  static final Color skeletonLoading = Colors.grey[300]!;
+  static final Color skeletonHighlight = Colors.grey[100]!;
   }
