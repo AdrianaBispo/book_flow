@@ -15,8 +15,17 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
     required this.openBook,
   }) : super(LibraryInitial()) {
     on<LoadLibrary>(_onLoadLibrary);
+    on<AddBookToLibrary>(_onAddBook);
     on<RemoveBookFromLibrary>(_onRemoveBook);
     on<OpenBook>(_onOpenBook);
+  }
+
+  Future<void> _onAddBook(AddBookToLibrary event, Emitter<LibraryState> emit) async {
+    final result = await addBook(param: event.book);
+    result.fold(
+      (failure) => emit(LibraryFailure(failure)),
+      (_) => add(LoadLibrary()),
+    );
   }
 
 
