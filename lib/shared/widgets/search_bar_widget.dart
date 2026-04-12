@@ -31,19 +31,18 @@ class SearchBarWidget extends StatelessWidget {
           color: Theme.of(context).scaffoldBackgroundColor,
         ),
         cursorColor: Theme.of(context).scaffoldBackgroundColor,
+        textAlignVertical: const TextAlignVertical(y: 0),
         decoration: InputDecoration(
           fillColor: AppColors.purple20,
           hintText: hintText ?? AppLocalizations.of(context)!.searchBarHintText,
           labelStyle:
               (theme.inputDecorationTheme.labelStyle ?? AppStyles.bodyMedium)
                   .copyWith(color: Theme.of(context).scaffoldBackgroundColor),
-          hintStyle:
-              (theme.inputDecorationTheme.hintStyle ?? AppStyles.bodyMedium)
-                  .copyWith(
-                    color: Theme.of(
-                      context,
-                    ).disabledColor.withValues(alpha: 0.8),
-                  ),
+          hintStyle: theme.inputDecorationTheme.hintStyle?.copyWith(
+            color: Theme.of(
+              context,
+            ).scaffoldBackgroundColor.withValues(alpha: 0.8),
+          ),
           filled: true,
           isDense: true,
           enabledBorder:
