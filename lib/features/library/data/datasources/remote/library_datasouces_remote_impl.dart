@@ -16,7 +16,7 @@ class LibraryRemoteDataSourceImpl implements LibraryRemoteDatasource {
         : await getApplicationDocumentsDirectory();
 
     final booksDir = Directory('${appDocDir!.path}/books');
-    final coversDir = Directory('${appDocDir!.path}/covers');
+    final coversDir = Directory('${appDocDir.path}/covers');
 
     if (!await booksDir.exists()) {
       await booksDir.create(recursive: true);

@@ -1,11 +1,17 @@
+import 'package:myapp/app/exceptions/app_exception.dart';
+import 'package:myapp/features/favorite/domain/entities/favorit_entity.dart';
+
 abstract class FavoriteState {}
 
 class FavoriteInitial extends FavoriteState {}
+
 class FavoriteLoading extends FavoriteState {}
+
 class FavoriteLoaded extends FavoriteState {
-  final List<FavoriteEntity> favorites;
+  final List<FavoritEntity> favorites;
   FavoriteLoaded(this.favorites);
 }
+
 class FavoriteFailure extends FavoriteState {
   final AppException failure;
   FavoriteFailure(this.failure);

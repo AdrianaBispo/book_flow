@@ -1,5 +1,8 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:myapp/app/navigation/navigation_configs.dart';
 import 'package:myapp/app/theme/app_colors.dart';
+import '../../../../../app/app.dart';
 import '../datasources.dart';
 import '../../dtos/library_dto.dart';
 import 'package:myapp/shared/shared.dart';
@@ -73,15 +76,6 @@ class LibraryLocalDataSourceImpl implements LibraryLocalDataSource {
 
   @override
   Future<void> openBook(String path) async {
-    VocsyEpub.setConfig(
-      themeColor: AppColors.primaryPurple,
-      identifier: "iosBook",
-      scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
-      allowSharing: true,
-      enableTts: true,
-      nightMode: true,
-    );
-
-    VocsyEpub.open(path);
+    EpubController(document: EpubDocument.openFile(File(path)));
   }
 }

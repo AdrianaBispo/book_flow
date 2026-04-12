@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/shared/shared.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:myapp/app/app.dart';
 import '../../search.dart';
@@ -42,44 +43,45 @@ class _SearchCardState extends State<SearchCard>
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          Hero(
-            tag: 'book-cover-${widget.ebook.id}',
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
-              child: widget.ebook.coverUrl == ''
-                  ? Image.asset(
-                      AppAssets.notfound,
-                      width: 70.w,
-                      height: 100.h,
-                      fit: BoxFit.contain,
-                    )
-                  : Image.network(
-                      widget.ebook.coverUrl!,
-                      width: 70.w,
-                      height: 100.h,
-                      fit: BoxFit.cover,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Skeletonizer(
-                          enabled: true,
-                          child: Container(
-                            width: 70.w,
-                            height: 100.h,
-                            color: AppColors.skeletonLoading,
-                          ),
-                        );
-                      },
-                      errorBuilder: (context, error, stackTrace) => Image.asset(
+            Hero(
+              tag: 'book-cover-${widget.ebook.id}',
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.r),
+                child: widget.ebook.coverUrl == ''
+                    ? Image.asset(
                         AppAssets.notfound,
                         width: 70.w,
                         height: 100.h,
                         fit: BoxFit.contain,
+                      )
+                    : Image.network(
+                        widget.ebook.coverUrl!,
+                        width: 70.w,
+                        height: 100.h,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Skeletonizer(
+                            enabled: true,
+                            child: Container(
+                              width: 70.w,
+                              height: 100.h,
+                              color: AppColors.skeletonLoading,
+                            ),
+                          );
+                        },
+                        errorBuilder: (context, error, stackTrace) =>
+                            Image.asset(
+                              AppAssets.notfound,
+                              width: 70.w,
+                              height: 100.h,
+                              fit: BoxFit.contain,
+                            ),
                       ),
-                    ),
+              ),
             ),
-          ),
             SizedBox(width: 12.w),
-    
+
             // 2. Detalhes do Livro
             Expanded(
               child: Column(
@@ -91,15 +93,12 @@ class _SearchCardState extends State<SearchCard>
                     overflow: TextOverflow.ellipsis,
                     style: TextTheme.of(
                       context,
-                    ).titleSmall!.copyWith(
-                        fontFamily: 'PT Serif',)
+                    ).titleSmall!.copyWith(fontFamily: 'PT Serif'),
                   ),
                   SizedBox(height: 4.h),
                   Text(
                     widget.ebook.author,
-                    style: TextTheme.of(
-                      context,
-                    ).titleSmall,
+                    style: TextTheme.of(context).titleSmall,
                   ),
                   SizedBox(height: 8.h),
                   widget.ebook.genero!.isEmpty
@@ -116,7 +115,7 @@ class _SearchCardState extends State<SearchCard>
                           child: Text(
                             widget.ebook.genero ?? '',
                             style: TextTheme.of(context).bodySmall!.copyWith(
-                              Theme.of(context).colorScheme.primary,
+                              color: Theme.of(context).colorScheme.primary,
                               fontWeight: FontWeight.w600,
                               fontSize: 10.sp,
                             ),
@@ -125,14 +124,14 @@ class _SearchCardState extends State<SearchCard>
                 ],
               ),
             ),
-    
+
             IconButton(
               icon: Icon(
                 Icons.arrow_forward_ios_outlined,
                 size: 16.r,
                 color: AppColors.primaryPurple,
               ),
-    
+
               onPressed: () {
                 NavigationConfigs.push(
                   routePath: RoutePath.searchDetails,

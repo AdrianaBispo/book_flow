@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/app/app.dart';
 import 'package:myapp/shared/shared.dart';
 
 class SearchErroWidget extends StatelessWidget {
@@ -10,7 +9,7 @@ class SearchErroWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(24.r),
+        padding: EdgeInsets.all(24.r),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

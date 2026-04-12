@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/app/app.dart';
+import 'package:myapp/features/features.dart';
 import 'package:myapp/shared/shared.dart';
 import 'package:myapp/features/library/domain/entities/library_entity.dart';
 import 'package:myapp/features/library/presenter/presenter.dart';
 import 'package:myapp/features/favorite/presenter/presenter.dart';
-import '../search.dart';
+import 'package:myapp/features/search/search.dart';
 
 class DetailsSearchView extends StatelessWidget {
   final ResultSearchDto ebook;
@@ -94,7 +95,9 @@ class DetailsSearchView extends StatelessWidget {
                               if (loadingProgress == null) return child;
                               return Skeletonizer(
                                 enabled: true,
-                                child: Container(color: AppColors.skeletonLoading),
+                                child: Container(
+                                  color: AppColors.skeletonLoading,
+                                ),
                               );
                             },
                           ),
@@ -135,16 +138,31 @@ class DetailsSearchView extends StatelessWidget {
         SizedBox(height: 16.h),
         Row(
           children: [
-            _buildBadge(context, ebook.genero ?? 'Geral', AppColors.purple20, AppColors.primaryPurple),
+            _buildBadge(
+              context,
+              ebook.genero ?? 'Geral',
+              AppColors.purple20,
+              AppColors.primaryPurple,
+            ),
             SizedBox(width: 8.w),
-            _buildBadge(context, 'E-book', AppColors.secondaryYellow.withOpacity(0.2), AppColors.secondaryYellow.withOpacity(0.9)),
+            _buildBadge(
+              context,
+              'E-book',
+              AppColors.secondaryYellow.withOpacity(0.2),
+              AppColors.secondaryYellow.withOpacity(0.9),
+            ),
           ],
         ),
       ],
     );
   }
 
-  Widget _buildBadge(BuildContext context, String label, Color bgColor, Color textColor) {
+  Widget _buildBadge(
+    BuildContext context,
+    String label,
+    Color bgColor,
+    Color textColor,
+  ) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
       decoration: BoxDecoration(
@@ -176,11 +194,7 @@ class DetailsSearchView extends StatelessWidget {
   Widget _buildDescription(BuildContext context) {
     return Text(
       'Este é um livro incrível escrito por ${ebook.author}. Explore as páginas desta obra e mergulhe em uma jornada de conhecimento e entretenimento. A leitura é fundamental para o crescimento pessoal e intelectual.',
-      style: TextStyle(
-        color: AppColors.grey60,
-        fontSize: 14.sp,
-        height: 1.6,
-      ),
+      style: TextStyle(color: AppColors.grey60, fontSize: 14.sp, height: 1.6),
     );
   }
 
@@ -189,31 +203,40 @@ class DetailsSearchView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         _buildInfoItem(context, 'Páginas', '320', Icons.auto_stories_outlined),
-        _buildInfoItem(context, 'Linguagem', 'Português', Icons.language_outlined),
-        _buildInfoItem(context, 'Lançamento', '2023', Icons.calendar_today_outlined),
+        _buildInfoItem(
+          context,
+          'Linguagem',
+          'Português',
+          Icons.language_outlined,
+        ),
+        _buildInfoItem(
+          context,
+          'Lançamento',
+          '2023',
+          Icons.calendar_today_outlined,
+        ),
       ],
     );
   }
 
-  Widget _buildInfoItem(BuildContext context, String label, String value, IconData icon) {
+  Widget _buildInfoItem(
+    BuildContext context,
+    String label,
+    String value,
+    IconData icon,
+  ) {
     return Column(
       children: [
         Icon(icon, color: AppColors.primaryPurple, size: 24.r),
         SizedBox(height: 8.h),
         Text(
           value,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 14.sp,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
         ),
         SizedBox(height: 4.h),
         Text(
           label,
-          style: TextStyle(
-            color: AppColors.grey40,
-            fontSize: 12.sp,
-          ),
+          style: TextStyle(color: AppColors.grey40, fontSize: 12.sp),
         ),
       ],
     );
@@ -227,35 +250,49 @@ class DetailsSearchView extends StatelessWidget {
             builder: (context, state) {
               bool isInLibrary = false;
               if (state is LibraryLoaded) {
-                isInLibrary = state.books.any((b) => b.id == ebook.id.toString());
+                isInLibrary = state.books.any(
+                  (b) => b.id == ebook.id.toString(),
+                );
               }
 
               return ElevatedButton(
-                onPressed: isInLibrary 
-                  ? null 
-                  : () {
-                      context.read<LibraryBloc>().add(AddBookToLibrary(
-                        LibraryEntity(
-                          id: ebook.id.toString(),
-                          title: ebook.title,
-                          author: ebook.author,
-                          coverPath: ebook.coverUrl ?? '',
-                          downloadUrl: ebook.downloadUrl ?? '',
-                          genre: ebook.genero ?? '',
-                        )
-                      ));
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Adicionado à sua biblioteca!')),
-                      );
-                    },
+                onPressed: isInLibrary
+                    ? null
+                    : () {
+                        context.read<LibraryBloc>().add(
+                          AddBookToLibrary(
+                            LibraryEntity(
+                              id: ebook.id.toString(),
+                              title: ebook.title,
+                              author: ebook.author,
+                              coverPath: ebook.coverUrl ?? '',
+                              genre: ebook.genero ?? '',
+                              epubPath: '',
+                              status: ReadingStatus.notStarted,
+                            ),
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Adicionado à sua biblioteca!'),
+                          ),
+                        );
+                      },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 18.h),
-                  backgroundColor: isInLibrary ? AppColors.grey40 : AppColors.primaryPurple,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+                  backgroundColor: isInLibrary
+                      ? AppColors.grey40
+                      : AppColors.primaryPurple,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
                 ),
                 child: Text(
                   isInLibrary ? 'Na Biblioteca' : 'Adicionar à Biblioteca',
-                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               );
             },
@@ -283,7 +320,9 @@ class DetailsSearchView extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (isFavorite) {
-                    context.read<FavoriteBloc>().add(RemoveFromFavorite(ebook.id));
+                    context.read<FavoriteBloc>().add(
+                      RemoveFromFavorite(ebook.id),
+                    );
                   } else {
                     context.read<FavoriteBloc>().add(AddToFavorite(ebook.id));
                   }

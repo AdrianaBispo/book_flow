@@ -20,16 +20,21 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
     on<OpenBook>(_onOpenBook);
   }
 
-  Future<void> _onAddBook(AddBookToLibrary event, Emitter<LibraryState> emit) async {
-    final result = await addBook(param: event.book);
+  Future<void> _onAddBook(
+    AddBookToLibrary event,
+    Emitter<LibraryState> emit,
+  ) async {
+    final result = await addBook(param: event.book.id);
     result.fold(
       (failure) => emit(LibraryFailure(failure)),
       (_) => add(LoadLibrary()),
     );
   }
 
-
-  Future<void> _onLoadLibrary(LoadLibrary event, Emitter<LibraryState> emit) async {
+  Future<void> _onLoadLibrary(
+    LoadLibrary event,
+    Emitter<LibraryState> emit,
+  ) async {
     emit(LibraryLoading());
     final result = await getListBooks();
     result.fold(
@@ -38,7 +43,10 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
     );
   }
 
-  Future<void> _onRemoveBook(RemoveBookFromLibrary event, Emitter<LibraryState> emit) async {
+  Future<void> _onRemoveBook(
+    RemoveBookFromLibrary event,
+    Emitter<LibraryState> emit,
+  ) async {
     final result = await removeBook(param: event.id);
     result.fold(
       (failure) => emit(LibraryFailure(failure)),
@@ -54,4 +62,3 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
     );
   }
 }
-
