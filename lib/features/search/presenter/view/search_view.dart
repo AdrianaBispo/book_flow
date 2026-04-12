@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import 'package:myapp/app/app.dart';
 import 'package:myapp/shared/shared.dart';
 
@@ -37,15 +36,25 @@ class _SearchViewState extends State<SearchView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 72.h,
+        toolbarHeight: 60.h,
         automaticallyImplyLeading: false,
-        title: _buildSearchBar(),
+        title: SearchBarWidget(
+          controller: _searchController,
+          onSearchPressed: () {
+            final searchText = _searchController.text;
+            context.read<SearchBloc>().add(SearchTextChanged(searchText));
+          },
+          onSubmitted: (value) {
+            final searchText = _searchController.text;
+            context.read<SearchBloc>().add(SearchTextChanged(searchText));
+          },
+        ),
         actions: [
           IconButton(
             icon: Icon(
               PhosphorIcons.x(PhosphorIconsStyle.regular),
               color: AppColors.lightCard,
-              size: 24.r,
+              size: 16.r,
             ),
             onPressed: () {
               _searchController.clear();
@@ -57,7 +66,29 @@ class _SearchViewState extends State<SearchView>
       body: BlocBuilder<SearchBloc, SearchState>(
         builder: (context, state) {
           if (state is SearchInitial) {
-            return _buildInitialState();
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
+                    size: 80.r,
+                    color: Theme.of(
+                      context,
+                    ).inputDecorationTheme.disabledBorder!.borderSide.color,
+                  ),
+                  SizedBox(height: 16.h),
+                  Text(
+                    AppLocalizations.of(context)!.searchPlaceholder,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: Theme.of(
+                        context,
+                      ).inputDecorationTheme.disabledBorder!.borderSide.color,
+                    ),
+                  ),
+                ],
+              ),
+            );
           } else if (state is SearchLoading) {
             return Skeletonizer(
               enabled: true,
@@ -75,8 +106,10 @@ class _SearchViewState extends State<SearchView>
                     ),
                   );
                 },
-                separatorBuilder: (context, index) =>
-                    Divider(color: Theme.of(context).dividerColor, height: 24.h),
+                separatorBuilder: (context, index) => Divider(
+                  color: Theme.of(context).dividerColor,
+                  height: 24.h,
+                ),
               ),
             );
           } else if (state is SearchSuccess) {
@@ -107,79 +140,31 @@ class _SearchViewState extends State<SearchView>
               message: AppLocalizations.of(context)!.errorUnknownSearch,
             );
           }
-          return _buildInitialState();
-        },
-      ),
-    );
-  }
-
-  Widget _buildSearchBar() {
-    return SizedBox(
-      height: 48.h,
-      child: TextField(
-        controller: _searchController,
-        style: Theme.of(
-          context,
-        ).textTheme.bodyMedium!.copyWith(
-              color: AppColors.lightBackground,
-              fontSize: 14.sp,
-            ),
-        cursorColor: AppColors.lightBackground,
-        decoration: InputDecoration(
-          fillColor: AppColors.purple20,
-          hintText: AppLocalizations.of(context)!.searchBarHintText,
-          labelStyle: Theme.of(context).inputDecorationTheme.labelStyle!
-              .copyWith(color: AppColors.lightBackground, fontSize: 14.sp),
-          hintStyle: Theme.of(context).inputDecorationTheme.hintStyle!.copyWith(
-            color: AppColors.lightBorder80,
-            fontSize: 14.sp,
-          ),
-          filled: true,
-          enabledBorder: Theme.of(context).inputDecorationTheme.border!
-              .copyWith(borderSide: BorderSide(color: AppColors.primaryPurple)),
-          prefixIcon: IconButton(
-            icon: Icon(
-              PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
-              color: AppColors.lightBackground,
-              size: 20.r,
-            ),
-            color: AppColors.lightBackground,
-            onPressed: () {
-              final searchText = _searchController.text;
-              context.read<SearchBloc>().add(SearchTextChanged(searchText));
-            },
-          ),
-          contentPadding: EdgeInsets.symmetric(vertical: 16.h),
-        ),
-        onSubmitted: (value) {
-          final searchText = _searchController.text;
-          context.read<SearchBloc>().add(SearchTextChanged(searchText));
-        },
-      ),
-    );
-  }
-
-  Widget _buildInitialState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
-            size: 80.r,
-            color: AppColors.lightBorder80,
-          ),
-          SizedBox(height: 16.h),
-          Text(
-            AppLocalizations.of(context)!.searchPlaceholder,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.copyWith(
-                  color: AppColors.grey40,
-                  fontSize: 14.sp,
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  PhosphorIcons.magnifyingGlass(PhosphorIconsStyle.regular),
+                  size: 80.r,
+                  color: Theme.of(
+                    context,
+                  ).inputDecorationTheme.disabledBorder!.borderSide.color,
                 ),
-          ),
-        ],
+                SizedBox(height: 16.h),
+                Text(
+                  AppLocalizations.of(context)!.searchPlaceholder,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Theme.of(
+                      context,
+                    ).inputDecorationTheme.disabledBorder!.borderSide.color,
+                    fontSize: 14.sp,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
