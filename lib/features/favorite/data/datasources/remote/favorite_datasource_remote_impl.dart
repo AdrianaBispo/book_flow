@@ -41,8 +41,8 @@ class FavoriteDatasourceRemoteImpl implements FavoriteDatasourceRemote {
   Future<void> addFavorite({required int favoriteId}) async {
     try {
       await client.from('sgb_favoritos').insert({
-        'id': favoriteId,
         'user_id': client.auth.currentUser!.id,
+        'ebo_id': favoriteId,
       });
     } catch (e) {
       throw Exception(e);
