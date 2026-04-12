@@ -17,20 +17,20 @@ void main() {
 
   test('deve retornar List<FavoritoEntity> quando for  bem-sucedida', () async {
     when(
-      () => favoritoRepository.getFavorites(any()),
+      () => favoritoRepository.getFavorites(),
     ).thenAnswer((_) async => const Right(<FavoritEntity>[]));
 
-    final result = await usecase.call(param: 1);
+    final result = await usecase.call();
     expect(result.isRight(), true);
     expect(result.getOrElse(() => []), isA<List<FavoritEntity>>());
   });
 
   test('deve retornar AppException em caso de erro', () async {
     when(
-      () => favoritoRepository.getFavorites(any()),
+      () => favoritoRepository.getFavorites(),
     ).thenAnswer((_) async => Left(FakeAppException()));
 
-    final result = await usecase.call(param: 1);
+    final result = await usecase.call();
 
     expect(result.isLeft(), true);
   });

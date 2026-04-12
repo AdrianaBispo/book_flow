@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/app/app.dart';
-import 'package:myapp/features/favorite/presenter/view/favoritos_view.dart';
 import 'package:myapp/features/features.dart';
 
 import '../../shared/shared.dart';
@@ -17,9 +16,14 @@ abstract class NavigationConfigs {
 
   static final routes = GoRouter(
     navigatorKey: _globalNavigatorKey,
-    initialLocation: RoutePath.login,
+    initialLocation: RoutePath.splash,
     errorBuilder: (context, state) => const PageNotFound(),
     routes: [
+      GoRoute(
+        path: RoutePath.splash,
+        builder: (_, state) => const SplashView(),
+        name: 'SPLASH',
+      ),
       GoRoute(
         path: RoutePath.login,
         builder: (_, state) => LoginView(),
@@ -70,7 +74,8 @@ abstract class NavigationConfigs {
       ),
       GoRoute(
         path: RoutePath.searchDetails,
-        builder: (_, state) => DetailsSearchView(ebook: state.extra as ResultSearchDto),
+        builder: (_, state) =>
+            DetailsSearchView(ebook: state.extra as ResultSearchDto),
         name: 'SEARCH_DETAILS',
       ),
     ],

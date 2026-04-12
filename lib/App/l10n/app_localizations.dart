@@ -367,6 +367,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'NEW'**
   String get newStatus;
+
+  /// No description provided for @detailsDescriptionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get detailsDescriptionTitle;
+
+  /// No description provided for @detailsInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Information'**
+  String get detailsInfoTitle;
+
+  /// No description provided for @detailsPagesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get detailsPagesLabel;
+
+  /// No description provided for @detailsLanguageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get detailsLanguageLabel;
+
+  /// No description provided for @detailsReleaseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Release'**
+  String get detailsReleaseLabel;
+
+  /// No description provided for @detailsAddToLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Library'**
+  String get detailsAddToLibrary;
+
+  /// No description provided for @detailsInLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'In Library'**
+  String get detailsInLibrary;
+
+  /// No description provided for @detailsAddedToLibrarySnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Added to your library!'**
+  String get detailsAddedToLibrarySnack;
+
+  /// No description provided for @detailsGenreGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get detailsGenreGeneral;
+
+  /// No description provided for @detailsPagesValue.
+  ///
+  /// In en, this message translates to:
+  /// **'320'**
+  String get detailsPagesValue;
+
+  /// No description provided for @detailsLanguageValue.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get detailsLanguageValue;
+
+  /// No description provided for @detailsReleaseValue.
+  ///
+  /// In en, this message translates to:
+  /// **'2023'**
+  String get detailsReleaseValue;
 }
 
 class _AppLocalizationsDelegate

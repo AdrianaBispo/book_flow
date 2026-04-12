@@ -3,7 +3,6 @@ import 'package:myapp/features/features.dart';
 import '../app/app.dart';
 import '../shared/shared.dart';
 import 'favorite/data/data.dart';
-import 'library/data/data.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -50,9 +49,8 @@ class AppWidget extends StatelessWidget {
         ),
         // FAVORITE
         Provider<FavoriteDatasourceRemoteImpl>(
-          create: (_) => FavoriteDatasourceRemoteImpl(
-            client: Supabase.instance.client,
-          ),
+          create: (_) =>
+              FavoriteDatasourceRemoteImpl(client: Supabase.instance.client),
         ),
         Provider<FavoriteRepository>(
           create: (context) => FavoriteRepositoryImpl(
@@ -70,9 +68,8 @@ class AppWidget extends StatelessWidget {
           ),
         ),
         Provider<AddFavoriteUsecaseImpl>(
-          create: (context) => AddFavoriteUsecaseImpl(
-            context.read<FavoriteRepository>(),
-          ),
+          create: (context) =>
+              AddFavoriteUsecaseImpl(context.read<FavoriteRepository>()),
         ),
         // LIBRARY
         Provider<LibraryRemoteDataSourceImpl>(
@@ -91,16 +88,22 @@ class AppWidget extends StatelessWidget {
           ),
         ),
         Provider<GetListBooksUsecaseImpl>(
-          create: (context) => GetListBooksUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+          create: (context) =>
+              GetListBooksUsecaseImpl(context.read<LibraryRepositoryImpl>()),
         ),
         Provider<AddBookInLibraryUsecaseImpl>(
-          create: (context) => AddBookInLibraryUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+          create: (context) => AddBookInLibraryUsecaseImpl(
+            context.read<LibraryRepositoryImpl>(),
+          ),
         ),
         Provider<RemoveBookFromLibraryUsecaseImpl>(
-          create: (context) => RemoveBookFromLibraryUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+          create: (context) => RemoveBookFromLibraryUsecaseImpl(
+            context.read<LibraryRepositoryImpl>(),
+          ),
         ),
         Provider<OpenBookUsecaseImpl>(
-          create: (context) => OpenBookUsecaseImpl(context.read<LibraryRepositoryImpl>()),
+          create: (context) =>
+              OpenBookUsecaseImpl(context.read<LibraryRepositoryImpl>()),
         ),
       ],
       child: MultiBlocProvider(
@@ -134,7 +137,6 @@ class AppWidget extends StatelessWidget {
             )..add(LoadFavorites()),
           ),
         ],
-
 
         child: ScreenUtilInit(
           designSize: const Size(360, 690),

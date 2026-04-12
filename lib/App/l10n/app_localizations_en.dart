@@ -156,4 +156,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get newStatus => 'NEW';
+
+  @override
+  String get detailsDescriptionTitle => 'Description';
+
+  @override
+  String get detailsInfoTitle => 'Information';
+
+  @override
+  String get detailsPagesLabel => 'Pages';
+
+  @override
+  String get detailsLanguageLabel => 'Language';
+
+  @override
+  String get detailsReleaseLabel => 'Release';
+
+  @override
+  String get detailsAddToLibrary => 'Add to Library';
+
+  @override
+  String get detailsInLibrary => 'In Library';
+
+  @override
+  String get detailsAddedToLibrarySnack => 'Added to your library!';
+
+  @override
+  String get detailsGenreGeneral => 'General';
+
+  @override
+  String get detailsPagesValue => '320';
+
+  @override
+  String get detailsLanguageValue => 'English';
+
+  @override
+  String get detailsReleaseValue => '2023';
 }

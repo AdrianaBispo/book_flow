@@ -155,4 +155,40 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get newStatus => 'NOVO';
+
+  @override
+  String get detailsDescriptionTitle => 'Descrição';
+
+  @override
+  String get detailsInfoTitle => 'Informações';
+
+  @override
+  String get detailsPagesLabel => 'Páginas';
+
+  @override
+  String get detailsLanguageLabel => 'Linguagem';
+
+  @override
+  String get detailsReleaseLabel => 'Lançamento';
+
+  @override
+  String get detailsAddToLibrary => 'Adicionar à Biblioteca';
+
+  @override
+  String get detailsInLibrary => 'Na Biblioteca';
+
+  @override
+  String get detailsAddedToLibrarySnack => 'Adicionado à sua biblioteca!';
+
+  @override
+  String get detailsGenreGeneral => 'Geral';
+
+  @override
+  String get detailsPagesValue => '320';
+
+  @override
+  String get detailsLanguageValue => 'Português';
+
+  @override
+  String get detailsReleaseValue => '2023';
 }

@@ -5,12 +5,14 @@ abstract class ResultSearchEntity {
   final String? coverUrl;
   final String? downloadUrl;
   final String? genero;
+  final String? description;
   ResultSearchEntity({
     required this.id,
     required this.author,
     required this.title,
     this.coverUrl,
     this.downloadUrl,
-    this.genero
+    this.genero,
+    this.description,
   });
 }

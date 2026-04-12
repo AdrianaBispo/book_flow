@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/shared/shared.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import 'package:myapp/app/app.dart';
 import '../../search.dart';
 
@@ -109,13 +108,15 @@ class _SearchCardState extends State<SearchCard>
                             vertical: 4.h,
                           ),
                           decoration: BoxDecoration(
-                            color: AppColors.purple20,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(4.r),
                           ),
                           child: Text(
                             widget.ebook.genero ?? '',
                             style: TextTheme.of(context).bodySmall!.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
+                              color: Theme.of(context).colorScheme.onPrimary,
                               fontWeight: FontWeight.w600,
                               fontSize: 10.sp,
                             ),
@@ -127,9 +128,9 @@ class _SearchCardState extends State<SearchCard>
 
             IconButton(
               icon: Icon(
-                Icons.arrow_forward_ios_outlined,
+                PhosphorIcons.caretRight(PhosphorIconsStyle.regular),
                 size: 16.r,
-                color: AppColors.primaryPurple,
+                color: Theme.of(context).colorScheme.primary,
               ),
 
               onPressed: () {

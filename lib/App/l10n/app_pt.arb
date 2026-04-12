@@ -122,5 +122,17 @@
   "errorLoadingLibrary": "Erro ao carregar sua biblioteca.",
   "tryAgain": "Tentar novamente",
   "readingStatus": "Lendo...",
-  "newStatus": "NOVO"
+  "newStatus": "NOVO",
+  "detailsDescriptionTitle": "Descrição",
+  "detailsInfoTitle": "Informações",
+  "detailsPagesLabel": "Páginas",
+  "detailsLanguageLabel": "Linguagem",
+  "detailsReleaseLabel": "Lançamento",
+  "detailsAddToLibrary": "Adicionar à Biblioteca",
+  "detailsInLibrary": "Na Biblioteca",
+  "detailsAddedToLibrarySnack": "Adicionado à sua biblioteca!",
+  "detailsGenreGeneral": "Geral",
+  "detailsPagesValue": "320",
+  "detailsLanguageValue": "Português",
+  "detailsReleaseValue": "2023"
 }

@@ -7,7 +7,8 @@ class ResultSearchDto extends ResultSearchEntity {
     required super.title,
     super.coverUrl,
     super.downloadUrl,
-    super.genero
+    super.genero,
+    super.description,
   });
 
   factory ResultSearchDto.fromJson(Map<String, dynamic> json) {
@@ -17,7 +18,8 @@ class ResultSearchDto extends ResultSearchEntity {
       title: json['title'] ?? '',
       coverUrl: json['cover_url'] ?? '',
       downloadUrl: json['download_url'] ?? '',
-      genero: json['genero'] ?? ''
+      genero: json['genero'] ?? '',
+      description: json['description'] ?? '',
     );
   }
 
@@ -28,7 +30,8 @@ class ResultSearchDto extends ResultSearchEntity {
       'title': title,
       'cover_url': coverUrl,
       'download_url': downloadUrl,
-      'genero': genero
+      'genero': genero,
+      'description': description,
     };
   }
 }

@@ -9,7 +9,7 @@ class FavoriteRepositoryImpl implements FavoriteRepository {
   FavoriteRepositoryImpl({required this.datasource});
 
   @override
-  Future<Either<AppException, List<FavoritEntity>>> getFavorites(int idUser) async {
+  Future<Either<AppException, List<FavoritEntity>>> getFavorites() async {
     try {
       final result = await datasource.getFavoriteList();
       return Right(result);

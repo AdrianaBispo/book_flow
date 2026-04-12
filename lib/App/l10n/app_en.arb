@@ -121,5 +121,17 @@
   "errorLoadingLibrary": "Error loading your library.",
   "tryAgain": "Try again",
   "readingStatus": "Reading...",
-  "newStatus": "NEW"
+  "newStatus": "NEW",
+  "detailsDescriptionTitle": "Description",
+  "detailsInfoTitle": "Information",
+  "detailsPagesLabel": "Pages",
+  "detailsLanguageLabel": "Language",
+  "detailsReleaseLabel": "Release",
+  "detailsAddToLibrary": "Add to Library",
+  "detailsInLibrary": "In Library",
+  "detailsAddedToLibrarySnack": "Added to your library!",
+  "detailsGenreGeneral": "General",
+  "detailsPagesValue": "320",
+  "detailsLanguageValue": "English",
+  "detailsReleaseValue": "2023"
 }
