@@ -22,41 +22,56 @@ class DetailsSearchView extends StatelessWidget {
           onPressed: () => NavigationConfigs.pop(),
         ),
         actions: [
-          BlocBuilder<FavoriteBloc, FavoriteState>(
-            builder: (context, state) {
-              bool isFavorite = false;
-              if (state is FavoriteLoaded) {
-                isFavorite = state.favorites.any((f) => f.id == ebook.id);
+          BlocListener<FavoriteBloc, FavoriteState>(
+            listener: (context, state) {
+              if (state is FavoriteFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Theme.of(context).colorScheme.error,
+                    //TODO: MELHORAR MENSAGEM DE ERRO
+                    content: Text(state.failure.stackTrace.toString()),
+                  ),
+                );
               }
-
-              return Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                child: IconButton(
-                  icon: Icon(
-                    isFavorite
-                        ? PhosphorIcons.heart(PhosphorIconsStyle.fill)
-                        : PhosphorIcons.heart(PhosphorIconsStyle.regular),
-                    color: Theme.of(context).colorScheme.primary,
-                    size: 28.r,
-                  ),
-                  onPressed: () {
-                    if (isFavorite) {
-                      context.read<FavoriteBloc>().add(
-                        RemoveFromFavorite(ebook.id),
-                      );
-                    } else {
-                      context.read<FavoriteBloc>().add(AddToFavorite(ebook.id));
-                    }
-                  },
-                ),
-              );
             },
+            child: BlocBuilder<FavoriteBloc, FavoriteState>(
+              builder: (context, state) {
+                bool isFavorite = false;
+                if (state is FavoriteLoaded) {
+                  isFavorite = state.favorites.any((f) => f.id == ebook.id);
+                }
+
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: IconButton(
+                    icon: Icon(
+                      isFavorite
+                          ? PhosphorIcons.heart(PhosphorIconsStyle.fill)
+                          : PhosphorIcons.heart(PhosphorIconsStyle.regular),
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 28.r,
+                    ),
+                    onPressed: () {
+                      if (isFavorite) {
+                        context.read<FavoriteBloc>().add(
+                          RemoveFromFavorite(ebook.id),
+                        );
+                      } else {
+                        context.read<FavoriteBloc>().add(
+                          AddToFavorite(ebook.id),
+                        );
+                      }
+                    },
+                  ),
+                );
+              },
+            ),
           ),
           SizedBox(width: 12.w),
         ],

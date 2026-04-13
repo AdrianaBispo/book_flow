@@ -1,36 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../widgets/widgets.dart';
-
-// Mock Data: Lista de livros favoritos
-final List<Map<String, String>> mockFavoriteBooks = [
-  {
-    'title': 'O Estranho Caso do Dr. Jekyll e Mr. Hyde',
-    'author': 'Robert Louis Stevenson',
-    'genre': 'Gótico',
-  },
-  {'title': '1984', 'author': 'George Orwell', 'genre': 'Distopia'},
-  {
-    'title': 'Cem Anos de Solidão',
-    'author': 'Gabriel García Márquez',
-    'genre': 'Realismo Mágico',
-  },
-  {
-    'title': 'A Revolução dos Bichos',
-    'author': 'George Orwell',
-    'genre': 'Sátira Política',
-  },
-  {
-    'title': 'O Pequeno Príncipe',
-    'author': 'Antoine de Saint-Exupéry',
-    'genre': 'Fábula',
-  },
-  {
-    'title': 'Orgulho e Preconceito',
-    'author': 'Jane Austen',
-    'genre': 'Romance',
-  },
-];
+import 'package:myapp/shared/shared.dart';
+import '../../../features.dart';
 
 class FavoritosView extends StatefulWidget {
   const FavoritosView({super.key});
@@ -41,24 +11,73 @@ class FavoritosView extends StatefulWidget {
 
 class _FavoritosViewState extends State<FavoritosView> {
   @override
+  void initState() {
+    super.initState();
+    context.read<FavoriteBloc>().add(LoadFavorites());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Meus Favoritos')),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(16.0),
-        itemCount: mockFavoriteBooks.length,
-        itemBuilder: (context, index) {
-          final book = mockFavoriteBooks[index];
-          return FavoriteBookCard(
-            title: book['title']!,
-            author: book['author']!,
-            genre: book['genre']!,
-            imageUrl:
-                'https://www.gutenberg.org/cache/epub/18452/pg18452.cover.medium.jpg', // Usado para o placeholder de cor
-          );
+      body: RefreshIndicator(
+        onRefresh: () async {
+          context.read<FavoriteBloc>().add(LoadFavorites());
         },
-        separatorBuilder: (context, index) =>
-            Divider(color: Theme.of(context).dividerColor, height: 24),
+        child: BlocBuilder<FavoriteBloc, FavoriteState>(
+          builder: (context, state) {
+            if (state is FavoriteLoaded) {
+              return ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+                itemCount: state.favorites.length,
+                itemBuilder: (context, index) {
+                  final book = state.favorites[index];
+                  return FavoriteBookCard(
+                    title: book.title,
+                    author: book.author,
+                    genre: book.genero.toString(),
+                    imageUrl: book.coverUrl.toString(),
+                    onRemove: () {
+                      context.read<FavoriteBloc>().add(
+                        RemoveFromFavorite(book.id),
+                      );
+                      context.read<FavoriteBloc>().add(LoadFavorites());
+                    },
+                  );
+                },
+              );
+            }
+            if (state is FavoriteLoading) {
+              return Skeletonizer(
+                enabled: true,
+                child: ListView.separated(
+                  padding: EdgeInsets.all(16.r),
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return FavoriteBookCard(
+                      title: '',
+                      author: '',
+                      genre: '',
+                      imageUrl: '',
+                      onRemove: () {},
+                    );
+                  },
+                  separatorBuilder: (context, index) => Divider(
+                    color: Theme.of(context).dividerColor,
+                    height: 24.h,
+                  ),
+                ),
+              );
+            }
+            if (state is FavoriteFailure) {
+              return LibraryErrorWidget(
+                onRetry: () =>
+                    context.read<FavoriteBloc>().add(LoadFavorites()),
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
       ),
     );
   }

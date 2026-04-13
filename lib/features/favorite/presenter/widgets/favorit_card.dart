@@ -7,6 +7,7 @@ class FavoriteBookCard extends StatelessWidget {
   final String author;
   final String genre;
   final String imageUrl;
+  final VoidCallback onRemove;
 
   const FavoriteBookCard({
     super.key,
@@ -14,6 +15,7 @@ class FavoriteBookCard extends StatelessWidget {
     required this.author,
     required this.genre,
     required this.imageUrl,
+    required this.onRemove,
   });
 
   @override
@@ -69,7 +71,7 @@ class FavoriteBookCard extends StatelessWidget {
                   child: Text(
                     genre,
                     style: TextTheme.of(context).bodySmall!.copyWith(
-                      color: AppColors.primaryPurple,
+                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w600,
                       fontSize: 10,
                     ),
@@ -80,12 +82,13 @@ class FavoriteBookCard extends StatelessWidget {
           ),
 
           GestureDetector(
+            onTap: onRemove,
             child: AnimatedContainer(
               duration: Duration(milliseconds: 150),
               width: 22,
               height: 22,
               decoration: BoxDecoration(
-                color: AppColors.primaryPurple,
+                color: Theme.of(context).colorScheme.primary,
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -94,11 +97,6 @@ class FavoriteBookCard extends StatelessWidget {
                 size: 16,
               ),
             ),
-            onTap: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Remover "$title" dos favoritos?')),
-              );
-            },
           ),
         ],
       ),

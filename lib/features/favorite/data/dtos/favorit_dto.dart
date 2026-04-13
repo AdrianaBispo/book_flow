@@ -12,22 +12,33 @@ class FavoritDto extends FavoritEntity {
 
   factory FavoritDto.fromJson(Map<String, dynamic> json) {
     return FavoritDto(
-      id: json['id'] as int,
-      title: json['title'] as String,
-      author: json['author'] as String,
-      coverUrl: json['coverUrl'] as String?,
-      downloadUrl: json['downloadUrl'] as String?,
-      genero: json['genero'] as String?,
+      id: json['fav_id'] as int,
+      title: json['title'] as String? ?? '',
+      author: json['author'] as String? ?? '',
+      coverUrl: json['cover_url'] as String?,
+      downloadUrl: json['download_url'] as String?,
+      genero: json['genero'] as String? ?? '',
+    );
+  }
+
+  factory FavoritDto.fromEntity(FavoritEntity entity) {
+    return FavoritDto(
+      id: entity.id,
+      title: entity.title,
+      author: entity.author,
+      coverUrl: entity.coverUrl,
+      downloadUrl: entity.downloadUrl,
+      genero: entity.genero,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      'fav_id': id,
       'title': title,
       'author': author,
-      'coverUrl': coverUrl,
-      'downloadUrl': downloadUrl,
+      'cover_url': coverUrl,
+      'download_url': downloadUrl,
       'genero': genero,
     };
   }

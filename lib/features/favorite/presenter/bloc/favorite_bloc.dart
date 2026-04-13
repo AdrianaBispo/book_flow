@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../data/dtos/favorit_dto.dart';
 import '../../domain/domain.dart';
-import 'package:myapp/app/app.dart';
 import 'package:myapp/features/favorite/presenter/presenter.dart';
-
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   final GetFavoriteUsecaseImpl getFavorites;
@@ -19,16 +18,26 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     on<RemoveFromFavorite>(_onRemoveFavorite);
   }
 
-  Future<void> _onLoadFavorites(LoadFavorites event, Emitter<FavoriteState> emit) async {
+  List<FavoritDto> _favorites = [];
+
+  List<FavoritDto> get favorites => _favorites;
+
+  Future<void> _onLoadFavorites(
+    LoadFavorites event,
+    Emitter<FavoriteState> emit,
+  ) async {
     emit(FavoriteLoading());
     final result = await getFavorites();
-    result.fold(
-      (failure) => emit(FavoriteFailure(failure)),
-      (favorites) => emit(FavoriteLoaded(favorites)),
-    );
+    result.fold((failure) => emit(FavoriteFailure(failure)), (favorites) {
+      _favorites = favorites.map((e) => FavoritDto.fromEntity(e)).toList();
+      emit(FavoriteLoaded(favorites));
+    });
   }
 
-  Future<void> _onAddFavorite(AddToFavorite event, Emitter<FavoriteState> emit) async {
+  Future<void> _onAddFavorite(
+    AddToFavorite event,
+    Emitter<FavoriteState> emit,
+  ) async {
     final result = await addFavorite(param: event.bookId);
     result.fold(
       (failure) => emit(FavoriteFailure(failure)),
@@ -36,7 +45,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     );
   }
 
-  Future<void> _onRemoveFavorite(RemoveFromFavorite event, Emitter<FavoriteState> emit) async {
+  Future<void> _onRemoveFavorite(
+    RemoveFromFavorite event,
+    Emitter<FavoriteState> emit,
+  ) async {
     final result = await removeFavorite(param: event.bookId);
     result.fold(
       (failure) => emit(FavoriteFailure(failure)),
