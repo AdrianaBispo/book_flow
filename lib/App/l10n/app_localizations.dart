@@ -439,6 +439,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'2023'**
   String get detailsReleaseValue;
+
+  /// Title for the favorites screen
+  ///
+  /// In en, this message translates to:
+  /// **'My Favorites'**
+  String get favoritesTitle;
+
+  /// Title for the empty favorites state
+  ///
+  /// In en, this message translates to:
+  /// **'No favorites yet.'**
+  String get emptyFavoritesTitle;
+
+  /// Subtitle for the empty favorites state
+  ///
+  /// In en, this message translates to:
+  /// **'Books you favorite will appear here.'**
+  String get emptyFavoritesSubtitle;
+
+  /// Error message when favorites fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn’t load your favorites. Please try again.'**
+  String get errorLoadingFavorites;
+
+  /// Message shown when a book is removed from favorites
+  ///
+  /// In en, this message translates to:
+  /// **'Removed from favorites'**
+  String get removedFromFavoritesSnack;
 }
 
 class _AppLocalizationsDelegate

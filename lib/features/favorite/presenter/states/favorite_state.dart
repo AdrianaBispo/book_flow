@@ -16,3 +16,8 @@ class FavoriteFailure extends FavoriteState {
   final AppException failure;
   FavoriteFailure(this.failure);
 }
+
+class FavoriteSuccess extends FavoriteState {
+  final String message;
+  FavoriteSuccess(this.message);
+}

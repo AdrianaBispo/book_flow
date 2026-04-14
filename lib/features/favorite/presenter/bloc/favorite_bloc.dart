@@ -52,7 +52,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     final result = await removeFavorite(param: event.bookId);
     result.fold(
       (failure) => emit(FavoriteFailure(failure)),
-      (_) => add(LoadFavorites()),
+      (_) {
+        emit(FavoriteSuccess('Removed'));
+        add(LoadFavorites());
+      },
     );
   }
 }
