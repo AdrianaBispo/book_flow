@@ -24,12 +24,28 @@ class DetailsSearchView extends StatelessWidget {
         actions: [
           BlocListener<FavoriteBloc, FavoriteState>(
             listener: (context, state) {
-              if (state is FavoriteFailure) {
+              final l10n = AppLocalizations.of(context)!;
+              if (state is FavoriteAdded) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(l10n.addedToFavoritesSnack),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+              } else if (state is FavoriteSuccess) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(l10n.removedFromFavoritesSnack),
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+              } else if (state is FavoriteFailure) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     backgroundColor: Theme.of(context).colorScheme.error,
-                    //TODO: MELHORAR MENSAGEM DE ERRO
-                    content: Text(state.failure.stackTrace.toString()),
+                    content: Text(l10n.unexpectedError),
                   ),
                 );
               }
@@ -38,7 +54,8 @@ class DetailsSearchView extends StatelessWidget {
               builder: (context, state) {
                 bool isFavorite = false;
                 if (state is FavoriteLoaded) {
-                  isFavorite = state.favorites.any((f) => f.id == ebook.id);
+                  isFavorite = state.favorites
+                      .any((f) => f.bookId == ebook.id);
                 }
 
                 return Container(
@@ -58,15 +75,10 @@ class DetailsSearchView extends StatelessWidget {
                       size: 28.r,
                     ),
                     onPressed: () {
-                      if (isFavorite) {
-                        context.read<FavoriteBloc>().add(
-                          RemoveFromFavorite(ebook.id),
-                        );
-                      } else {
-                        context.read<FavoriteBloc>().add(
-                          AddToFavorite(ebook.id),
-                        );
-                      }
+                      // O bloc trata o toggle internamente
+                      context.read<FavoriteBloc>().add(
+                        AddToFavorite(ebook.id),
+                      );
                     },
                   ),
                 );

@@ -469,6 +469,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Removed from favorites'**
   String get removedFromFavoritesSnack;
+
+  /// Message shown when a book is added to favorites
+  ///
+  /// In en, this message translates to:
+  /// **'Added to favorites!'**
+  String get addedToFavoritesSnack;
+
+  /// Message shown on favorites screen when user is not logged in
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to see your favorites'**
+  String get favoritesLoginRequired;
 }
 
 class _AppLocalizationsDelegate

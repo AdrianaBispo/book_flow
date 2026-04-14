@@ -134,7 +134,7 @@ class AppWidget extends StatelessWidget {
               getFavorites: context.read<GetFavoriteUsecaseImpl>(),
               addFavorite: context.read<AddFavoriteUsecaseImpl>(),
               removeFavorite: context.read<RemoveFavoriteUsecaseImpl>(),
-            )..add(LoadFavorites()),
+            ),
           ),
         ],
 

@@ -21,3 +21,5 @@ class FavoriteSuccess extends FavoriteState {
   final String message;
   FavoriteSuccess(this.message);
 }
+
+class FavoriteAdded extends FavoriteState {}

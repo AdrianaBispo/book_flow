@@ -11,10 +11,15 @@ class FavoritosView extends StatefulWidget {
 }
 
 class _FavoritosViewState extends State<FavoritosView> {
+  bool get _isLoggedIn =>
+      Supabase.instance.client.auth.currentUser != null;
+
   @override
   void initState() {
     super.initState();
-    context.read<FavoriteBloc>().add(LoadFavorites());
+    if (_isLoggedIn) {
+      context.read<FavoriteBloc>().add(LoadFavorites());
+    }
   }
 
   @override
@@ -23,26 +28,62 @@ class _FavoritosViewState extends State<FavoritosView> {
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.favoritesTitle)),
-      body: BlocConsumer<FavoriteBloc, FavoriteState>(
-        listener: (context, state) {
-          if (state is FavoriteSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(l10n.removedFromFavoritesSnack),
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                behavior: SnackBarBehavior.floating,
-              ),
-            );
-          }
-        },
-        builder: (context, state) {
-          return RefreshIndicator(
-            onRefresh: () async {
-              context.read<FavoriteBloc>().add(LoadFavorites());
-            },
-            child: _buildBody(context, state, l10n),
-          );
-        },
+      body: _isLoggedIn
+          ? BlocConsumer<FavoriteBloc, FavoriteState>(
+              listener: (context, state) {
+                if (state is FavoriteAdded) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(l10n.addedToFavoritesSnack),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                } else if (state is FavoriteSuccess) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(l10n.removedFromFavoritesSnack),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                }
+              },
+              builder: (context, state) {
+                return RefreshIndicator(
+                  onRefresh: () async {
+                    context.read<FavoriteBloc>().add(LoadFavorites());
+                  },
+                  child: _buildBody(context, state, l10n),
+                );
+              },
+            )
+          : _buildLoginRequired(context, l10n),
+    );
+  }
+
+  Widget _buildLoginRequired(BuildContext context, AppLocalizations l10n) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 32.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              PhosphorIcons.lockSimple(PhosphorIconsStyle.regular),
+              size: 64.r,
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+            ),
+            SizedBox(height: 20.h),
+            Text(
+              l10n.favoritesLoginRequired,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+            ),
+          ],
+        ),
       ),
     );
   }

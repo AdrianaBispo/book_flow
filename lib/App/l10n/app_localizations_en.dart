@@ -207,4 +207,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get removedFromFavoritesSnack => 'Removed from favorites';
+
+  @override
+  String get addedToFavoritesSnack => 'Added to favorites!';
+
+  @override
+  String get favoritesLoginRequired =>
+      'Log in to view your favorites list.';
 }
