@@ -12,16 +12,9 @@ class FavoritDto extends FavoritEntity {
   });
 
   factory FavoritDto.fromJson(Map<String, dynamic> json) {
-    int _parseId(dynamic value) {
-      if (value is int) return value;
-      if (value is String) return int.tryParse(value) ?? 0;
-      if (value is double) return value.toInt();
-      return 0;
-    }
-
     return FavoritDto(
-      id: _parseId(json['fav_id']),
-      bookId: _parseId(json['ebo_id']),
+      id: json['fav_id'] as int? ?? 0,
+      bookId: json['ebo_id'] as int? ?? 0,
       title: json['title'] as String? ?? '',
       author: json['author'] as String? ?? '',
       coverUrl: json['cover_url'] as String?,

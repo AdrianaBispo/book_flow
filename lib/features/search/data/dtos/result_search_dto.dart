@@ -12,27 +12,20 @@ class ResultSearchDto extends ResultSearchEntity {
   });
 
   factory ResultSearchDto.fromJson(Map<String, dynamic> json) {
-    int _parseId(dynamic value) {
-      if (value is int) return value;
-      if (value is String) return int.tryParse(value) ?? 0;
-      if (value is double) return value.toInt();
-      return 0;
-    }
-
     return ResultSearchDto(
-      id: _parseId(json['ebo_id'] ?? json['id']),
-      author: json['author'] ?? '',
-      title: json['title'] ?? '',
-      coverUrl: json['cover_url'] ?? '',
-      downloadUrl: json['download_url'] ?? '',
-      genero: json['genero'] ?? '',
-      description: json['description'] ?? '',
+      id: json['ebo_id'] as int? ?? 0,
+      author: json['author'] as String? ?? '',
+      title: json['title'] as String? ?? '',
+      coverUrl: json['cover_url'] as String? ?? '',
+      downloadUrl: json['download_url'] as String? ?? '',
+      genero: json['genero'] as String? ?? '',
+      description: json['description'] as String? ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      'ebo_id': id,
       'author': author,
       'title': title,
       'cover_url': coverUrl,
