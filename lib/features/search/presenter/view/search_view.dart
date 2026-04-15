@@ -23,6 +23,7 @@ class _SearchViewState extends State<SearchView>
     _controller = AnimationController(vsync: this);
     blocSearch = context.read<SearchBloc>();
     blocSearch.add(SearchTextChanged(''));
+    context.read<FavoriteBloc>().add(LoadFavorites());
   }
 
   @override

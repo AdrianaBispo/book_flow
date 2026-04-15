@@ -29,10 +29,10 @@ class FavoriteRepositoryImpl implements FavoriteRepository {
   }
 
   @override
-  Future<Either<AppException, void>> addFavorite(int favoriteId) async {
+  Future<Either<AppException, int>> addFavorite(int favoriteId) async {
     try {
-      await datasource.addFavorite(favoriteId: favoriteId);
-      return const Right(null);
+      int favoritId = await datasource.addFavorite(ebookId: favoriteId);
+      return Right(favoritId);
     } catch (e) {
       return Left(FavoriteUnknownException());
     }

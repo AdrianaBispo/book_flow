@@ -133,5 +133,11 @@
   "detailsGenreGeneral": "General",
   "detailsPagesValue": "320",
   "detailsLanguageValue": "English",
-  "detailsReleaseValue": "2023"
+  "detailsReleaseValue": "2023",
+  "favoritesTitle": "Favorites",
+  "addedToFavoritesSnack": "Added to favorites",
+  "removedFromFavoritesSnack": "Removed from favorites",
+  "favoritesLoginRequired": "Login to see your favorites",
+  "emptyFavoritesTitle": "No favorites found",
+  "emptyFavoritesSubtitle": "You haven't added any books to your favorites yet."
 }

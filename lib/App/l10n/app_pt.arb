@@ -134,5 +134,11 @@
   "detailsGenreGeneral": "Geral",
   "detailsPagesValue": "320",
   "detailsLanguageValue": "Português",
-  "detailsReleaseValue": "2023"
+  "detailsReleaseValue": "2023",
+  "favoritesTitle": "Favoritos",
+  "addedToFavoritesSnack": "Adicionado aos favoritos",
+  "removedFromFavoritesSnack": "Removido dos favoritos",
+  "favoritesLoginRequired": "Faça login para ver seus favoritos",
+  "emptyFavoritesTitle": "Nenhum favorito encontrado",
+  "emptyFavoritesSubtitle": "Você ainda não adicionou nenhum livro aos seus favoritos."
 }

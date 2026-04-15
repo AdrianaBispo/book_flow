@@ -12,8 +12,15 @@ class ResultSearchDto extends ResultSearchEntity {
   });
 
   factory ResultSearchDto.fromJson(Map<String, dynamic> json) {
+    int _parseId(dynamic value) {
+      if (value is int) return value;
+      if (value is String) return int.tryParse(value) ?? 0;
+      if (value is double) return value.toInt();
+      return 0;
+    }
+
     return ResultSearchDto(
-      id: json['id'] is String ? int.parse(json['id']) : json['id'],
+      id: _parseId(json['ebo_id'] ?? json['id']),
       author: json['author'] ?? '',
       title: json['title'] ?? '',
       coverUrl: json['cover_url'] ?? '',

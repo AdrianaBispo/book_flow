@@ -194,24 +194,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get detailsReleaseValue => '2023';
 
   @override
-  String get favoritesTitle => 'My Favorites';
+  String get favoritesTitle => 'Favorites';
 
   @override
-  String get emptyFavoritesTitle => 'No favorites yet.';
-
-  @override
-  String get emptyFavoritesSubtitle => 'Books you favorite will appear here.';
-
-  @override
-  String get errorLoadingFavorites => 'We couldn’t load your favorites. Please try again.';
+  String get addedToFavoritesSnack => 'Added to favorites';
 
   @override
   String get removedFromFavoritesSnack => 'Removed from favorites';
 
   @override
-  String get addedToFavoritesSnack => 'Added to favorites!';
+  String get favoritesLoginRequired => 'Login to see your favorites';
 
   @override
-  String get favoritesLoginRequired =>
-      'Log in to view your favorites list.';
+  String get emptyFavoritesTitle => 'No favorites found';
+
+  @override
+  String get emptyFavoritesSubtitle =>
+      'You haven\'t added any books to your favorites yet.';
 }

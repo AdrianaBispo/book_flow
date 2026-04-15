@@ -193,24 +193,21 @@ class AppLocalizationsPt extends AppLocalizations {
   String get detailsReleaseValue => '2023';
 
   @override
-  String get favoritesTitle => 'Meus Favoritos';
+  String get favoritesTitle => 'Favoritos';
 
   @override
-  String get emptyFavoritesTitle => 'Nenhum favorito ainda.';
-
-  @override
-  String get emptyFavoritesSubtitle => 'Livros favoritados aparecerão aqui.';
-
-  @override
-  String get errorLoadingFavorites => 'Não foi possível carregar seus favoritos. Tente novamente.';
+  String get addedToFavoritesSnack => 'Adicionado aos favoritos';
 
   @override
   String get removedFromFavoritesSnack => 'Removido dos favoritos';
 
   @override
-  String get addedToFavoritesSnack => 'Adicionado aos favoritos!';
+  String get favoritesLoginRequired => 'Faça login para ver seus favoritos';
 
   @override
-  String get favoritesLoginRequired =>
-      'Faça login para visualizar sua lista de favoritos.';
+  String get emptyFavoritesTitle => 'Nenhum favorito encontrado';
+
+  @override
+  String get emptyFavoritesSubtitle =>
+      'Você ainda não adicionou nenhum livro aos seus favoritos.';
 }

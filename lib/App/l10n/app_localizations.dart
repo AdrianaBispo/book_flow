@@ -440,47 +440,41 @@ abstract class AppLocalizations {
   /// **'2023'**
   String get detailsReleaseValue;
 
-  /// Title for the favorites screen
+  /// No description provided for @favoritesTitle.
   ///
   /// In en, this message translates to:
-  /// **'My Favorites'**
+  /// **'Favorites'**
   String get favoritesTitle;
 
-  /// Title for the empty favorites state
+  /// No description provided for @addedToFavoritesSnack.
   ///
   /// In en, this message translates to:
-  /// **'No favorites yet.'**
-  String get emptyFavoritesTitle;
+  /// **'Added to favorites'**
+  String get addedToFavoritesSnack;
 
-  /// Subtitle for the empty favorites state
-  ///
-  /// In en, this message translates to:
-  /// **'Books you favorite will appear here.'**
-  String get emptyFavoritesSubtitle;
-
-  /// Error message when favorites fail to load
-  ///
-  /// In en, this message translates to:
-  /// **'We couldn’t load your favorites. Please try again.'**
-  String get errorLoadingFavorites;
-
-  /// Message shown when a book is removed from favorites
+  /// No description provided for @removedFromFavoritesSnack.
   ///
   /// In en, this message translates to:
   /// **'Removed from favorites'**
   String get removedFromFavoritesSnack;
 
-  /// Message shown when a book is added to favorites
+  /// No description provided for @favoritesLoginRequired.
   ///
   /// In en, this message translates to:
-  /// **'Added to favorites!'**
-  String get addedToFavoritesSnack;
-
-  /// Message shown on favorites screen when user is not logged in
-  ///
-  /// In en, this message translates to:
-  /// **'Log in to see your favorites'**
+  /// **'Login to see your favorites'**
   String get favoritesLoginRequired;
+
+  /// No description provided for @emptyFavoritesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No favorites found'**
+  String get emptyFavoritesTitle;
+
+  /// No description provided for @emptyFavoritesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t added any books to your favorites yet.'**
+  String get emptyFavoritesSubtitle;
 }
 
 class _AppLocalizationsDelegate

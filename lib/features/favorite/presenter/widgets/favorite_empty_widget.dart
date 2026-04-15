@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/app/app.dart';
 import 'package:myapp/shared/shared.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class FavoriteEmptyWidget extends StatelessWidget {
   const FavoriteEmptyWidget({super.key});

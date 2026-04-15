@@ -3,13 +3,29 @@ import 'package:myapp/app/app.dart';
 import 'package:myapp/features/features.dart';
 import 'package:myapp/shared/shared.dart';
 
-class DetailsSearchView extends StatelessWidget {
+class DetailsSearchView extends StatefulWidget {
   final ResultSearchDto ebook;
 
   const DetailsSearchView({super.key, required this.ebook});
 
   @override
+  State<DetailsSearchView> createState() => _DetailsSearchViewState();
+}
+
+class _DetailsSearchViewState extends State<DetailsSearchView> {
+  @override
+  void initState() {
+    super.initState();
+    final bloc = context.read<FavoriteBloc>();
+    if (bloc.state is FavoriteInitial) {
+      bloc.add(LoadFavorites());
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final ebook = widget.ebook;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -24,11 +40,10 @@ class DetailsSearchView extends StatelessWidget {
         actions: [
           BlocListener<FavoriteBloc, FavoriteState>(
             listener: (context, state) {
-              final l10n = AppLocalizations.of(context)!;
               if (state is FavoriteAdded) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(l10n.addedToFavoritesSnack),
+                    content: Text(AppLocalizations.of(context)!.addedToFavoritesSnack),
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     behavior: SnackBarBehavior.floating,
                   ),
@@ -36,7 +51,7 @@ class DetailsSearchView extends StatelessWidget {
               } else if (state is FavoriteSuccess) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(l10n.removedFromFavoritesSnack),
+                    content: Text(AppLocalizations.of(context)!.removedFromFavoritesSnack),
                     backgroundColor: Theme.of(context).colorScheme.secondary,
                     behavior: SnackBarBehavior.floating,
                   ),
@@ -45,17 +60,18 @@ class DetailsSearchView extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     backgroundColor: Theme.of(context).colorScheme.error,
-                    content: Text(l10n.unexpectedError),
+                    content: Text(AppLocalizations.of(context)!.unexpectedError),
                   ),
                 );
               }
             },
             child: BlocBuilder<FavoriteBloc, FavoriteState>(
               builder: (context, state) {
-                bool isFavorite = false;
+                final favoritesList = context.read<FavoriteBloc>().favorites;
+                bool isFavorite = favoritesList.any((f) => f.bookId == ebook.id);
+
                 if (state is FavoriteLoaded) {
-                  isFavorite = state.favorites
-                      .any((f) => f.bookId == ebook.id);
+                  isFavorite = state.favorites.any((f) => f.bookId == ebook.id);
                 }
 
                 return Container(
@@ -75,7 +91,6 @@ class DetailsSearchView extends StatelessWidget {
                       size: 28.r,
                     ),
                     onPressed: () {
-                      // O bloc trata o toggle internamente
                       context.read<FavoriteBloc>().add(
                         AddToFavorite(ebook.id),
                       );
