@@ -7,11 +7,13 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   final GetFavoriteUsecaseImpl getFavorites;
   final AddFavoriteUsecaseImpl addFavorite;
   final RemoveFavoriteUsecaseImpl removeFavorite;
+  final IsFavoriteUsecaseImpl isFavorite;
 
   FavoriteBloc({
     required this.getFavorites,
     required this.addFavorite,
     required this.removeFavorite,
+    required this.isFavorite,
   }) : super(FavoriteInitial()) {
     on<LoadFavorites>(_onLoadFavorites);
     on<AddToFavorite>(_onAddFavorite);
@@ -34,32 +36,28 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     });
   }
 
+  Future<bool> _onIsFavorite(
+    IsFavorite event,
+    Emitter<FavoriteState> emit,
+  ) async {
+    final result = await isFavorite(param: event.bookId);
+    result.fold(
+      (failure) => emit(FavoriteFailure(failure)),
+      (isFav) {
+        emit(FavoriteIsFavorite(isFav));
+        return isFav;
+      },
+    );
+  }
+
   Future<void> _onAddFavorite(
     AddToFavorite event,
     Emitter<FavoriteState> emit,
   ) async {
-    final existing = _favorites.firstWhere(
-      (f) => f.bookId == event.bookId,
-      orElse: () => FavoritDto(
-        id: -1,
-        bookId: -1,
-        title: '',
-        author: '',
-      ),
-    );
-
-    if (existing.id != -1) {
-      // Já é favorito: remove usando o fav_id (ID da linha na tabela)
-      final result = await removeFavorite(param: existing.id);
-      result.fold(
-        (failure) => emit(FavoriteFailure(failure)),
-        (_) {
-          emit(FavoriteSuccess('Removed'));
-          add(LoadFavorites());
-        },
-      );
-    } else {
-      // Não é favorito: adiciona usando o ebo_id (ID do livro)
+   
+    final isFav = await _onIsFavorite(IsFavorite(bookId: event.bookId), emit);
+ 
+    if (isFav) {
       final result = await addFavorite(param: event.bookId);
       result.fold(
         (failure) => emit(FavoriteFailure(failure)),

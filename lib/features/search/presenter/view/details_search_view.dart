@@ -67,11 +67,10 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
             },
             child: BlocBuilder<FavoriteBloc, FavoriteState>(
               builder: (context, state) {
-                final favoritesList = context.read<FavoriteBloc>().favorites;
-                bool isFavorite = favoritesList.any((f) => f.bookId == ebook.id);
+                bool isFavorite = false;
 
                 if (state is FavoriteLoaded) {
-                  isFavorite = state.favorites.any((f) => f.bookId == ebook.id);
+                  isFavorite = context.read<FavoriteBloc>().isFavorite(param: ebook.id);
                 }
 
                 return Container(
@@ -91,9 +90,15 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
                       size: 28.r,
                     ),
                     onPressed: () {
-                      context.read<FavoriteBloc>().add(
-                        AddToFavorite(ebook.id),
-                      );
+                      if(isFavorite){
+                        context.read<FavoriteBloc>().add(
+                          RemoveFromFavorite(ebook.id),
+                        );
+                      }else{
+                        context.read<FavoriteBloc>().add(
+                          AddToFavorite(ebook.id),
+                        );
+                      }
                     },
                   ),
                 );

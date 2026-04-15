@@ -37,4 +37,14 @@ class FavoriteRepositoryImpl implements FavoriteRepository {
       return Left(FavoriteUnknownException());
     }
   }
+
+  @override
+  Future<Either<AppException, bool>> isFavorite(int ebookId) async {
+    try {
+      bool isFav = await datasource.isFavorite(ebookId: ebookId);
+      return Right(isFav);
+    } catch (e) {
+      return Left(FavoriteUnknownException());
+    }
+  }
 }

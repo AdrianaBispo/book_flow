@@ -5,4 +5,5 @@ abstract class FavoriteRepository {
   Future<Either<AppException, List<FavoritEntity>>> getFavorites();
   Future<Either<AppException, void>> removeFavorite(int favoriteId);
   Future<Either<AppException, int>> addFavorite(int favoriteId);
+  Future<Either<AppException, bool>> isFavorite(int ebookId);
 }
