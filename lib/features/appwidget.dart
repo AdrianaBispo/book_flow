@@ -105,6 +105,11 @@ class AppWidget extends StatelessWidget {
           create: (context) =>
               OpenBookUsecaseImpl(context.read<LibraryRepositoryImpl>()),
         ),
+        Provider<GetRecommendationsUsecaseImpl>(
+          create: (context) => GetRecommendationsUsecaseImpl(
+            context.read<SearchRepository>(),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -136,8 +141,15 @@ class AppWidget extends StatelessWidget {
               removeFavorite: context.read<RemoveFavoriteUsecaseImpl>(),
             ),
           ),
+          BlocProvider<HomeBloc>(
+            create: (context) => HomeBloc(
+              getRecommendationsUsecase:
+                  context.read<GetRecommendationsUsecaseImpl>(),
+              getFavoriteUsecase: context.read<GetFavoriteUsecaseImpl>(),
+              getLibraryUsecase: context.read<GetListBooksUsecaseImpl>(),
+            ),
+          ),
         ],
-
         child: ScreenUtilInit(
           designSize: const Size(360, 690),
           minTextAdapt: true,

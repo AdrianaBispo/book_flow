@@ -140,5 +140,7 @@
   "removedFromFavoritesSnack": "Removido dos favoritos",
   "favoritesLoginRequired": "Faça login para ver seus favoritos",
   "emptyFavoritesTitle": "Nenhum favorito encontrado",
-  "emptyFavoritesSubtitle": "Você ainda não adicionou nenhum livro aos seus favoritos."
+  "emptyFavoritesSubtitle": "Você ainda não adicionou nenhum livro aos seus favoritos.",
+  "readingNow": "Lendo agora",
+  "recommendationsForYou": "Recomendados para você"
 }

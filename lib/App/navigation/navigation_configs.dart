@@ -42,7 +42,7 @@ abstract class NavigationConfigs {
         routes: [
           GoRoute(
             path: RoutePath.home,
-            builder: (_, state) => const SearchView(),
+            builder: (_, state) => const HomeView(),
             parentNavigatorKey: shellNavigationKey,
             name: 'HOME',
           ),
