@@ -3,6 +3,7 @@ import 'package:myapp/app/app.dart';
 
 import '../../domain/domain.dart';
 import '../datasources/datasources.dart';
+import '../dtos/library_dto.dart';
 
 class LibraryRepositoryImpl implements LibraryRepository {
   final LibraryLocalDataSource localDataSource;
@@ -39,16 +40,10 @@ class LibraryRepositoryImpl implements LibraryRepository {
   }
 
   @override
-  Future<Either<AppException, void>> addBookInLibrary(String id) async {
+  Future<Either<AppException, void>> addBookInLibrary(LibraryEntity book) async {
     try {
-      // NOTE: Here we would need a way to get the book details from id.
-      // For now, I will assume we might have it or we need a SearchUsecase.
-      // But let's fix the call to saveBook if we had a DTO.
-      // Wait, LibraryLocalDataSource.saveBook requires a LibraryDTO.
-      // I'll check if we can add a method to DataSource to fetch it.
-
-      // Temporary: throwing error to see if it's used yet.
-      throw UnimplementedError('addBookInLibrary needs book details');
+      await localDataSource.saveBook(LibraryDTO.fromEntity(book));
+      return const Right(null);
     } catch (e) {
       return Left(
         LibraryRepositoryException(message: 'Erro ao adicionar livro: $e'),

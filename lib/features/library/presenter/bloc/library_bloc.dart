@@ -24,7 +24,7 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
     AddBookToLibrary event,
     Emitter<LibraryState> emit,
   ) async {
-    final result = await addBook(param: event.book.id);
+    final result = await addBook(param: event.book);
     result.fold(
       (failure) => emit(LibraryFailure(failure)),
       (_) => add(LoadLibrary()),

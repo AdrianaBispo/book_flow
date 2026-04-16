@@ -46,6 +46,8 @@ class LibraryRemoteDataSourceImpl implements LibraryRemoteDatasource {
     required String path,
     Function(double progress)? onProgress,
   }) async {
+    if (url.isEmpty) return '';
+
     final request = http.Request('GET', Uri.parse(url));
     final response = await request.send();
 
