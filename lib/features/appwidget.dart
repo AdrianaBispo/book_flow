@@ -20,6 +20,16 @@ class AppWidget extends StatelessWidget {
             dataSource: context.read<LoginDatasouceRemoteImpl>(),
           ),
         ),
+        Provider<SignupDatasourceRemoteImpl>(
+          create: (_) => SignupDatasourceRemoteImpl(
+            supabaseClient: Supabase.instance.client,
+          ),
+        ),
+        Provider<SignupRepository>(
+          create: (context) => SignupRepositoryImpl(
+            datasource: context.read<SignupDatasourceRemoteImpl>(),
+          ),
+        ),
         Provider<SearchDataSourceRemoteImpl>(
           create: (_) => SearchDataSourceRemoteImpl(Supabase.instance.client),
         ),
@@ -31,6 +41,10 @@ class AppWidget extends StatelessWidget {
         Provider<LoginWithEmailAndPasswordImpl>(
           create: (context) =>
               LoginWithEmailAndPasswordImpl(context.read<LoginRepository>()),
+        ),
+        Provider<SignupWithEmailAndPasswordImpl>(
+          create: (context) =>
+              SignupWithEmailAndPasswordImpl(context.read<SignupRepository>()),
         ),
         Provider<SearchUsecaseImpl>(
           create: (context) =>
@@ -119,6 +133,11 @@ class AppWidget extends StatelessWidget {
           BlocProvider<LoginBloc>(
             create: (context) => LoginBloc(
               usecases: context.read<LoginWithEmailAndPasswordImpl>(),
+            ),
+          ),
+          BlocProvider<SignupBloc>(
+            create: (context) => SignupBloc(
+              usecase: context.read<SignupWithEmailAndPasswordImpl>(),
             ),
           ),
           BlocProvider<SearchBloc>(

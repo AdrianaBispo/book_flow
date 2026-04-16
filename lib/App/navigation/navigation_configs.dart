@@ -30,6 +30,11 @@ abstract class NavigationConfigs {
         name: 'LOGIN',
       ),
       GoRoute(
+        path: RoutePath.signup,
+        builder: (_, state) => SignupView(),
+        name: 'SIGNUP',
+      ),
+      GoRoute(
         path: RoutePath.help,
         builder: (_, state) => const HelpView(),
         name: 'HELP',

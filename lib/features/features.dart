@@ -1,4 +1,5 @@
 export 'auth/login/login.dart';
+export 'auth/signup/signup.dart';
 export 'search/search.dart';
 export 'library/library.dart';
 export 'favorite/favorite.dart';

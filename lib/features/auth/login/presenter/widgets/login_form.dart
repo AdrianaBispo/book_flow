@@ -114,7 +114,7 @@ class LoginForm extends StatelessWidget {
               // Botão de cadastro
               OutlinedButton(
                 onPressed: () {
-                  // Navegar para tela de cadastro
+                  NavigationConfigs.push(routePath: RoutePath.signup);
                 },
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(

@@ -142,5 +142,14 @@
   "emptyFavoritesTitle": "Nenhum favorito encontrado",
   "emptyFavoritesSubtitle": "Você ainda não adicionou nenhum livro aos seus favoritos.",
   "readingNow": "Lendo agora",
-  "recommendationsForYou": "Recomendados para você"
-}
+  "recommendationsForYou": "Recomendados para você",
+  "usernameLabel": "Nome de usuário",
+  "usernameHint": "Digite seu nome de usuário",
+  "confirmPasswordLabel": "Confirmar senha",
+  "confirmPasswordHint": "Digite a senha novamente",
+  "passwordsDoNotMatch": "As senhas não coincidem",
+  "signupSuccess": "Conta criada com sucesso!",
+  "alreadyHaveAccount": "Já tem uma conta? Entre aqui",
+  "signupTitle": "Crie sua conta"
+}
+

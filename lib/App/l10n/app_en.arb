@@ -141,5 +141,13 @@
   "emptyFavoritesTitle": "No favorites found",
   "emptyFavoritesSubtitle": "You haven't added any books to your favorites yet.",
   "readingNow": "Reading now",
-  "recommendationsForYou": "Recommended for you"
-}
+  "recommendationsForYou": "Recommended for you",
+  "usernameLabel": "Username",
+  "usernameHint": "Enter your username",
+  "confirmPasswordLabel": "Confirm password",
+  "confirmPasswordHint": "Enter password again",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "signupSuccess": "Account created successfully!",
+  "alreadyHaveAccount": "Already have an account? Login here",
+  "signupTitle": "Create your account"
+}
