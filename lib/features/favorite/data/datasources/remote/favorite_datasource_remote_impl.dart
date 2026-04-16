@@ -30,27 +30,26 @@ class FavoriteDatasourceRemoteImpl implements FavoriteDatasourceRemote {
       await client
           .from('sgb_favoritos')
           .delete()
-          .eq('fav_id', favoriteId)
+          .eq('ebo_id', favoriteId)
           .eq('user_id', client.auth.currentUser!.id);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-@override
-Future<bool> isFavorite({required int ebookId}) async {
-  try {
-    final response = await client
-        .from('sgb_favoritos')
-        .select('ebo_id')
-        .eq('user_id', client.auth.currentUser!.id)
-        .eq('ebo_id', ebookId);
-    return response.isNotEmpty;
-  } catch (e) {
-    throw Exception(e);
+  @override
+  Future<bool> isFavorite({required int ebookId}) async {
+    try {
+      final response = await client
+          .from('sgb_favoritos')
+          .select('ebo_id')
+          .eq('user_id', client.auth.currentUser!.id)
+          .eq('ebo_id', ebookId);
+      return response.isNotEmpty;
+    } catch (e) {
+      throw Exception(e);
+    }
   }
-}
-
 
   @override
   Future<int> addFavorite({required int ebookId}) async {
@@ -62,13 +61,13 @@ Future<bool> isFavorite({required int ebookId}) async {
         return ebookId;
       }
 
-      final response = await client
+      final favId = await client
           .from('sgb_favoritos')
           .insert({'user_id': userId, 'ebo_id': ebookId})
-          .select('ebo_id')
+          .select('fav_id')
           .single();
 
-      return  ebookId;
+      return favId['fav_id'];
     } catch (e) {
       throw Exception(e);
     }

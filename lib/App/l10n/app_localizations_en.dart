@@ -211,4 +211,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get emptyFavoritesSubtitle =>
       'You haven\'t added any books to your favorites yet.';
+
+  @override
+  String get readingNow => 'Reading now';
+
+  @override
+  String get recommendationsForYou => 'Recommended for you';
 }

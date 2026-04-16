@@ -71,6 +71,10 @@ class AppWidget extends StatelessWidget {
           create: (context) =>
               AddFavoriteUsecaseImpl(context.read<FavoriteRepository>()),
         ),
+        Provider<IsFavoriteUsecaseImpl>(
+          create: (context) =>
+              IsFavoriteUsecaseImpl(context.read<FavoriteRepository>()),
+        ),
         // LIBRARY
         Provider<LibraryRemoteDataSourceImpl>(
           create: (_) => LibraryRemoteDataSourceImpl(),
@@ -106,9 +110,8 @@ class AppWidget extends StatelessWidget {
               OpenBookUsecaseImpl(context.read<LibraryRepositoryImpl>()),
         ),
         Provider<GetRecommendationsUsecaseImpl>(
-          create: (context) => GetRecommendationsUsecaseImpl(
-            context.read<SearchRepository>(),
-          ),
+          create: (context) =>
+              GetRecommendationsUsecaseImpl(context.read<SearchRepository>()),
         ),
       ],
       child: MultiBlocProvider(
@@ -139,13 +142,13 @@ class AppWidget extends StatelessWidget {
               getFavorites: context.read<GetFavoriteUsecaseImpl>(),
               addFavorite: context.read<AddFavoriteUsecaseImpl>(),
               removeFavorite: context.read<RemoveFavoriteUsecaseImpl>(),
-              isFavorite: context.read<IsFavoriteUsecaseImpl>(),
+              isFavoriteUseCase: context.read<IsFavoriteUsecaseImpl>(),
             ),
           ),
           BlocProvider<HomeBloc>(
             create: (context) => HomeBloc(
-              getRecommendationsUsecase:
-                  context.read<GetRecommendationsUsecaseImpl>(),
+              getRecommendationsUsecase: context
+                  .read<GetRecommendationsUsecaseImpl>(),
               getFavoriteUsecase: context.read<GetFavoriteUsecaseImpl>(),
               getLibraryUsecase: context.read<GetListBooksUsecaseImpl>(),
             ),

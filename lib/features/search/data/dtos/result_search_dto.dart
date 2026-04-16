@@ -13,7 +13,7 @@ class ResultSearchDto extends ResultSearchEntity {
 
   factory ResultSearchDto.fromJson(Map<String, dynamic> json) {
     return ResultSearchDto(
-      id: json['ebo_id'] as int? ?? 0,
+      id: json['id'] as int? ?? 0,
       author: json['author'] as String? ?? '',
       title: json['title'] as String? ?? '',
       coverUrl: json['cover_url'] as String? ?? '',
@@ -25,7 +25,7 @@ class ResultSearchDto extends ResultSearchEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'ebo_id': id,
+      'id': id,
       'author': author,
       'title': title,
       'cover_url': coverUrl,

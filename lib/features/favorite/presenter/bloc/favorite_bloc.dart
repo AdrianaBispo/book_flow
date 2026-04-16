@@ -7,22 +7,25 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   final GetFavoriteUsecaseImpl getFavorites;
   final AddFavoriteUsecaseImpl addFavorite;
   final RemoveFavoriteUsecaseImpl removeFavorite;
-  final IsFavoriteUsecaseImpl isFavorite;
+  final IsFavoriteUsecaseImpl isFavoriteUseCase;
 
   FavoriteBloc({
     required this.getFavorites,
     required this.addFavorite,
     required this.removeFavorite,
-    required this.isFavorite,
+    required this.isFavoriteUseCase,
   }) : super(FavoriteInitial()) {
     on<LoadFavorites>(_onLoadFavorites);
     on<AddToFavorite>(_onAddFavorite);
     on<RemoveFromFavorite>(_onRemoveFavorite);
+    on<IsFavorite>(_onIsFavorite);
   }
 
   List<FavoritDto> _favorites = [];
 
   List<FavoritDto> get favorites => _favorites;
+
+  bool isFavorite = false;
 
   Future<void> _onLoadFavorites(
     LoadFavorites event,
@@ -36,16 +39,19 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     });
   }
 
-  Future<bool> _onIsFavorite(
+  Future<void> _onIsFavorite(
     IsFavorite event,
     Emitter<FavoriteState> emit,
   ) async {
-    final result = await isFavorite(param: event.bookId);
+    final result = await isFavoriteUseCase(param: event.bookId);
     result.fold(
-      (failure) => emit(FavoriteFailure(failure)),
+      (failure) {
+        isFavorite = false;
+        emit(FavoriteFailure(failure));
+      },
       (isFav) {
-        emit(FavoriteIsFavorite(isFav));
-        return isFav;
+        isFavorite = isFav;
+        emit(FavoriteIsFavorite(isFavorite));
       },
     );
   }
@@ -54,19 +60,12 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     AddToFavorite event,
     Emitter<FavoriteState> emit,
   ) async {
-   
-    final isFav = await _onIsFavorite(IsFavorite(bookId: event.bookId), emit);
- 
-    if (isFav) {
-      final result = await addFavorite(param: event.bookId);
-      result.fold(
-        (failure) => emit(FavoriteFailure(failure)),
-        (_) {
-          emit(FavoriteAdded());
-          add(LoadFavorites());
-        },
-      );
-    }
+    final result = await addFavorite(param: event.bookId);
+    result.fold((failure) => emit(FavoriteFailure(failure)), (_) {
+      emit(FavoriteAdded());
+      add(LoadFavorites());
+    });
+    await _onIsFavorite(IsFavorite(event.bookId), emit);
   }
 
   Future<void> _onRemoveFavorite(
@@ -74,12 +73,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     Emitter<FavoriteState> emit,
   ) async {
     final result = await removeFavorite(param: event.bookId);
-    result.fold(
-      (failure) => emit(FavoriteFailure(failure)),
-      (_) {
-        emit(FavoriteSuccess('Removed'));
-        add(LoadFavorites());
-      },
-    );
+    result.fold((failure) => emit(FavoriteFailure(failure)), (_) {
+      emit(FavoriteSuccess('Removed'));
+      add(LoadFavorites());
+    });
+    await _onIsFavorite(IsFavorite(event.bookId), emit);
   }
 }

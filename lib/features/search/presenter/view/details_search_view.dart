@@ -13,19 +13,17 @@ class DetailsSearchView extends StatefulWidget {
 }
 
 class _DetailsSearchViewState extends State<DetailsSearchView> {
+  late FavoriteBloc bloc;
+
   @override
   void initState() {
     super.initState();
-    final bloc = context.read<FavoriteBloc>();
-    if (bloc.state is FavoriteInitial) {
-      bloc.add(LoadFavorites());
-    }
+    bloc = context.read<FavoriteBloc>();
+    bloc.add(IsFavorite(widget.ebook.id));
   }
 
   @override
   Widget build(BuildContext context) {
-    final ebook = widget.ebook;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -43,7 +41,9 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
               if (state is FavoriteAdded) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(AppLocalizations.of(context)!.addedToFavoritesSnack),
+                    content: Text(
+                      AppLocalizations.of(context)!.addedToFavoritesSnack,
+                    ),
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     behavior: SnackBarBehavior.floating,
                   ),
@@ -51,7 +51,9 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
               } else if (state is FavoriteSuccess) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(AppLocalizations.of(context)!.removedFromFavoritesSnack),
+                    content: Text(
+                      AppLocalizations.of(context)!.removedFromFavoritesSnack,
+                    ),
                     backgroundColor: Theme.of(context).colorScheme.secondary,
                     behavior: SnackBarBehavior.floating,
                   ),
@@ -60,18 +62,16 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     backgroundColor: Theme.of(context).colorScheme.error,
-                    content: Text(AppLocalizations.of(context)!.unexpectedError),
+                    content: Text(
+                      AppLocalizations.of(context)!.unexpectedError,
+                    ),
                   ),
                 );
               }
             },
             child: BlocBuilder<FavoriteBloc, FavoriteState>(
               builder: (context, state) {
-                bool isFavorite = false;
-
-                if (state is FavoriteLoaded) {
-                  isFavorite = context.read<FavoriteBloc>().isFavorite(param: ebook.id);
-                }
+                final bool isFavorite = bloc.isFavorite;
 
                 return Container(
                   decoration: BoxDecoration(
@@ -90,13 +90,13 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
                       size: 28.r,
                     ),
                     onPressed: () {
-                      if(isFavorite){
+                      if (isFavorite) {
                         context.read<FavoriteBloc>().add(
-                          RemoveFromFavorite(ebook.id),
+                          RemoveFromFavorite(widget.ebook.id),
                         );
-                      }else{
+                      } else {
                         context.read<FavoriteBloc>().add(
-                          AddToFavorite(ebook.id),
+                          AddToFavorite(widget.ebook.id),
                         );
                       }
                     },
@@ -113,9 +113,10 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DetailsSearchCoverWidget(ebook: ebook),
-              DetailsSearchHeaderWidget(ebook: ebook),
-              if (ebook.description != null && ebook.description!.isNotEmpty)
+              DetailsSearchCoverWidget(ebook: widget.ebook),
+              DetailsSearchHeaderWidget(ebook: widget.ebook),
+              if (widget.ebook.description != null &&
+                  widget.ebook.description!.isNotEmpty)
                 Padding(
                   padding: EdgeInsets.only(
                     left: 20.r,
@@ -129,11 +130,12 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
                     ).titleMedium!.copyWith(fontFamily: 'PT Serif'),
                   ),
                 ),
-              if (ebook.description != null && ebook.description!.isNotEmpty)
+              if (widget.ebook.description != null &&
+                  widget.ebook.description!.isNotEmpty)
                 Padding(
                   padding: EdgeInsets.fromLTRB(20.r, 0, 20.r, 32.r),
                   child: Text(
-                    ebook.description ?? '',
+                    widget.ebook.description ?? '',
                     style: TextTheme.of(context).bodyMedium,
                   ),
                 ),
@@ -150,7 +152,7 @@ class _DetailsSearchViewState extends State<DetailsSearchView> {
               // ),
               //  const DetailsSearchInfoGridWidget(),
               SizedBox(height: 16.h),
-              DetailsSearchActionButtonsWidget(ebook: ebook),
+              DetailsSearchActionButtonsWidget(ebook: widget.ebook),
               SizedBox(height: 32.h),
             ],
           ),

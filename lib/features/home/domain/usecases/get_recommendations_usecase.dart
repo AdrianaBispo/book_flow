@@ -15,7 +15,7 @@ class GetRecommendationsUsecaseImpl implements GetRecommendationsUsecase {
 
   @override
   Future<Either<AppException, List<ResultSearchEntity>>> call(
-    List<GenderEntity> genres,
+    List<String> genres,
   ) async {
     // If no genres, search for a default term or "popular"
     String searchTerm = genres.isEmpty ? 'best sellers' : genres.join(' ');

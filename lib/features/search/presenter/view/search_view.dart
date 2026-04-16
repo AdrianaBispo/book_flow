@@ -119,7 +119,16 @@ class _SearchViewState extends State<SearchView>
               itemCount: state.results.length,
               itemBuilder: (context, index) {
                 final ebook = state.results[index];
-                return SearchCard(ebook: ebook as ResultSearchDto);
+                return SearchCard(
+                  ebook: ResultSearchDto(
+                    author: ebook.author,
+                    coverUrl: ebook.coverUrl,
+                    genero: ebook.genero,
+                    id: ebook.id,
+                    title: ebook.title,
+                    description: ebook.description,
+                  ),
+                );
               },
               separatorBuilder: (context, index) =>
                   Divider(color: Theme.of(context).dividerColor, height: 24.h),

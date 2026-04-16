@@ -42,43 +42,12 @@ class _SearchCardState extends State<SearchCard>
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Hero(
-              tag: 'book-cover-${widget.ebook.id}',
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.r),
-                child: widget.ebook.coverUrl == ''
-                    ? Image.asset(
-                        AppAssets.notfound,
-                        width: 70.w,
-                        height: 100.h,
-                        fit: BoxFit.contain,
-                      )
-                    : Image.network(
-                        widget.ebook.coverUrl!,
-                        width: 70.w,
-                        height: 100.h,
-                        fit: BoxFit.cover,
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return Skeletonizer(
-                            enabled: true,
-                            child: Container(
-                              width: 70.w,
-                              height: 100.h,
-                              color: AppColors.skeletonLoading,
-                            ),
-                          );
-                        },
-                        errorBuilder: (context, error, stackTrace) =>
-                            Image.asset(
-                              AppAssets.notfound,
-                              width: 70.w,
-                              height: 100.h,
-                              fit: BoxFit.contain,
-                            ),
-                      ),
-              ),
-            ),
+            widget.ebook.id == 0
+                ? _buildCover()
+                : Hero(
+                    tag: 'book-cover-${widget.ebook.id}',
+                    child: _buildCover(),
+                  ),
             SizedBox(width: 12.w),
 
             // 2. Detalhes do Livro
@@ -143,6 +112,44 @@ class _SearchCardState extends State<SearchCard>
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildCover() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8.r),
+      child:
+          widget.ebook.coverUrl == ''
+              ? Image.asset(
+                AppAssets.notfound,
+                width: 70.w,
+                height: 100.h,
+                fit: BoxFit.contain,
+              )
+              : Image.network(
+                widget.ebook.coverUrl!,
+                width: 70.w,
+                height: 100.h,
+                fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Skeletonizer(
+                    enabled: true,
+                    child: Container(
+                      width: 70.w,
+                      height: 100.h,
+                      color: AppColors.skeletonLoading,
+                    ),
+                  );
+                },
+                errorBuilder:
+                    (context, error, stackTrace) => Image.asset(
+                      AppAssets.notfound,
+                      width: 70.w,
+                      height: 100.h,
+                      fit: BoxFit.contain,
+                    ),
+              ),
     );
   }
 }

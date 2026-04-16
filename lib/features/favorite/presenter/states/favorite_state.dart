@@ -23,3 +23,8 @@ class FavoriteSuccess extends FavoriteState {
 }
 
 class FavoriteAdded extends FavoriteState {}
+
+class FavoriteIsFavorite extends FavoriteState {
+  final bool isFavorite;
+  FavoriteIsFavorite(this.isFavorite);
+}

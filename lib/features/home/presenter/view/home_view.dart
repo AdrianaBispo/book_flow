@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myapp/app/app.dart';
 import 'package:myapp/features/features.dart';
 import 'package:myapp/shared/shared.dart';
-import '../bloc/home_bloc.dart';
-import '../events/home_event.dart';
-import '../states/home_state.dart';
 import '../widgets/home_book_card.dart'; // I'll create this
 
 class HomeView extends StatefulWidget {
@@ -51,12 +48,18 @@ class _HomeViewState extends State<HomeView> {
                               child: _buildRecentList(state.recentBooks),
                             ),
                           _buildSection(
-                            title: AppLocalizations.of(context)!.recommendationsForYou,
-                            child: _buildRecommendationList(state.recommendations),
+                            title: AppLocalizations.of(
+                              context,
+                            )!.recommendationsForYou,
+                            child: _buildRecommendationList(
+                              state.recommendations,
+                            ),
                           ),
                           if (state.favoriteBooks.isNotEmpty)
                             _buildSection(
-                              title: AppLocalizations.of(context)!.favoritesTitle,
+                              title: AppLocalizations.of(
+                                context,
+                              )!.favoritesTitle,
                               child: _buildFavoriteList(state.favoriteBooks),
                             ),
                           SizedBox(height: 32.h),
@@ -87,9 +90,9 @@ class _HomeViewState extends State<HomeView> {
                 Text(
                   'Olá, Adriana!', // TODO: Get name from auth
                   style: TextTheme.of(context).headlineSmall!.copyWith(
-                        fontFamily: 'PT Serif',
-                        fontWeight: FontWeight.bold,
-                      ),
+                    fontFamily: 'PT Serif',
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Text(
                   'O que vamos ler hoje?',
@@ -99,7 +102,9 @@ class _HomeViewState extends State<HomeView> {
             ),
             CircleAvatar(
               radius: 24.r,
-              backgroundImage: const AssetImage(AppAssets.notfound), // Replace with user image
+              backgroundImage: const AssetImage(
+                AppAssets.notfound,
+              ), // Replace with user image
             ),
           ],
         ),
@@ -116,9 +121,9 @@ class _HomeViewState extends State<HomeView> {
           child: Text(
             title,
             style: TextTheme.of(context).titleMedium!.copyWith(
-                  fontFamily: 'PT Serif',
-                  fontWeight: FontWeight.bold,
-                ),
+              fontFamily: 'PT Serif',
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         child,
@@ -190,7 +195,7 @@ class _HomeViewState extends State<HomeView> {
         padding: EdgeInsets.symmetric(horizontal: 20.r),
         scrollDirection: Axis.horizontal,
         itemCount: favoriteBooks.length,
-        separatorBuilder: (_, __) => SizedBox(width: 16.w),
+        separatorBuilder: (_, context) => SizedBox(width: 16.w),
         itemBuilder: (context, index) {
           final book = favoriteBooks[index];
           return HomeBookCard(
@@ -229,7 +234,7 @@ class _HomeViewState extends State<HomeView> {
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.symmetric(horizontal: 20.r),
                   itemCount: 5,
-                  itemBuilder: (_, __) => Padding(
+                  itemBuilder: (_, context) => Padding(
                     padding: EdgeInsets.only(right: 16.w),
                     child: Container(
                       width: 120.w,

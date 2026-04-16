@@ -475,6 +475,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You haven\'t added any books to your favorites yet.'**
   String get emptyFavoritesSubtitle;
+
+  /// No description provided for @readingNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading now'**
+  String get readingNow;
+
+  /// No description provided for @recommendationsForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended for you'**
+  String get recommendationsForYou;
 }
 
 class _AppLocalizationsDelegate

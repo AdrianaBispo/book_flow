@@ -210,4 +210,10 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get emptyFavoritesSubtitle =>
       'Você ainda não adicionou nenhum livro aos seus favoritos.';
+
+  @override
+  String get readingNow => 'Lendo agora';
+
+  @override
+  String get recommendationsForYou => 'Recomendados para você';
 }

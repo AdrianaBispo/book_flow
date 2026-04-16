@@ -10,6 +10,6 @@ class IsFavoriteUsecaseImpl
 
   @override
   Future<Either<AppException, bool>> call({int? param}) async {
-    return await _repository.isFavorite(ebookId: param!);
+    return await _repository.isFavorite(param!);
   }
 }
